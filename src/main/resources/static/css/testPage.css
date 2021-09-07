@@ -1,0 +1,34 @@
+.swiper {
+   margin-top:80px;
+   text-align: center;
+}
+img{
+    margin-top:30px;
+}
+@media screen and (max-width:1799px) {
+ /* 데스트 탑 */
+ .swiper {
+   width: 660px;
+   height: 600px;
+   }
+ img{
+    max-width:85%;
+    height: auto
+ }
+
+}
+
+@media screen and (max-width:599px) {
+/* 모바일 세로 */
+.swiper {
+  width: 360px;
+  height: 360px;
+  }
+ img{
+    max-width:70%;
+    height: auto
+ }
+}
+
+
+

@@ -18,8 +18,22 @@ public class PageController {
     }
 
     @GetMapping(value="/")
-    public String list(Model model){
+    public String home(Model model){
         model.addAttribute("data","hello!");
         return "home";
+    }
+    @GetMapping(value="/travel")
+    public String travel(Model model){
+        return "travel";
+    }
+    @GetMapping(value="/test")
+    public String test(Model model){
+        model.addAttribute("data","hello!");
+        return "testPage";
+    }
+    @GetMapping(value="/testResult")
+    public String testResult(Model model){
+        model.addAttribute("data","hello!");
+        return "testResult";
     }
 }

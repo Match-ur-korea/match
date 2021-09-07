@@ -1,0 +1,45 @@
+.container1{
+    text-align:center;
+}
+.left{
+    display:inline-block;
+
+}
+.right{
+    display:inline-block;
+}
+
+@media screen and (max-width:1799px) {
+ /* 데스트 탑 */
+    .container1{
+       margin-top:60px;
+    }
+    .left{
+       padding-right:300px;
+    }
+    .bottom2{
+        padding-top:40px;
+        padding-bottom:100px;
+    }
+    img{
+        padding:10px;
+    }
+
+}
+
+@media screen and (max-width:599px) {
+/* 모바일 세로 */
+    .container1{
+       margin-top:30px;
+    }
+    .left{
+        padding-right:80px;
+    }
+    .bottom2{
+        padding-top:20px;
+        padding-bottom:60px;
+    }
+    img{
+        padding:6px;
+    }
+}

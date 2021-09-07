@@ -1,0 +1,65 @@
+#qu{
+    text-align:center;
+}
+.select_btn{
+    background-color: #E5E5E5;
+    outline: 0;
+    border: 0;
+    display:block;
+    margin: auto;
+}
+
+
+@media screen and (max-width:1799px) {
+ /* 데스트 탑 */
+   #wrapper1{
+    width:1200px;
+    height:500px;
+    margin: 100px auto;
+    background-image: url("/img/travelPage/제작 영상.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+   }
+
+    .select_btn{
+       width:300px;
+       height:80px;
+       border-radius:35px;
+       font-size:30px;
+    }
+
+     #qu{
+     font-size:35px;
+     padding-top:100px;
+     padding-bottom:50px;
+     }
+
+
+
+}
+
+@media screen and (max-width:599px) {
+/* 모바일 세로 */
+
+    #wrapper1{
+         width:400px;
+         height:300px;
+         margin: 100px auto;
+         background-image: url("/img/travelPage/제작 영상.png");
+         background-repeat: no-repeat;
+         background-size: 100% 100%;
+    }
+    .select_btn{
+          width:150px;
+          height:40px;
+          border-radius:20px;
+          font-size:15px;
+    }
+
+    #qu{
+     font-size:20px;
+     padding-top:50px;
+    }
+
+
+}
