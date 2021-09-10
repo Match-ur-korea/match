@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>home</title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
@@ -12,36 +13,7 @@
     <script src="/js/testPage.js" defer></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="user-select: auto;">
-    <div class="container-fluid" style="user-select: auto;">
-        <a class="navbar-brand" href="#" style="user-select: auto;">마치  <small class="text-muted" style="user-select: auto;">Match</small></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="user-select: auto;">
-            <span class="navbar-toggler-icon" style="user-select: auto;"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor03" style="user-select: auto;">
-            <ul class="navbar-nav me-auto" style="user-select: auto;">
-                <li class="nav-item" style="user-select: auto;">
-                    <a class="nav-link active" href="#" style="user-select: auto;">마치 소개</a>
-                </li>
-                <li class="nav-item" style="user-select: auto;">
-                    <a class="nav-link" href="#" style="user-select: auto;">여행하기</a>
-                </li>
-                <li class="nav-item dropdown" style="user-select: auto;">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true" style="user-select: auto;">여행코스</a>
-                    <div class="dropdown-menu" style="user-select: auto;">
-                        <a class="dropdown-item" href="#" style="user-select: auto;">캐릭터별</a>
-                        <a class="dropdown-item" href="#" style="user-select: auto;">지역별</a>
-                    </div>
-                </li>
-                <li class="nav-item" style="user-select: auto;">
-                    <a class="nav-link" href="#" style="user-select: auto;">나의 여행</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
 <!-- Slider main container -->
 <div class="swiper">
     <!-- Additional required wrapper -->
@@ -77,4 +49,5 @@
     </div>
 </div>
 </body>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </html>
