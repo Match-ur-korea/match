@@ -1,24 +1,34 @@
-#qu{
+body{
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+}
+#q1{
+    text-align:center;
+}
+#q2{
     text-align:center;
 }
 .select_btn{
-    background-color: #E5E5E5;
+    background-color: #FFFFFF;
     outline: 0;
     border: 0;
     display:block;
     margin: auto;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
 
 
 @media screen and (max-width:1799px) {
  /* 데스트 탑 */
+    body{
+         background-size:100%;
+     }
+
    #wrapper1{
     width:1200px;
     height:500px;
     margin: 100px auto;
-    background-image: url("/img/travelPage/제작 영상.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
    }
 
     .select_btn{
@@ -28,26 +38,24 @@
        font-size:30px;
     }
 
-     #qu{
-     font-size:35px;
+     #q1{
+     font-size:30px;
      padding-top:100px;
-     padding-bottom:50px;
      }
-
-
-
+      #q2{
+          font-size:40px;
+      }
 }
 
 @media screen and (max-width:599px) {
 /* 모바일 세로 */
-
+    body{
+         background-size:auto;
+    }
     #wrapper1{
          width:400px;
          height:300px;
          margin: 100px auto;
-         background-image: url("/img/travelPage/제작 영상.png");
-         background-repeat: no-repeat;
-         background-size: 100% 100%;
     }
     .select_btn{
           width:150px;
@@ -55,11 +63,11 @@
           border-radius:20px;
           font-size:15px;
     }
-
-    #qu{
+    #q1{
      font-size:20px;
      padding-top:50px;
     }
-
-
+    #q2{
+     font-size:30px;
+    }
 }
