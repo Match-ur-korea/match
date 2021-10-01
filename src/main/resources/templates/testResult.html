@@ -8,46 +8,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/testResult.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2622781fcce1b7f42e208fcc9be1680b&libraries=services"></script>
     <script src="/js/testResult.js" defer></script>
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
-<main>
-    <div class="container1">
+    <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+    <div th:each="character : ${characters}" class ="container1">
         <div class="top1">
-            <h2>당신의 여행 타입은</h2>
-            <p>용감한 탐험가</p>
+            <p id="type">당신의 여행 타입은</p>
+            <h2 th:text="${character.characterName}"></h2>
             <img src="img/testResult/유형1.png" alt="테스트순서"><br>
-            <p>야생/캠핑을 좋아하는 탐험가 스타일입니다.<br>
-                도전적인 정신으로 모험을 두려워하지 않네요!<br>
-                대표적인 추천 여행지로는 도봉산, 와룡산,줄포산 갯벌 생태공원입니다.
-            </p>
+            <div class="des-size">
+                <p th:text="${character.description}"></p>
+            </div>
+            <p th:text="${character.hotplace}"></p>
         </div>
-        <div class="bottom2">
+        <div class="bottom1">
             <div class="left">
-                <p>용감한 탐험가 님과</p>
-                <p>잘 맞는 타입</p>
+                <h5>여행가기 좋은 타입</h5>
                 <img src="img/testResult/유형2.png" alt="테스트순서"><br>
-                <p>자연 친화 지식인</p>
+                <p th:text="${character.goodtype}"></p>
             </div>
             <div class="right">
-                <p>용감한 탐험가 님과</p>
-                <p>잘 안 맞는 타입</p>
+                <h5>여행가기 안 좋은 타입</h5>
                 <img src="img/testResult/유형3.png" alt="테스트순서"><br>
-                <p>물아 일체 자연인</p>
+                <p th:text="${character.badtype}"></p>
+            </div>
+        </div
+    ></div>
+
+    <div class="container2">
+        <h3>당신을 위한 추천 여행지</h3>
+        <div class="top2">s
+            <div class="left2">
+                <div class="map_wrap">
+                    <div id="map" style="width:20rem;height:20rem"></div>
+
+                </div>
+            </div>
+            <div class="right2">
+                <div class="course_view">
+                    <div class="map_wrap">
+                        <div id="menu_wrap" class="bg_white">
+                            <div class="option">
+                                <div>
+                                    <form onsubmit="searchPlaces(); return false;">
+                                        키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
+                                        <button type="submit">검색하기</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <hr>
+                            <ul id="placesList"></ul>
+                            <div id="pagination"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container2">
-        <div class="top2">
-            <p>당신을 위한 추천 여행지</p>
-                지도자리
-        </div>
         <div class="bottom2">
-            <p>선택 코스</p>
+            <div class="course"></div>
+            <div class="course">코스1</div>
+            <div class="course">코스2</div>
+            <div class="course">코스3</div>
+            <div class="course">코스4</div>
+            <div class="course">코스5</div>
+            <div class="course"></div>
         </div>
     </div>
-</main>
 </body>
 <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </html>

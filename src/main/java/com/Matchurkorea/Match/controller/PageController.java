@@ -1,11 +1,13 @@
 package com.Matchurkorea.Match.controller;
 
+import com.Matchurkorea.Match.domain.Character;
 import com.Matchurkorea.Match.domain.User;
 import com.Matchurkorea.Match.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -28,12 +30,14 @@ public class PageController {
     }
     @GetMapping(value="/test")
     public String test(Model model){
-        model.addAttribute("data","hello!");
+        model.addAttribute("selectId",1);
         return "testPage";
     }
-    @GetMapping(value="/testResult")
-    public String testResult(Model model){
-        model.addAttribute("data","hello!");
+    @RequestMapping("/testResult")
+    public String testResult(HttpServletRequest httpServletRequest, Model model) {
+        String s=httpServletRequest.getParameter("selectId");
+        List<Character> list=userService.getCharacterList(s);
+        model.addAttribute("characters",list);
         return "testResult";
     }
 }
