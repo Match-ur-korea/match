@@ -72,7 +72,7 @@ public class Spot {
     @JsonProperty("title")
     private String title;
     @JsonProperty("zipcode")
-    private Integer zipcode;
+    private String zipcode;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -257,12 +257,12 @@ public class Spot {
     }
 
     @JsonProperty("zipcode")
-    public Integer getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
     @JsonProperty("zipcode")
-    public void setZipcode(Integer zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 

@@ -39,7 +39,7 @@ public class TourAPIController {
     }
 
     @GetMapping(value="/explore/area/{areaCode}")
-    public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode) throws IOException {
+    public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode) throws IOException,ParseException {
         List<Spot> list = spotService.findSpotByArea(areaCode);
         model.addAttribute("spotList", list);
         return "areaSpot";
@@ -48,7 +48,7 @@ public class TourAPIController {
     @GetMapping(value="/testResult/{characterCode}/{areaCode}")
     public String exploreByType(Model model,
                                 @PathVariable(value = "areaCode") String areaCode,
-                                @PathVariable(value = "characterCode") String characterCode) throws IOException {
+                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
         List<Spot> list = spotService.findSpotByType(characterCode,areaCode);
 
         model.addAttribute("spotList", list);

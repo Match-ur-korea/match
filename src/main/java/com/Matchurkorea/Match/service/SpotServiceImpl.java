@@ -25,7 +25,7 @@ public class SpotServiceImpl implements SpotService{
     private String key;
 //TODO character 별로 나누기. character id 입력으로 받아 소분류 코드 만큼 요청 날리기.
     public List<Spot>findSpotByCharacter(String characterCode) throws IOException, ParseException {
-    List<Spot> list = new ArrayList<>();
+    List<Spot> list = new ArrayList<Spot>();
     //TODO character별 소분류 코드 겟
     List<String> categories = new ArrayList<String>(){
         {add("A01011900");
@@ -35,18 +35,18 @@ public class SpotServiceImpl implements SpotService{
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
     // Encoding 키
     for(String cat : categories){
-        System.out.println(cat);
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
-                    +"&cat1="+cat.substring(3) // 대분류
-                    +"&cat2="+cat.substring(5) // 중분류
+                    +"&contentTypeId=12"
+                    +"&areaCode="
+                    +"&sigunguCode="
+                    +"&cat1="+cat.substring(0,3) // 대분류
+                    +"&cat2="+cat.substring(0,5) // 중분류
                     +"&cat3="+cat
                     +"&listYN=Y" // 목록 출력
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
-                    +"&arrange=P" // 대표이미지가 반드시 있으면서 조회순으로 정렬
-                    +"&numOfRows=12"
-                    +"&pageNo=1";
+                    +"&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬 ";
             URL url = new URL(urlstr);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -61,18 +61,24 @@ public class SpotServiceImpl implements SpotService{
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         jsonArrays.add(parseResponse(result.toString()));
     }
-    JSONArray merged = mergeJSONArrays((JSONArray) jsonArrays);
-    list = jsonToSpot(merged);
+    if (categories.size()==2) {
+        JSONArray merged = mergeJSONArrays(jsonArrays.get(0), jsonArrays.get(1));
+        list = jsonToSpot(merged);
+    }else{
+        JSONArray merged = mergeJSONArrays(jsonArrays.get(0),jsonArrays.get(1),jsonArrays.get(2));
+        list = jsonToSpot(merged);
+    }
     return list;
 }
-    public List<Spot> findSpotByArea(String areaCode) throws IOException{
+    public List<Spot> findSpotByArea(String areaCode) throws IOException, ParseException{
         List<Spot> list = new ArrayList<Spot>();
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
-                    +"&contentTypeId="
+                    +"&contentTypeId=12"
                     +"&areaCode="+areaCode
                     +"&sigunguCode="
                     +"&cat1=" //카테고리
@@ -102,7 +108,7 @@ public class SpotServiceImpl implements SpotService{
         }
         return list;
     }
-    public List<Spot> findSpotByType(String characterCode, String areaCode) throws IOException{
+    public List<Spot> findSpotByType(String characterCode, String areaCode) throws IOException, ParseException {
         List<Spot> list = new ArrayList<Spot>();
         //TODO character별 소분류 코드 겟
         List<String> categories = new ArrayList<String>(){
@@ -115,12 +121,12 @@ public class SpotServiceImpl implements SpotService{
             StringBuilder result = new StringBuilder();
             try {
                 String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" + key
-                        + "&contentTypeId="
+                        + "&contentTypeId=12"
                         + "&areaCode=" + areaCode
                         + "&sigunguCode="
-                        + "&cat1=" //카테고리
-                        + "&cat2="
-                        + "&cat3="
+                        + "&cat1=" + cat.substring(0, 3) //카테고리
+                        + "&cat2=" + cat.substring(0, 5)
+                        + "&cat3=" + cat
                         + "&listYN=Y" // 목록 출력
                         + "&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                         + "&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬
@@ -138,24 +144,22 @@ public class SpotServiceImpl implements SpotService{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            try {
-                jsonArrays.add(parseResponse(result.toString()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            jsonArrays.add(parseResponse(result.toString()));
         }
-        JSONArray merged = mergeJSONArrays((JSONArray) jsonArrays);
-        list = jsonToSpot(merged);
-        return list;
-    }
-    public List<Spot> searchSpot(String keyword, int display, int start){
-        List<Spot> list = null;
+        if (categories.size()==2) {
+            JSONArray merged = mergeJSONArrays(jsonArrays.get(0), jsonArrays.get(1));
+            list = jsonToSpot(merged);
+        }else{
+            JSONArray merged = mergeJSONArrays(jsonArrays.get(0),jsonArrays.get(1),jsonArrays.get(2));
+            list = jsonToSpot(merged);
+        }
         return list;
     }
     public JSONArray parseResponse(String json) throws ParseException {
         JSONArray item = new JSONArray();
         JSONParser parser = new JSONParser();
         Object object = (JSONObject) parser.parse(json);
+        System.out.println(object);
         if (object instanceof JSONObject)
         {
             JSONObject jsonObject = (JSONObject)object;
@@ -185,6 +189,10 @@ public class SpotServiceImpl implements SpotService{
                 list.add(spot);
             }
         Collections.shuffle(list);
+        return list;
+    }
+    public List<Spot> searchSpot(String keyword, int display, int start){
+        List<Spot> list = null;
         return list;
     }
 
