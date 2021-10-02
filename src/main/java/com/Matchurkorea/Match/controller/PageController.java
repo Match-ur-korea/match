@@ -36,6 +36,6 @@ public class PageController {
 
     @GetMapping("/explore")
     public String explore(Model model){
-        return "explore";
+        return "exploreImageMap";
     }
 }
