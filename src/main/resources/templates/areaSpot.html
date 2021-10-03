@@ -3,12 +3,12 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>a에게 찰떡 여행지!</title>
+    <title>지금 찰떡 여행지!</title>
 <!--    <link rel="stylesheet" type="text/css" href="/css/spotCard.css">-->
     <div th:replace="/fragments/header.html :: fragment-header"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
 
-<!--    <script th:src="@{/js/characterSpot.js}"></script>-->
+    <script th:src="@{/js/characterSpot.js}"></script>
 </head>
 <body>
 <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
@@ -31,6 +31,7 @@
     </div>
     <div class="card-flap flap1">
         <div class="card-description">
+<!--            <span th:text="${spot.readcount}></span>-->
             This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
         </div>
         <div class="card-flap flap2">

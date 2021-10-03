@@ -19,7 +19,6 @@ public class PageController {
 
     @GetMapping(value="/")
     public String home(Model model){
-        model.addAttribute("data","hello!");
         return "home";
     }
     @GetMapping(value="/travel")
@@ -28,12 +27,15 @@ public class PageController {
     }
     @GetMapping(value="/test")
     public String test(Model model){
-        model.addAttribute("data","hello!");
         return "testPage";
     }
     @GetMapping(value="/testResult")
     public String testResult(Model model){
-        model.addAttribute("data","hello!");
         return "testResult";
+    }
+
+    @GetMapping("/explore")
+    public String explore(Model model){
+        return "exploreImageMap";
     }
 }
