@@ -5,7 +5,7 @@ public class User {
     private String name;
     private String email;
     private String character;
-    private int password;
+    private String password;
 
 
     public int getId() {
@@ -23,11 +23,11 @@ public class User {
         return character;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

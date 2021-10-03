@@ -4,14 +4,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8"/>
+    <th:block th:replace="fragments/header :: fragment-header"></th:block>
     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
     <th:block layout:fragment="css"></th:block>
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">-->
 </head>
 <body>
-<header th:replace="fragments/header :: headerFragments"></header>
-<nav th:replace="fragments/navbar :: navbarFragments"></nav>
+
+<nav th:replace="fragments/navbar :: fragment-navbar"></nav>
 <div layout:fragment="content"></div>
-<footer th:replace="fragments/footer :: footerFragment"></footer>
+<th:block th:replace="fragments/footer :: fragment-footer"></th:block>
 </body>
 </html>

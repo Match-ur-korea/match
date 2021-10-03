@@ -2,19 +2,11 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-
 <head th:fragment="fragment-config">
-    <meta charset="UTF-8">
-<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">-->
     <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
     <th:block layout:fragment="css"></th:block>
-    <!-- 공통으로 쓰이는 js 파일을 넣는다.-->
     <script th:src="@{js/jquery-3.6.0.min.js}"></script>
     <script th:src="@{js/bootstrap.min.js}"></script>
-    <!-- 컨텐츠페이지의 스크립트 영역이 들어감 -->
     <th:block layout:fragment="script"></th:block>
 </head>
-<body>
-
-</body>
 </html>
