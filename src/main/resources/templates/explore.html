@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>탐험하기</title>
-    <link rel="stylesheet" type="text/css" href="/css/explore.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/css/explore2.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script th:src="@{js/d3.js}"></script>
     <div th:replace="/fragments/header.html :: fragment-header"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
 </head>
@@ -84,10 +88,21 @@
         </ul>
     </div>
     <div class="tab_content" id="region_content">
-        <h2>원하는 지역을 선택해주세요!</h2>
 
+        <div id="container" class="container">
+            <h2 align="center">원하는 지역을 선택해주세요!</h2>
+            <a th:href ="@{/explore/area/}"></a>
+            <div id="control" class="ui-widget-header ui-corner-all" style="top:140px;">
+                <button id="zoomin">확대</button>
+                <button id="zoomout">축소</button>
+            </div>
+        </div>
+        </div>
     </div>
 </div>
+<script th:src="@{js/script.js}"></script>
 </body>
+
+<!--    <script th:src="@{js/explore.js}"></script>-->
 <div th:replace="/fragments/footer.html :: fragment-footer"></div>
 </html>

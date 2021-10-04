@@ -7,5 +7,9 @@
     <select id="getCharacterList" resultType="com.Matchurkorea.Match.domain.Character" parameterType="string">
         SELECT * FROM user.character WHERE characterId = #{characterId}
     </select>
+    <!--TODO 캐릭터 코드들 가져오기-->
+    <select id="getCategoryList" resultType="com.Matchurkorea.Match.domain.Character">
+        SELECT cat1, cat2, cat3 FROM user.character WHERE characterId = #{characterId}
+    </select>
 </mapper>
 

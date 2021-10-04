@@ -1,5 +1,6 @@
 package com.Matchurkorea.Match.controller;
 
+import com.Matchurkorea.Match.domain.Character;
 import com.Matchurkorea.Match.domain.User;
 import com.Matchurkorea.Match.service.UserService;
 import org.springframework.stereotype.Controller;

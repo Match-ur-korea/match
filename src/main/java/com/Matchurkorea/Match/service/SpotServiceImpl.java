@@ -23,16 +23,11 @@ public class SpotServiceImpl implements SpotService{
     private static String clientID ="";
     @Value("${tourapi.key}")
     private String key;
-//TODO character 별로 나누기. character id 입력으로 받아 소분류 코드 만큼 요청 날리기.
-    public List<Spot>findSpotByCharacter(String characterCode) throws IOException, ParseException {
+
+    public List<Spot>findSpotByCharacter(List<String> categories) throws IOException, ParseException {
     List<Spot> list = new ArrayList<Spot>();
-    //TODO character별 소분류 코드 겟
-    List<String> categories = new ArrayList<String>(){
-        {add("A01011900");
-        add("A01010400");
-        add("A01010500");}
-    };
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
+    System.out.println(categories);
     // Encoding 키
     for(String cat : categories){
         StringBuilder result = new StringBuilder();
@@ -64,13 +59,9 @@ public class SpotServiceImpl implements SpotService{
 
         jsonArrays.add(parseResponse(result.toString()));
     }
-    if (categories.size()==2) {
-        JSONArray merged = mergeJSONArrays(jsonArrays.get(0), jsonArrays.get(1));
-        list = jsonToSpot(merged);
-    }else{
-        JSONArray merged = mergeJSONArrays(jsonArrays.get(0),jsonArrays.get(1),jsonArrays.get(2));
-        list = jsonToSpot(merged);
-    }
+    // 가변 길이 잘 먹는지
+    JSONArray merged = mergeJSONArrays(jsonArrays);
+    list = jsonToSpot(merged);
     return list;
 }
     public List<Spot> findSpotByArea(String areaCode) throws IOException, ParseException{
@@ -108,20 +99,16 @@ public class SpotServiceImpl implements SpotService{
         }
         return list;
     }
-    public List<Spot> findSpotByType(String characterCode, String areaCode) throws IOException, ParseException {
+    public List<Spot> findSpotByType(List<String> categories, String areaCode) throws IOException, ParseException {
         List<Spot> list = new ArrayList<Spot>();
-        //TODO character별 소분류 코드 겟
-        List<String> categories = new ArrayList<String>(){
-            {add("A01011900");
-                add("A01010400");
-                add("A01010500");}
-        };
+        System.out.println(categories);
         List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
         for(String cat : categories) {
+            System.out.println(cat);
             StringBuilder result = new StringBuilder();
             try {
                 String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" + key
-                        + "&contentTypeId=12"
+                        + "&contentTypeId="
                         + "&areaCode=" + areaCode
                         + "&sigunguCode="
                         + "&cat1=" + cat.substring(0, 3) //카테고리
@@ -146,13 +133,9 @@ public class SpotServiceImpl implements SpotService{
             }
             jsonArrays.add(parseResponse(result.toString()));
         }
-        if (categories.size()==2) {
-            JSONArray merged = mergeJSONArrays(jsonArrays.get(0), jsonArrays.get(1));
-            list = jsonToSpot(merged);
-        }else{
-            JSONArray merged = mergeJSONArrays(jsonArrays.get(0),jsonArrays.get(1),jsonArrays.get(2));
-            list = jsonToSpot(merged);
-        }
+        // 가변 길이 잘 먹는지
+        JSONArray merged = mergeJSONArrays(jsonArrays);
+        list = jsonToSpot(merged);
         return list;
     }
     public JSONArray parseResponse(String json) throws ParseException {
@@ -165,13 +148,23 @@ public class SpotServiceImpl implements SpotService{
             JSONObject jsonObject = (JSONObject)object;
             JSONObject response = (JSONObject) jsonObject.get("response");
             JSONObject body = (JSONObject) response.get("body");
-//            Long totalCount = (Long) body.get("totalCount");
+            Long totalCount = (Long) body.get("totalCount");
+            // 해당 카테고리에 맞는 여행지가 없는 경우
+            if (totalCount == 0){
+                return item;
+            }else if(totalCount == 1){ // 해당 카테고리에 맞는 여행지가 하나만 있는 경우
+                JSONObject items = (JSONObject) body.get("items");
+                JSONObject oneitem = (JSONObject) items.get("item");
+                item.add(oneitem);
+                return item;
+            }
+            // 여행지가 하나~두개인 경우
             JSONObject items = (JSONObject) body.get("items");
             item = (JSONArray)items.get("item");
         }
         return item;
     }
-    public JSONArray mergeJSONArrays(JSONArray... arrays){
+    public JSONArray mergeJSONArrays(List<JSONArray> arrays){
         JSONArray newList = new JSONArray();
         for (JSONArray arr : arrays){
             newList.addAll(arr);
