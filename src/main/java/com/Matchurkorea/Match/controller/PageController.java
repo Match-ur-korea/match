@@ -29,10 +29,6 @@ public class PageController {
     public String test(Model model){
         return "testPage";
     }
-    @GetMapping(value="/testResult")
-    public String testResult(Model model){
-        return "testResult";
-    }
 
     @GetMapping("/explore")
     public String explore(Model model){

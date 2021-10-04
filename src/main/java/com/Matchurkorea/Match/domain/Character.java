@@ -47,6 +47,7 @@ public class Character {
     public void setHotplace(String hotplace) {
         this.hotplace = hotplace;
     }
+
     public String getChracterId() {
         return chracterId;
     }

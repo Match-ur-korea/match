@@ -26,33 +26,34 @@ public class TourAPIController {
     private final SpotService spotService;
 
     @Autowired
-    public TourAPIController(SpotService spotService){
+    public TourAPIController(SpotService spotService) {
         this.spotService = spotService;
     }
+
     private String exploreView = "redirect:/explore/";
 
-    @GetMapping(value= "/explore/character/{characterCode}")
+    @GetMapping(value = "/explore/character/{characterCode}")
     public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
         List<Spot> list = spotService.findSpotByCharacter(characterCode);
-        model.addAttribute("spotList",list);
+        model.addAttribute("spotList", list);
         return "characterSpot"; // TODO : html 파일 이름이랑 같이 변경
     }
 
-    @GetMapping(value="/explore/area/{areaCode}")
-    public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode) throws IOException,ParseException {
+    @GetMapping(value = "/explore/area/{areaCode}")
+    public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode) throws IOException, ParseException {
         List<Spot> list = spotService.findSpotByArea(areaCode);
         model.addAttribute("spotList", list);
         return "areaSpot";
     }
 
-    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
+    @GetMapping(value = "/testResult/{characterCode}/{areaCode}")
     public String exploreByType(Model model,
                                 @PathVariable(value = "areaCode") String areaCode,
                                 @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
-        List<Spot> list = spotService.findSpotByType(characterCode,areaCode);
+        List<Spot> list = spotService.findSpotByType(characterCode, areaCode);
 
         model.addAttribute("spotList", list);
         return "areaSpot";
     }
-
 }
+
