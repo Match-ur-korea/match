@@ -3,6 +3,8 @@ package com.Matchurkorea.Match.domain;
 public class Character {
     private String characterName;
     private String description;
+    private String shortDescription;
+    private String moreDescription;
     private String goodtype;
     private String badtype;
     private String hotplace;
@@ -48,4 +50,24 @@ public class Character {
         return cat3;
     }
 
+    public String getShortdescription(){return shortDescription;}
+
+    public String getMoreDescription(){return moreDescription;}
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "characterName='" + characterName + '\'' +
+                ", description='" + description + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", moreDescription='" + moreDescription + '\'' +
+                ", goodtype='" + goodtype + '\'' +
+                ", badtype='" + badtype + '\'' +
+                ", hotplace='" + hotplace + '\'' +
+                ", characterId='" + characterId + '\'' +
+                ", cat1='" + cat1 + '\'' +
+                ", cat2='" + cat2 + '\'' +
+                ", cat3='" + cat3 + '\'' +
+                '}';
+    }
 }

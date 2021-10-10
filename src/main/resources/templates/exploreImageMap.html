@@ -19,69 +19,14 @@
     <label class="tab_item" for="region"><span class="half_hl">지역별</span></label>
     <div class="tab_content" id="character_content">
         <ul style="user-select: auto;">
-            <li>
+            <li th:each="character : ${characters}">
                 <div class="character_img">
                 <img src="img/testResult/유형2.png">
                 </div>
                 <div>
-                <h3>자연친화 지식인</h3>
-                <p>자연을 사랑하고 공부하는 당신!<br/>
-                    여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
-                    한국에 당신에게 딱 맞는 여행지가 있습니다.</p>
+                <h3 th:text="${character.characterName}"></h3>
+                <p th:text="${character.description}"></p>
                 </div>
-            </li>
-            <li>
-                <div class="character_img">
-                <img src="img/testResult/유형1.png"></div>
-                <div>
-                <h3>용감한 탐험가</h3>
-                여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
-                <p>자연 속 모험을 즐기는 당신은 진정한 탐험가!<br/>
-                    도전적인 당신에게 딱 맞는 여행지가 있습니다.<br/>
-                    여기 한국의 자연에서 모험정신을 제대로 발휘해보세요!</p>
-                </div>
-            </li>
-            <div class="character_img">
-                <img src="img/testResult/유형3.png">
-            </div>
-            <div>
-                <h3>물아일체 자연인</h3>
-                <p>그야말로 유유자적!<br/>
-                    일상에 지친 당신에게 딱 맞는 자연 속 휴양지가 여기있습니다.<br/>
-                    여행속에서의 여유도 놓치기 싫은 당신에게 너무 무리한 일정은 추천하지 않습니다. 적당한 일정속에서 자연을 즐겨보세요!</p>
-            </div>
-            </li>
-            <li>
-                <div class="character_img">
-                    <img src="img/testResult/유형2.png">
-                </div>
-                <div>
-                    <h3>자연친화 지식인</h3>
-                    <p>자연을 사랑하고 공부하는 당신!<br/>
-                        여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
-                        한국에 당신에게 딱 맞는 여행지가 있습니다.</p>
-                </div>
-            </li>
-            <li>
-                <div class="character_img">
-                    <img src="img/testResult/유형1.png"></div>
-                <div>
-                    <h3>용감한 탐험가</h3>
-                    여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
-                    <p>자연 속 모험을 즐기는 당신은 진정한 탐험가!<br/>
-                        도전적인 당신에게 딱 맞는 여행지가 있습니다.<br/>
-                        여기 한국의 자연에서 모험정신을 제대로 발휘해보세요!</p>
-                </div>
-            </li>
-            <div class="character_img">
-                <img src="img/testResult/유형3.png">
-            </div>
-            <div>
-                <h3>물아일체 자연인</h3>
-                <p>그야말로 유유자적!<br/>
-                    일상에 지친 당신에게 딱 맞는 자연 속 휴양지가 여기있습니다.<br/>
-                    여행속에서의 여유도 놓치기 싫은 당신에게 너무 무리한 일정은 추천하지 않습니다. 적당한 일정속에서 자연을 즐겨보세요!</p>
-            </div>
             </li>
         </ul>
     </div>

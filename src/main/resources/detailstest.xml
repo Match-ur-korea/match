@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<response>
+    <header>
+        <resultCode>0000</resultCode>
+        <resultMsg>OK</resultMsg>
+    </header>
+    <body>
+        <items>
+            <item>
+                <addr1>전라남도 진도군 고군면 신비의바닷길 47</addr1>
+                <addr2>(고군면)</addr2>
+                <areacode>38</areacode>
+                <booktour>0</booktour>
+                <cat1>A01</cat1>
+                <cat2>A0101</cat2>
+                <cat3>A01011200</cat3>
+                <contentid>126273</contentid>
+                <contenttypeid>12</contenttypeid>
+                <createdtime>20031107000000</createdtime>
+                <firstimage>http://tong.visitkorea.or.kr/cms/resource/17/1608017_image2_1.jpg</firstimage>
+                <firstimage2>http://tong.visitkorea.or.kr/cms/resource/17/1608017_image3_1.jpg</firstimage2>
+                <homepage>&lt;a href=&quot;http://tour.jindo.go.kr/&quot; target=&quot;_blank&quot; title=&quot;새창 : 진도 문화관광 사이트로 이동&quot;&gt;http://tour.jindo.go.kr&lt;/a&gt;</homepage>
+                <mapx>126.3547412438</mapx>
+                <mapy>34.4354594945</mapy>
+                <mlevel>6</mlevel>
+                <modifiedtime>20210923171203</modifiedtime>
+                <overview>바닷물이 갈라지는 현대판 모세의 기적으로 유명한 회동국민관광지 내에 있는 해수욕장이다. 교통이 편리할 뿐 아니라 99,174m²(3만여 평)의 넓은 주차장과 샤워장, 음수대 등 편의시설이 잘 갖추어져 있어 자가용을 이용한 피서객들이 많이 찾는다. 또한, 바다낚시를 즐길 수 있는 갯바위와 무인도가 많다.&lt;br&gt;</overview>
+                <sigungucode>21</sigungucode>
+                <title>가계해변</title>
+                <zipcode>58911</zipcode>
+            </item>
+        </items>
+        <numOfRows>10</numOfRows>
+        <pageNo>1</pageNo>
+        <totalCount>1</totalCount>
+    </body>
+</response>

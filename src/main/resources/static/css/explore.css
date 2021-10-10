@@ -49,3 +49,14 @@ ul {
     float:left;
     width: 300px;
 }
+/* 아이폰에서 오류 방지 */
+/*area {*/
+/*    display: "block";*/
+/*}*/
+/*.first > .second > img{*/
+/*    width:100%;*/
+/*    height:100%;*/
+/*}*/
+/*.map{*/
+/*    width:100%;*/
+/*}*/

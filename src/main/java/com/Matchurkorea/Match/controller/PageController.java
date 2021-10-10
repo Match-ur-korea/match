@@ -23,6 +23,9 @@ public class PageController {
     public String home(Model model){
         return "home";
     }
+
+    @GetMapping(value="/introUs")
+    public String introduce(Model model){return "introUs";}
     @GetMapping(value="/travel")
     public String travel(Model model){
         return "travel";
@@ -42,6 +45,8 @@ public class PageController {
 
     @GetMapping("/explore")
     public String explore(Model model){
+        List<Character> list = userService.getAllCharacterList();
+        model.addAttribute("characters",list);
         return "exploreImageMap";
     }
 }

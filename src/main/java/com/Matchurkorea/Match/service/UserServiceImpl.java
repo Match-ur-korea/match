@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<Character> getAllCharacterList() {
+        return userMapper.getAllCharacterList();
+    }
+
+    @Override
     public List<Character> getCategoryList(String characterId) {
         return userMapper.getCategoryList(characterId);
     }

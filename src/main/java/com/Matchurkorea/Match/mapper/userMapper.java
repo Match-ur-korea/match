@@ -10,5 +10,6 @@ import java.util.List;
 public interface userMapper {
     List<User> getUserList();
     List<Character> getCharacterList(String characterId);
+    List<Character> getAllCharacterList();
     List<Character> getCategoryList(String characterId);
 }

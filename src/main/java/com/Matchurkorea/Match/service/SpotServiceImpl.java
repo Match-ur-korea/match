@@ -138,6 +138,44 @@ public class SpotServiceImpl implements SpotService{
         list = jsonToSpot(merged);
         return list;
     }
+
+    public List<Spot> getSpotDetail(String contentid) throws IOException, ParseException{
+        List<Spot> list = new ArrayList<Spot>();
+        StringBuilder result = new StringBuilder();
+        try{
+            String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
+                    +"&defaultYN=Y"
+                    +"&firstImageYN=Y"
+                    +"&areacodeYN=Y"
+                    +"&catcodeYN=Y" //카테고리
+                    +"&addrinfoYN=Y"
+                    +"&mapinfoYN=Y"
+                    +"&overviewYN=Y"
+                    +"&transGuideYN=Y"
+                    +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json";
+
+            URL url = new URL(urlstr);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
+            String returnLine;
+
+            while((returnLine=br.readLine()) != null){
+                result.append(returnLine+"\n\r");
+            }
+            urlConnection.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            list = jsonToSpot((JSONArray) parseResponse(result.toString()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     public JSONArray parseResponse(String json) throws ParseException {
         JSONArray item = new JSONArray();
         JSONParser parser = new JSONParser();

@@ -39,15 +39,17 @@ public class TourAPIController {
 
     @GetMapping(value= "/explore/character/{characterCode}")
     public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
-        List<Character> character = userService.getCategoryList(characterCode);
+        List<Character> character = userService.getCharacterList(characterCode);
         List<String> codes = new ArrayList<String>();
         codes.add(character.get(0).getCat1());
         codes.add(character.get(0).getCat2());
         codes.add(character.get(0).getCat3());
         codes.removeAll(Arrays.asList("", null));
         List<Spot> list = spotService.findSpotByCharacter(codes);
+        model.addAttribute("character", character.get(0));
+        System.out.println(character.get(0).toString());
         model.addAttribute("spotList",list);
-        return "characterSpot"; // TODO : html 파일 이름이랑 같이 변경
+        return "card"; // TODO : html 파일 이름이랑 같이 변경
     }
 
     @GetMapping(value="/explore/area/{areaCode}")
@@ -55,6 +57,14 @@ public class TourAPIController {
         List<Spot> list = spotService.findSpotByArea(areaCode);
         model.addAttribute("spotList", list);
         return "areaSpot";
+    }
+
+    //TODO html 생성
+    @GetMapping(value="/explore/details/{contentid}")
+    public String exploreDetailSpot(Model model, @PathVariable(value="contentid") String contentid) throws IOException, ParseException{
+        List<Spot> list = spotService.getSpotDetail(contentid);
+        model.addAttribute("spot", list.get(0));
+        return "spotDetails";
     }
 //TODO 여기 수정
     @GetMapping(value="/testResult/{characterCode}/{areaCode}")
@@ -72,5 +82,7 @@ public class TourAPIController {
         model.addAttribute("spotList", list);
         return "areaSpot";
     }
+
+
 
 }

@@ -16,6 +16,9 @@ public interface SpotService {
    List<Spot> findSpotByCharacter(List<String> categories) throws IOException, ParseException;
    List<Spot> findSpotByArea(String areaCode) throws IOException, ParseException;
    List<Spot> findSpotByType(List<String> categories, String areaCode) throws IOException, ParseException;
+
+   List<Spot> getSpotDetail(String contentid) throws IOException, ParseException;
+
    List<Spot> parseResponse(String json) throws ParseException;
    JSONArray mergeJSONArrays(List<JSONArray> arrays);
    List<Spot> jsonToSpot(JSONArray item);

@@ -9,5 +9,6 @@ import java.util.List;
 public interface UserService {
     List<User> getUserList();
     List<Character> getCharacterList(String s);
+    List<Character> getAllCharacterList();
     List<Character> getCategoryList(String characterId);
 }
