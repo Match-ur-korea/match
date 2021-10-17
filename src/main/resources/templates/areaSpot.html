@@ -1,47 +1,129 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>지금 찰떡 여행지!</title>
-<!--    <link rel="stylesheet" type="text/css" href="/css/spotCard.css">-->
+    <title th:text="'지금 '+${areaName}+'에서 당신을 기다리는 여행지'"></title>
     <div th:replace="/fragments/header.html :: fragment-header"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/card.css">
+    <script src="/js/areaSpot.js"></script>
 
-    <script th:src="@{/js/characterSpot.js}"></script>
 </head>
 <body>
 <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<!--TODO 지역 선택 창-->
+<div class="swiper-container2 type0" id="zoneArr" style="user-select: auto;">
+<!--    &lt;!&ndash; dot 0개일경우 class type1, dot 1개일경우 class type1 , dot 2개일경우 class type2, dot 3개일경우 class type3&ndash;&gt;-->
+<!--&lt;!&ndash;    선택되면 <span class="selected_text blind">선택됨</span>&ndash;&gt;-->
+<!--    <div class="swiper-wrapper" style="user-select: auto;">-->
+<!--        <div id="zone1" class="swiper-slide" data-areacode="1" style="user-select: auto;"><button type="button" style="user-select: auto;">서울</button></div>-->
+<!--        <div id="zone2" class="swiper-slide" data-areacode="6" style="user-select: auto;"><button type="button" style="user-select: auto;">부산</button></div>-->
+<!--        <div id="zone3" class="swiper-slide" data-areacode="4" style="user-select: auto;"><button type="button" style="user-select: auto;">대구</button></div>-->
+<!--        <div id="zone4" class="swiper-slide" data-areacode="2" style="user-select: auto;"><button type="button" style="user-select: auto;">인천</button></div>-->
+<!--        <div id="zone5" class="swiper-slide" data-areacode="5" style="user-select: auto;"><button type="button" style="user-select: auto;">광주</button></div>-->
+<!--        <div id="zone6" class="swiper-slide" data-areacode="3" style="user-select: auto;"><button type="button" style="user-select: auto;">대전</button></div>-->
+<!--        <div id="zone7" class="swiper-slide" data-areacode="7" style="user-select: auto;"><button type="button" style="user-select: auto;">울산</button></div>-->
+<!--        <div id="zone8" class="swiper-slide" data-areacode="8" style="user-select: auto;"><button type="button" style="user-select: auto;">세종</button></div>-->
+<!--        <div id="zone9" class="swiper-slide" data-areacode="31" style="user-select: auto;"><button type="button" style="user-select: auto;">경기</button></div>-->
+<!--        <div id="zone10" class="swiper-slide" data-areacode="32" style="user-select: auto;"><button type="button" style="user-select: auto;">강원</button></div>-->
+<!--        <div id="zone11" class="swiper-slide" data-areacode="33" style="user-select: auto;"><button type="button" style="user-select: auto;">충북</button></div>-->
+<!--        <div id="zone12" class="swiper-slide" data-areacode="34" style="user-select: auto;"><button type="button" style="user-select: auto;">충남</button></div>-->
+<!--        <div id="zone13" class="swiper-slide" data-areacode="37" style="user-select: auto;"><button type="button" style="user-select: auto;">전북</button></div>-->
+<!--        <div id="zone14" class="swiper-slide" data-areacode="38" style="user-select: auto;"><button type="button" style="user-select: auto;">전남</button></div>-->
+<!--        <div id="zone15" class="swiper-slide" data-areacode="35" style="user-select: auto;"><button type="button" style="user-select: auto;">경북</button></div>-->
+<!--        <div id="zone16" class="swiper-slide" data-areacode="36" style="user-select: auto;"><button type="button" style="user-select: auto;">경남</button></div>-->
+<!--        <div id="zone17" class="swiper-slide" data-areacode="39" style="user-select: auto;"><button type="button" style="user-select: auto;">제주</button></div>-->
+<!--    </div>-->
+</div>
+<div class="select_area">
+<!--    <ul id="areabox">-->
+<!--        <li>-->
 
-<div class="cards" th:each="spot : ${spotList}">
-
-<div class="card">
-    <div class="card__image-holder">
-        <img class="card__image" th:src="${spot.firstimage2}" alt="wave" />
-    </div>
-    <div class="card-title">
-        <a href="#" class="toggle-info btn">
-            <span class="left"></span>
-            <span class="right"></span>
-        </a>
-        <h2 th:text="${spot.title}">
-<!--TODO 상세 설명 바로 보여줄건지-->
-<!--            <small></small>-->
-        </h2>
-    </div>
-    <div class="card-flap flap1">
-        <div class="card-description">
-<!--            <span th:text="${spot.readcount}></span>-->
-            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
-        </div>
-        <div class="card-flap flap2">
-            <div class="card-actions">
-                <a href="#" class="btn">자세히 보기</a>
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <ul id="area_box">-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk1" name="areaChk" checked="checked">-->
+<!--            <label for="area_chk1"><span>서울</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk6" name="areaChk">-->
+<!--            <label for="area_chk6"><span>부산</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk4" name="areaChk">-->
+<!--            <label for="area_chk4"><span>대구</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk2" name="areaChk">-->
+<!--            <label for="area_chk2"><span>인천</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk5" name="areaChk">-->
+<!--            <label for="area_chk5"><span>광주</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk3" name="areaChk">-->
+<!--            <label for="area_chk3"><span>대전</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk7" name="areaChk">-->
+<!--            <label for="area_chk7"><span>울산</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk31" name="areaChk">-->
+<!--            <label for="area_chk31"><span>경기</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk32" name="areaChk">-->
+<!--            <label for="area_chk32"><span>강원</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk33" name="areaChk">-->
+<!--            <label for="area_chk33"><span>충북</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk34" name="areaChk">-->
+<!--            <label for="area_chk34"><span>충남</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk37" name="areaChk">-->
+<!--            <label for="area_chk37"><span>전북</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk38" name="areaChk">-->
+<!--            <label for="area_chk38"><span>전남</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk35" name="areaChk">-->
+<!--            <label for="area_chk35"><span>경북</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk36" name="areaChk">-->
+<!--            <label for="area_chk36"><span>경남</span></label>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <input type="radio" id="area_chk39" name="areaChk">-->
+<!--            <label for="area_chk39"><span>제주</span></label>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    "서울특별시","인천광역시","대전광역시","광주광역시","대구광역시","울산광역시","부산광역시","경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주도"-->
+</div>
+<div class="list_wrap">
+    <ul class="gallery">
+        <li class="item" th:each="spot : ${spotList}">
+            <div class="image" th:style="'background-image:url('+${spot.firstimage}+');'">사진</div>
+            <div class="cont" id="contentid" th:value="${spot.contentid}">
+                <strong th:text="${spot.title}"></strong>
+                <div class="detail"></div>
+                <!--                        TODO 상세보기 api 요청 링크-->
+                <a th:href="@{explore/details/${spot.contentid}}">보러가기</a>
             </div>
-        </div>
-    </div>
+        </li>
+    </ul>
 </div>
-</div>
+
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </body>
-<div th:replace="/fragments/footer.html :: fragment-footer"></div>
 </html>

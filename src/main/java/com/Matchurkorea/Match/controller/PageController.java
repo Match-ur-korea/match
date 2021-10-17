@@ -49,4 +49,9 @@ public class PageController {
         model.addAttribute("characters",list);
         return "exploreImageMap";
     }
+
+    @GetMapping("/swipertest")
+    public String swipertest(Model model){
+        return "characterListex";
+    }
 }

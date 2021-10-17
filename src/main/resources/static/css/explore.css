@@ -49,6 +49,16 @@ ul {
     float:left;
     width: 300px;
 }
+.character-item{
+    display: block;
+    clear:both;
+}
+h3{
+    color: #5DAFB2;
+}
+hr{
+    color: #5DAFB2;
+}
 /* 아이폰에서 오류 방지 */
 /*area {*/
 /*    display: "block";*/

@@ -41,7 +41,6 @@ const swiper = new Swiper('.swiper', {
    $("#n8").click(function(){
         console.log(id);
         //마지막 페이지에선 자신의 id(=결과)를 따로 저장해준다.
-        //마지막 페이지에선 자신의 id(=결과)를 따로 저장해준다.
         document.getElementById('select').value = id;
       swiper.slideTo(5,1000);
    })

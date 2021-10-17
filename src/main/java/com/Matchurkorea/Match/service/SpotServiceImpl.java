@@ -8,7 +8,10 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -71,10 +74,6 @@ public class SpotServiceImpl implements SpotService{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
                     +"&contentTypeId=12"
                     +"&areaCode="+areaCode
-                    +"&sigunguCode="
-                    +"&cat1=" //카테고리
-                    +"&cat2="
-                    +"&cat3="
                     +"&listYN=Y" // 목록 출력
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                     +"&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬
@@ -139,11 +138,14 @@ public class SpotServiceImpl implements SpotService{
         return list;
     }
 
+
+
     public List<Spot> getSpotDetail(String contentid) throws IOException, ParseException{
         List<Spot> list = new ArrayList<Spot>();
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
+                    +"&contentId"+contentid
                     +"&defaultYN=Y"
                     +"&firstImageYN=Y"
                     +"&areacodeYN=Y"
@@ -175,6 +177,45 @@ public class SpotServiceImpl implements SpotService{
         }
         return list;
     }
+    @Override
+    public JSONObject getSpotOverview(String contentid) throws IOException {
+
+
+        StringBuilder result = new StringBuilder();
+        try{
+            String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey="+key
+                    +"&contentId"+contentid
+                    +"&defaultYN=Y"
+                    +"&firstImageYN=Y"
+                    +"&areacodeYN=Y"
+                    +"&catcodeYN=Y" //카테고리
+                    +"&addrinfoYN=Y"
+                    +"&mapinfoYN=Y"
+                    +"&overviewYN=Y"
+                    +"&transGuideYN=Y"
+                    +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json";
+
+            URL url = new URL(urlstr);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
+            String returnLine;
+
+            while((returnLine=br.readLine()) != null){
+                result.append(returnLine+"\n\r");
+            }
+            urlConnection.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        result.toString();
+        System.out.println("detail"+result);
+        JSONObject json = new JSONObject();
+        json.put("data", result);
+        return json;
+    }
 
     public JSONArray parseResponse(String json) throws ParseException {
         JSONArray item = new JSONArray();
@@ -196,7 +237,7 @@ public class SpotServiceImpl implements SpotService{
                 item.add(oneitem);
                 return item;
             }
-            // 여행지가 하나~두개인 경우
+            // 여행지가 2개 이상인 경우
             JSONObject items = (JSONObject) body.get("items");
             item = (JSONArray)items.get("item");
         }

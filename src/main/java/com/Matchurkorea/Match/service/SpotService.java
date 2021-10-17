@@ -4,6 +4,7 @@ package com.Matchurkorea.Match.service;
 import com.Matchurkorea.Match.domain.Spot;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public interface SpotService {
    List<Spot> findSpotByCharacter(List<String> categories) throws IOException, ParseException;
    List<Spot> findSpotByArea(String areaCode) throws IOException, ParseException;
    List<Spot> findSpotByType(List<String> categories, String areaCode) throws IOException, ParseException;
-
+   JSONObject getSpotOverview(String contentid) throws IOException;
    List<Spot> getSpotDetail(String contentid) throws IOException, ParseException;
 
    List<Spot> parseResponse(String json) throws ParseException;
