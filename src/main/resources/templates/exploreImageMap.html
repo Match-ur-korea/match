@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>탐험하기</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/explore.css">
     <div th:replace="/fragments/header.html :: fragment-header"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script th:src="@{/js/imageMapResizer.min.js}"></script>
     <script th:src="@{/js/explore.js}"></script>
 </head>
 <body>
@@ -21,16 +21,17 @@
     <input id="region" type="radio" name="tab_item">
     <label class="tab_item" for="region"><span class="half_hl">지역별</span></label>
     <div class="tab_content" id="character_content">
+        <a name="tab_character"></a>
 <!--        TODO 캐릭터 디자인 변경-->
         <div class="swiper character-swiper swiper-h">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="character-item" th:each="character : ${characters}">
-                        <div th:onclick="'location.href=\''+ @{explore/charactercode/${character.characterId} +'\''">
+                        <div th:onclick="|location.href= '@{explore/character/${character.characterId}'|">
                             <h3 th:text="${character.characterName}"></h3>
                             <hr>
                             <!-- TODO 캐릭터 이미지 url로 변경-->
-                            <img class="character_img" src="img/testResult/유형2.png">
+                            <img class="character_img" src="|img/character/${character.characterId}.png|">
                             <p th:text="${character.shortdescription}"></p>
                         </div>
                     </div>
@@ -40,8 +41,9 @@
         <div class="swiper-pagination"></div>
     </div>
     <div class="tab_content" id="region_content">
+        <a name="tab_area"></a>
         <h2 align="center">원하는 지역을 선택해주세요!</h2>
-        <img src="img/map.png" usemap="#image-map">
+        <img class="map" src="img/map.png" usemap="#image-map" width="100%">
 
         <map name="image-map" id="image-map">
             <area target="" alt="서울" title="서울" th:href="@{explore/area/1}" coords="1684,1096,1459,1156,1474,1247,1549,1292,1639,1307,1729,1277" shape="poly">
@@ -65,9 +67,7 @@
     </div>
 </div>
 
-<script> $(document).ready(function(e) { $('img[usemap]').rwdImageMaps(); }); </script>
+<script> $('map').imageMapResize();</script>
 </body>
-
-
 <div th:replace="/fragments/footer.html :: fragment-footer"></div>
 </html>

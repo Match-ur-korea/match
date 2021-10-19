@@ -1,5 +1,5 @@
 $("#item").on('click',function() {
-    alert('잡히긴 한겅미?');
+
     var contentid = document.getElementById("contentid").value;
     $.ajax({
         url: 'callDetail',

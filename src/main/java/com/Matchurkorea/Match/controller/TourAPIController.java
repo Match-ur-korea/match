@@ -5,22 +5,16 @@ import com.Matchurkorea.Match.domain.Character;
 import com.Matchurkorea.Match.domain.Spot;
 import com.Matchurkorea.Match.service.SpotService;
 import com.Matchurkorea.Match.service.UserService;
-import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.*;
 
 @Controller
@@ -47,7 +41,7 @@ public class TourAPIController<map> {
         List<Spot> list = spotService.findSpotByCharacter(codes);
         model.addAttribute("character", character.get(0));
         model.addAttribute("spotList",list);
-        return "card"; // TODO : html 파일 이름이랑 같이 변경
+        return "characterSpot";
     }
 
     @GetMapping(value="/explore/area/{areaCode}")

@@ -27,7 +27,7 @@ public class SpotServiceImpl implements SpotService{
     @Value("${tourapi.key}")
     private String key;
 
-    public List<Spot>findSpotByCharacter(List<String> categories) throws IOException, ParseException {
+    public List<Spot> findSpotByCharacter(List<String> categories) throws IOException, ParseException {
     List<Spot> list = new ArrayList<Spot>();
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
     System.out.println(categories);
@@ -137,8 +137,6 @@ public class SpotServiceImpl implements SpotService{
         list = jsonToSpot(merged);
         return list;
     }
-
-
 
     public List<Spot> getSpotDetail(String contentid) throws IOException, ParseException{
         List<Spot> list = new ArrayList<Spot>();

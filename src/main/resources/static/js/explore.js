@@ -20,7 +20,3 @@ var swiper2 = new Swiper(".mySwiper2", {
 //     slidesPerGroup:3,
 //
 // })
-// $(document).ready(function(e){
-//     $('img[usemap]').rwdImageMaps();
-//     // $("#img").width("100%");
-// })
