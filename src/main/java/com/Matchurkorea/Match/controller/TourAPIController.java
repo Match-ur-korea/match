@@ -5,16 +5,22 @@ import com.Matchurkorea.Match.domain.Character;
 import com.Matchurkorea.Match.domain.Spot;
 import com.Matchurkorea.Match.service.SpotService;
 import com.Matchurkorea.Match.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
 
 @Controller
@@ -71,21 +77,20 @@ public class TourAPIController<map> {
         response.setContentType("text/html; charset=utf-8");
         JSONObject json = spotService.getSpotOverview(contentid);
     }
-    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
-    public String exploreByType(Model model,
-                                @PathVariable(value = "areaCode") String areaCode,
-                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
-        List<Character> character = userService.getCategoryList(characterCode);
-        List<String> codes = new ArrayList<String>();
-        codes.add(character.get(0).getCat1());
-        codes.add(character.get(0).getCat2());
-        codes.add(character.get(0).getCat3());
-        codes.removeAll(Arrays.asList("", null));
-        List<Spot> list = spotService.findSpotByType(codes,areaCode);
-
-        model.addAttribute("spotList", list);
-        return "areaSpot";
-    }
+//    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
+//    public String exploreByType(Model model,
+//                                @PathVariable(value = "areaCode") String areaCode,
+//                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
+//        List<Character> character = userService.getCategoryList(characterCode);
+//        List<String> codes = new ArrayList<String>();
+//        codes.add(character.get(0).getCat1());
+//        codes.add(character.get(0).getCat2());
+//        codes.add(character.get(0).getCat3());
+//        codes.removeAll(Arrays.asList("", null));
+//        List<Spot> list = spotService.findSpotByType(codes,areaCode);
+//        model.addAttribute("spotList", list);
+//        return "areaSpot";
+//    }
 
 
 

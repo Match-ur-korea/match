@@ -23,5 +23,5 @@ public interface SpotService {
    List<Spot> parseResponse(String json) throws ParseException;
    JSONArray mergeJSONArrays(List<JSONArray> arrays);
    List<Spot> jsonToSpot(JSONArray item);
-
+   Integer getTotalCount(String json) throws ParseException;
 }

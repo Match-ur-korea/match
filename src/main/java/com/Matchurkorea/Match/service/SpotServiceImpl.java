@@ -27,7 +27,7 @@ public class SpotServiceImpl implements SpotService{
     @Value("${tourapi.key}")
     private String key;
 
-    public List<Spot> findSpotByCharacter(List<String> categories) throws IOException, ParseException {
+    public List<Spot>findSpotByCharacter(List<String> categories) throws IOException, ParseException {
     List<Spot> list = new ArrayList<Spot>();
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
     System.out.println(categories);
@@ -138,6 +138,7 @@ public class SpotServiceImpl implements SpotService{
         return list;
     }
 
+
     public List<Spot> getSpotDetail(String contentid) throws IOException, ParseException{
         List<Spot> list = new ArrayList<Spot>();
         StringBuilder result = new StringBuilder();
@@ -175,6 +176,7 @@ public class SpotServiceImpl implements SpotService{
         }
         return list;
     }
+
     @Override
     public JSONObject getSpotOverview(String contentid) throws IOException {
 
@@ -215,6 +217,23 @@ public class SpotServiceImpl implements SpotService{
         return json;
     }
 
+    @Override
+    public Integer getTotalCount(String json) throws ParseException{
+        Integer totalCount = 0;
+        JSONParser parser = new JSONParser();
+        Object object = (JSONObject) parser.parse(json);
+        System.out.println(object);
+        if (object instanceof JSONObject)
+        {
+            JSONObject jsonObject = (JSONObject)object;
+            JSONObject response = (JSONObject) jsonObject.get("response");
+            JSONObject body = (JSONObject) response.get("body");
+            totalCount = (Integer) body.get("totalCount");
+        }
+        return totalCount;
+    }
+
+    @Override
     public JSONArray parseResponse(String json) throws ParseException {
         JSONArray item = new JSONArray();
         JSONParser parser = new JSONParser();
@@ -241,6 +260,7 @@ public class SpotServiceImpl implements SpotService{
         }
         return item;
     }
+
     public JSONArray mergeJSONArrays(List<JSONArray> arrays){
         JSONArray newList = new JSONArray();
         for (JSONArray arr : arrays){
