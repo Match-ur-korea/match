@@ -47,7 +47,8 @@ public class TourAPIController<map> {
         List<Spot> list = spotService.findSpotByCharacter(codes);
         model.addAttribute("character", character.get(0));
         model.addAttribute("spotList",list);
-        return "card"; // TODO : html 파일 이름이랑 같이 변경
+        // TODO : 캐릭터별 디테일
+        return "card";
     }
 
     @GetMapping(value="/explore/area/{areaCode}")
@@ -77,21 +78,20 @@ public class TourAPIController<map> {
         response.setContentType("text/html; charset=utf-8");
         JSONObject json = spotService.getSpotOverview(contentid);
     }
-    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
-    public String exploreByType(Model model,
-                                @PathVariable(value = "areaCode") String areaCode,
-                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
-        List<Character> character = userService.getCategoryList(characterCode);
-        List<String> codes = new ArrayList<String>();
-        codes.add(character.get(0).getCat1());
-        codes.add(character.get(0).getCat2());
-        codes.add(character.get(0).getCat3());
-        codes.removeAll(Arrays.asList("", null));
-        List<Spot> list = spotService.findSpotByType(codes,areaCode);
-
-        model.addAttribute("spotList", list);
-        return "areaSpot";
-    }
+//    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
+//    public String exploreByType(Model model,
+//                                @PathVariable(value = "areaCode") String areaCode,
+//                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
+//        List<Character> character = userService.getCategoryList(characterCode);
+//        List<String> codes = new ArrayList<String>();
+//        codes.add(character.get(0).getCat1());
+//        codes.add(character.get(0).getCat2());
+//        codes.add(character.get(0).getCat3());
+//        codes.removeAll(Arrays.asList("", null));
+//        List<Spot> list = spotService.findSpotByType(codes,areaCode);
+//        model.addAttribute("spotList", list);
+//        return "areaSpot";
+//    }
 
 
 
