@@ -1,3 +1,8 @@
+$(function (){
+    $("#toggle").click(function (){
+        $("#slideToggleBox").toggle();
+    });
+});
 // $.ajax({
 //     method:"GET",
 //     url:"http://api.vicontentIdsitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey=+key",

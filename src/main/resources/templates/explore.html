@@ -27,11 +27,10 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="character-item" th:each="character : ${characters}">
-                        <div th:onclick="|location.href= '@{explore/character/${character.characterId}'|">
+                        <div th:onclick="|location.href='@{explore/character/{id}(id=${character.characterId})}'|">
                             <h3 th:text="${character.characterName}"></h3>
                             <hr>
-                            <!-- TODO 캐릭터 이미지 url로 변경-->
-                            <img class="character_img" src="|img/character/${character.characterId}.png|">
+                            <img class="character_img" th:src="|img/character/${character.characterId}.png|">
                             <p th:text="${character.shortdescription}"></p>
                         </div>
                     </div>
@@ -41,7 +40,6 @@
         <div class="swiper-pagination"></div>
     </div>
     <div class="tab_content" id="region_content">
-        <a name="tab_area"></a>
         <h2 align="center">원하는 지역을 선택해주세요!</h2>
         <img class="map" src="img/map.png" usemap="#image-map" width="100%">
 

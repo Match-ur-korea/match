@@ -14,14 +14,15 @@ import java.util.List;
 public interface SpotService {
    String callTourApi(String characterCode, String areaCode) throws IOException;
    List<Spot> searchSpot(String keyword, int display, int start);
-   List<Spot> findSpotByCharacter(List<String> categories) throws IOException, ParseException;
-   List<Spot> findSpotByArea(String areaCode) throws IOException, ParseException;
-   List<Spot> findSpotByType(List<String> categories, String areaCode) throws IOException, ParseException;
-   JSONObject getSpotOverview(String contentid) throws IOException;
+   List<Spot> findSpotByCharacter(List<String> categories, int... pageNo) throws IOException, ParseException;
+   List<Spot> findSpotByArea(String areaCode, int... pageNo) throws IOException, ParseException;
+   List<Spot> findSpotByType(List<String> categories, String areaCode, int... pageNo) throws IOException, ParseException;
+//   JSONObject getSpotOverview(String contentid) throws IOException;
+   String getSpotOverview(String contentid) throws IOException;
    List<Spot> getSpotDetail(String contentid) throws IOException, ParseException;
 
    List<Spot> parseResponse(String json) throws ParseException;
    JSONArray mergeJSONArrays(List<JSONArray> arrays);
    List<Spot> jsonToSpot(JSONArray item);
-   Integer getTotalCount(String json) throws ParseException;
+   int getTotalCount(String json) throws ParseException;
 }

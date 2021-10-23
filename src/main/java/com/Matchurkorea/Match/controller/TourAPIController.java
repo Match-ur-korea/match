@@ -3,6 +3,7 @@ package com.Matchurkorea.Match.controller;
 import com.Matchurkorea.Match.domain.Area;
 import com.Matchurkorea.Match.domain.Character;
 import com.Matchurkorea.Match.domain.Spot;
+import com.Matchurkorea.Match.paging.Pagination;
 import com.Matchurkorea.Match.service.SpotService;
 import com.Matchurkorea.Match.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -37,14 +38,17 @@ public class TourAPIController<map> {
     private String exploreView = "redirect:/explore/";
 
     @GetMapping(value= "/explore/character/{characterCode}")
-    public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
+    public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode, @ModelAttribute("Pagination")Pagination pagination) throws IOException, ParseException {
         List<Character> character = userService.getCharacterList(characterCode);
         List<String> codes = new ArrayList<String>();
+        // TODO error catch
         codes.add(character.get(0).getCat1());
         codes.add(character.get(0).getCat2());
         codes.add(character.get(0).getCat3());
         codes.removeAll(Arrays.asList("", null));
         List<Spot> list = spotService.findSpotByCharacter(codes);
+        List<Character> characterList = userService.getAllCharacterList();
+        model.addAttribute("characterList", characterList);
         model.addAttribute("character", character.get(0));
         model.addAttribute("spotList",list);
         return "characterSpot";
@@ -71,11 +75,12 @@ public class TourAPIController<map> {
         return "spotDetails";
     }
 
+    // TODO 호버 시 잘 보이는지 확인
     @GetMapping(value="callDetail")
-    public void callDetail(HttpServletRequest request, HttpServletResponse response, @RequestParam String contentid) throws IOException{
+    public String callDetail(HttpServletRequest request, HttpServletResponse response, @RequestParam String contentid) throws IOException{
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
-        JSONObject json = spotService.getSpotOverview(contentid);
+        return spotService.getSpotOverview(contentid);
     }
 //    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
 //    public String exploreByType(Model model,

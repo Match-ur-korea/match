@@ -1,3 +1,9 @@
+$(function (){
+    $("#toggle").click(function (){
+        $("#slideToggleBox").toggle();
+    });
+});
+// TODO Ajax로 상세 정보 잘 뜨는지 확인
 $("#item").on('click',function() {
 
     var contentid = document.getElementById("contentid").value;

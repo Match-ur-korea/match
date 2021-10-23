@@ -6,7 +6,7 @@
     <div th:replace="/fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/css/areaSpot.css">
     <script src="/js/areaSpot.js"></script>
 
 </head>
@@ -36,12 +36,16 @@
 <!--        <div id="zone17" class="swiper-slide" data-areacode="39" style="user-select: auto;"><button type="button" style="user-select: auto;">제주</button></div>-->
 <!--    </div>-->
 </div>
-<div class="select_area">
-<!--    <ul id="areabox">-->
-<!--        <li>-->
-
-<!--        </li>-->
-<!--    </ul>-->
+<h2 th:text="|${areaName}에서 당신을 기다리는 여행지|"></h2>
+<div id="toggle">다른 지역 보기
+    <div class="select-box">
+        <ul id="slideToggleBox">
+            <li th:each="area : ${T(com.Matchurkorea.Match.domain.Area).values()}">
+                <a th:href="@{/explore/area/{code}(code=${area.getAreacode()})}"><span th:text="${area.name()}"></span></a>
+            </li>
+        </ul>
+    </div>
+</div>
 <!--    <ul id="area_box">-->
 <!--        <li>-->
 <!--            <input type="radio" id="area_chk1" name="areaChk" checked="checked">-->

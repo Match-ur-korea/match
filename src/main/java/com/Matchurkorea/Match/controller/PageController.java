@@ -1,7 +1,6 @@
 package com.Matchurkorea.Match.controller;
 
 import com.Matchurkorea.Match.domain.Character;
-import com.Matchurkorea.Match.domain.User;
 import com.Matchurkorea.Match.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +24,9 @@ public class PageController {
     }
 
     @GetMapping(value="/introUs")
-    public String introduce(Model model){return "introUs";}
+    public String introduce(Model model){
+        return "introUs";
+    }
     @GetMapping(value="/travel")
     public String travel(Model model){
         return "travel";
@@ -47,7 +48,7 @@ public class PageController {
     public String explore(Model model){
         List<Character> list = userService.getAllCharacterList();
         model.addAttribute("characters",list);
-        return "exploreImageMap";
+        return "explore";
     }
 
     @GetMapping("/swipertest")

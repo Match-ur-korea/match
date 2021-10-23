@@ -41,12 +41,18 @@ img.right{
     margin:auto;
 }
 
+strong{
+    color:#5DAFB2;
+}
 /* flex 정렬 설정 */
 .with_img{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .description{
     flex-direction: column;
+    font-size: 100%;
 }
 h2{
     margin-bottom: 2em;
@@ -59,12 +65,15 @@ p{
 @media screen and (max-width:1799px) {
     /* 데스트 탑 */
     html{
-        font-size:20px;
+        font-size:28px;
     }
     body{
         background-size:100% 60%
     }
-
+    .description{
+        flex-direction: column;
+        font-size: 28px;
+    }
 }
 
 @media screen and (max-width:599px) {

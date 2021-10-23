@@ -6,10 +6,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Pagination {
+//    현재 페이지 번호
     private int currentPage;
+//    페이지 당 출력할 여행지 개수
     private int recordsPerPage;
-//    페이지 당 최대 게시글 개수
+//    화면 하단에 출력할 페이지 크기
     private int pageSize;
+
     private String searchKeyword;
 
     public Pagination() {

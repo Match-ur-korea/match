@@ -27,7 +27,8 @@ public class SpotServiceImpl implements SpotService{
     @Value("${tourapi.key}")
     private String key;
 
-    public List<Spot>findSpotByCharacter(List<String> categories) throws IOException, ParseException {
+    public List<Spot> findSpotByCharacter(List<String> categories, int... pageNo) throws IOException, ParseException {
+    int pageNum = pageNo.length>0?pageNo[0]:1;
     List<Spot> list = new ArrayList<Spot>();
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
     System.out.println(categories);
@@ -42,6 +43,8 @@ public class SpotServiceImpl implements SpotService{
                     +"&cat1="+cat.substring(0,3) // 대분류
                     +"&cat2="+cat.substring(0,5) // 중분류
                     +"&cat3="+cat
+                    +"&numOfRows=15"
+                    +"&pageNo="+Integer.toString(pageNum)
                     +"&listYN=Y" // 목록 출력
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                     +"&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬 ";
@@ -67,13 +70,16 @@ public class SpotServiceImpl implements SpotService{
     list = jsonToSpot(merged);
     return list;
 }
-    public List<Spot> findSpotByArea(String areaCode) throws IOException, ParseException{
+    public List<Spot> findSpotByArea(String areaCode,int... pageNo) throws IOException, ParseException{
+        int pageNum = pageNo.length>0?pageNo[0]:1;
         List<Spot> list = new ArrayList<Spot>();
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
                     +"&contentTypeId=12"
                     +"&areaCode="+areaCode
+                    +"&numOfRows=15"
+                    +"&pageNo="+Integer.toString(pageNum)
                     +"&listYN=Y" // 목록 출력
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                     +"&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬
@@ -98,7 +104,8 @@ public class SpotServiceImpl implements SpotService{
         }
         return list;
     }
-    public List<Spot> findSpotByType(List<String> categories, String areaCode) throws IOException, ParseException {
+    public List<Spot> findSpotByType(List<String> categories, String areaCode, int... pageNo) throws IOException, ParseException {
+        int pageNum = pageNo.length>0?pageNo[0]:1;
         List<Spot> list = new ArrayList<Spot>();
         System.out.println(categories);
         List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
@@ -113,6 +120,8 @@ public class SpotServiceImpl implements SpotService{
                         + "&cat1=" + cat.substring(0, 3) //카테고리
                         + "&cat2=" + cat.substring(0, 5)
                         + "&cat3=" + cat
+                        +"&numOfRows=15"
+                        +"&pageNo="+Integer.toString(pageNum)
                         + "&listYN=Y" // 목록 출력
                         + "&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                         + "&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬
@@ -178,7 +187,7 @@ public class SpotServiceImpl implements SpotService{
     }
 
     @Override
-    public JSONObject getSpotOverview(String contentid) throws IOException {
+    public String getSpotOverview(String contentid) throws IOException {
 
 
         StringBuilder result = new StringBuilder();
@@ -209,16 +218,17 @@ public class SpotServiceImpl implements SpotService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        result.toString();
-        System.out.println("detail"+result);
-        JSONObject json = new JSONObject();
-        json.put("data", result);
-        return json;
+        // TODO return string
+        return result.toString();
+//        result.toString();
+//        System.out.println("detail"+result);
+//        JSONObject json = new JSONObject();
+//        json.put("data", result);
+//        return json;
     }
 
     @Override
-    public Integer getTotalCount(String json) throws ParseException{
+    public int getTotalCount(String json) throws ParseException{
         Integer totalCount = 0;
         JSONParser parser = new JSONParser();
         Object object = (JSONObject) parser.parse(json);
