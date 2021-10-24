@@ -8,18 +8,13 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class SpotServiceImpl implements SpotService{
@@ -27,13 +22,15 @@ public class SpotServiceImpl implements SpotService{
     @Value("${tourapi.key}")
     private String key;
 
-    public List<Spot> findSpotByCharacter(List<String> categories, int... pageNo) throws IOException, ParseException {
-    int pageNum = pageNo.length>0?pageNo[0]:1;
+    public Map<Integer, List<Spot>> findSpotByCharacter(List<String> categories, int pageNo) throws IOException, ParseException {
+    Map<Integer, List<Spot>> map = new HashMap<Integer, List<Spot>>();
+    int totalCount = 0;
     List<Spot> list = new ArrayList<Spot>();
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
     System.out.println(categories);
-    // Encoding 키
     for(String cat : categories){
+        Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();
+        JSONArray jsonArray = new JSONArray();
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
@@ -44,7 +41,7 @@ public class SpotServiceImpl implements SpotService{
                     +"&cat2="+cat.substring(0,5) // 중분류
                     +"&cat3="+cat
                     +"&numOfRows=15"
-                    +"&pageNo="+Integer.toString(pageNum)
+                    +"&pageNo="+Integer.toString(pageNo)
                     +"&listYN=Y" // 목록 출력
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                     +"&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬 ";
@@ -62,24 +59,34 @@ public class SpotServiceImpl implements SpotService{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        temp = parseResponse(result.toString());
+        for (Map.Entry<Integer, JSONArray> elem : temp.entrySet()){
+            totalCount += elem.getKey().intValue();
+            jsonArray = elem.getValue();
 
-        jsonArrays.add(parseResponse(result.toString()));
+        }
+        jsonArrays.add(jsonArray);
     }
-    // 가변 길이 잘 먹는지
+
     JSONArray merged = mergeJSONArrays(jsonArrays);
     list = jsonToSpot(merged);
-    return list;
+    map.put(totalCount, list);
+    return map;
 }
-    public List<Spot> findSpotByArea(String areaCode,int... pageNo) throws IOException, ParseException{
-        int pageNum = pageNo.length>0?pageNo[0]:1;
+    public Map<Integer, List<Spot>> findSpotByArea(String areaCode, int pageNo) throws IOException, ParseException{
+//        int pageNum = pageNo.length>0?pageNo[0]:1;
+        Map<Integer, List<Spot>> map = new HashMap<Integer, List<Spot>>();
+        int totalCount = 0;
         List<Spot> list = new ArrayList<Spot>();
+        JSONArray jsonArray = new JSONArray();
+        Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
                     +"&contentTypeId=12"
                     +"&areaCode="+areaCode
                     +"&numOfRows=15"
-                    +"&pageNo="+Integer.toString(pageNum)
+                    +"&pageNo="+Integer.toString(pageNo)
                     +"&listYN=Y" // 목록 출력
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                     +"&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬
@@ -98,18 +105,27 @@ public class SpotServiceImpl implements SpotService{
             e.printStackTrace();
         }
         try {
-            list = jsonToSpot((JSONArray) parseResponse(result.toString()));
+            temp = parseResponse(result.toString());
+            for (Map.Entry<Integer, JSONArray> elem : temp.entrySet()){
+                totalCount += elem.getKey().intValue();
+                jsonArray = elem.getValue();
+            }
+            list = jsonToSpot(jsonArray);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return list;
+        map.put(totalCount, list);
+        return map;
     }
-    public List<Spot> findSpotByType(List<String> categories, String areaCode, int... pageNo) throws IOException, ParseException {
-        int pageNum = pageNo.length>0?pageNo[0]:1;
+    public Map<Integer, List<Spot>> findSpotByType(List<String> categories, String areaCode, int pageNo) throws IOException, ParseException {
+        Map<Integer, List<Spot>> map = new HashMap<Integer, List<Spot>>();
+        int totalCount = 0;
         List<Spot> list = new ArrayList<Spot>();
         System.out.println(categories);
         List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
         for(String cat : categories) {
+            Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();
+            JSONArray jsonArray = new JSONArray();
             System.out.println(cat);
             StringBuilder result = new StringBuilder();
             try {
@@ -121,7 +137,7 @@ public class SpotServiceImpl implements SpotService{
                         + "&cat2=" + cat.substring(0, 5)
                         + "&cat3=" + cat
                         +"&numOfRows=15"
-                        +"&pageNo="+Integer.toString(pageNum)
+                        +"&pageNo="+Integer.toString(pageNo)
                         + "&listYN=Y" // 목록 출력
                         + "&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                         + "&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬
@@ -139,12 +155,19 @@ public class SpotServiceImpl implements SpotService{
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            jsonArrays.add(parseResponse(result.toString()));
+            temp = parseResponse(result.toString());
+            for (Map.Entry<Integer, JSONArray> elem : temp.entrySet()){
+                totalCount += elem.getKey().intValue();
+                jsonArray = elem.getValue();
+
+            }
+            jsonArrays.add(jsonArray);
         }
-        // 가변 길이 잘 먹는지
+
         JSONArray merged = mergeJSONArrays(jsonArrays);
         list = jsonToSpot(merged);
-        return list;
+        map.put(totalCount, list);
+        return map;
     }
 
 
@@ -228,23 +251,8 @@ public class SpotServiceImpl implements SpotService{
     }
 
     @Override
-    public int getTotalCount(String json) throws ParseException{
-        Integer totalCount = 0;
-        JSONParser parser = new JSONParser();
-        Object object = (JSONObject) parser.parse(json);
-        System.out.println(object);
-        if (object instanceof JSONObject)
-        {
-            JSONObject jsonObject = (JSONObject)object;
-            JSONObject response = (JSONObject) jsonObject.get("response");
-            JSONObject body = (JSONObject) response.get("body");
-            totalCount = (Integer) body.get("totalCount");
-        }
-        return totalCount;
-    }
-
-    @Override
-    public JSONArray parseResponse(String json) throws ParseException {
+    public Map<Integer, JSONArray> parseResponse(String json) throws ParseException {
+        Map<Integer, JSONArray> result = new HashMap<Integer, JSONArray>();
         JSONArray item = new JSONArray();
         JSONParser parser = new JSONParser();
         Object object = (JSONObject) parser.parse(json);
@@ -254,21 +262,21 @@ public class SpotServiceImpl implements SpotService{
             JSONObject jsonObject = (JSONObject)object;
             JSONObject response = (JSONObject) jsonObject.get("response");
             JSONObject body = (JSONObject) response.get("body");
-            Long totalCount = (Long) body.get("totalCount");
-            // 해당 카테고리에 맞는 여행지가 없는 경우
-            if (totalCount == 0){
-                return item;
-            }else if(totalCount == 1){ // 해당 카테고리에 맞는 여행지가 하나만 있는 경우
+            Integer totalCount = (Integer) body.get("totalCount");
+            // 해당 카테고리에 맞는 여행지가 없는 경우 -> <0, null> 반환
+            if(totalCount == 1){ // 해당 카테고리에 맞는 여행지가 하나만 있는 경우
                 JSONObject items = (JSONObject) body.get("items");
                 JSONObject oneitem = (JSONObject) items.get("item");
                 item.add(oneitem);
-                return item;
+            }else{
+                // 여행지가 2개 이상인 경우
+                JSONObject items = (JSONObject) body.get("items");
+                item = (JSONArray)items.get("item");
             }
-            // 여행지가 2개 이상인 경우
-            JSONObject items = (JSONObject) body.get("items");
-            item = (JSONArray)items.get("item");
+            result.put(totalCount, item);
+
         }
-        return item;
+        return result;
     }
 
     public JSONArray mergeJSONArrays(List<JSONArray> arrays){

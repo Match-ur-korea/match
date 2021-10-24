@@ -38,7 +38,8 @@ public class TourAPIController<map> {
     private String exploreView = "redirect:/explore/";
 
     @GetMapping(value= "/explore/character/{characterCode}")
-    public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode, @ModelAttribute("Pagination")Pagination pagination) throws IOException, ParseException {
+    public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode,
+                                     @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
         List<Character> character = userService.getCharacterList(characterCode);
         List<String> codes = new ArrayList<String>();
         // TODO error catch
@@ -46,23 +47,48 @@ public class TourAPIController<map> {
         codes.add(character.get(0).getCat2());
         codes.add(character.get(0).getCat3());
         codes.removeAll(Arrays.asList("", null));
-        List<Spot> list = spotService.findSpotByCharacter(codes);
+        model.addAttribute("character", character.get(0));
+
         List<Character> characterList = userService.getAllCharacterList();
         model.addAttribute("characterList", characterList);
-        model.addAttribute("character", character.get(0));
+
+        int totalCount = 0;
+        List<Spot> list = new ArrayList<Spot>();
+        Map<Integer, List<Spot>> map = spotService.findSpotByCharacter(codes, page);
+        for(Map.Entry<Integer, List<Spot>> elem : map.entrySet()){
+            totalCount = elem.getKey().intValue();
+            list = elem.getValue();
+        }
         model.addAttribute("spotList",list);
+
+        // 페이징
+        Pagination pagination = new Pagination(totalCount, page);
+        model.addAttribute("pagination", pagination);
+
         return "characterSpot";
     }
 
     @GetMapping(value="/explore/area/{areaCode}")
-    public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode) throws IOException,ParseException {
-        List<Spot> list = spotService.findSpotByArea(areaCode);
-        model.addAttribute("spotList", list);
+    public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode,
+                                @RequestParam(defaultValue = "1") int page) throws IOException,ParseException {
 
         // areaCode에서 지역명 얻기
         Area area = Area.of(areaCode);
         String areaName = area.name();
         model.addAttribute("areaName", areaName);
+
+        int totalCount = 0;
+        List<Spot> list = new ArrayList<Spot>();
+        Map<Integer, List<Spot>> map = spotService.findSpotByArea(areaCode, page);
+        for(Map.Entry<Integer, List<Spot>> elem : map.entrySet()){
+            totalCount = elem.getKey().intValue();
+            list = elem.getValue();
+        }
+        model.addAttribute("spotList", list);
+
+        // 페이징
+        Pagination pagination = new Pagination(totalCount, page);
+        model.addAttribute("pagination", pagination);
 
         return "areaSpot";
     }
