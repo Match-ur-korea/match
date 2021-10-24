@@ -5,10 +5,11 @@ import com.Matchurkorea.Match.domain.User.User;
 
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     List<User> getUserList();
     List<Character> getAllCharacterList();
-    List<Character> getCharacterList(String s);
+    List<Character> getCharacterList(String characterId);
     List<Character> getCategoryList(String characterId);
    }

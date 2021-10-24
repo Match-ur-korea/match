@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,18 +21,18 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Character> getCharacterList(String s){
-        String characterId=s;
-        return userMapper.getCharacterList(characterId);
+    public List<Character> getAllCharacterList() {
+        return userMapper.getAllCharacterList();
     }
 
     @Override
-    public List<Character> getAllCharacterList() {
-        return userMapper.getAllCharacterList();
+    public List<Character> getCharacterList(String characterId){
+        return userMapper.getCharacterList(characterId);
     }
 
     @Override
     public List<Character> getCategoryList(String characterId) {
         return userMapper.getCategoryList(characterId);
     }
+
 }

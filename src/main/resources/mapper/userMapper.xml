@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Matchurkorea.Match.mapper.userMapper">
-    <select id="getUserList" resultType="com.Matchurkorea.Match.domain.User.User">
+    <select id="getUserList" resultType="com.Matchurkorea.Match.domain.User">
         SELECT * FROM user.user
     </select>
     <select id="getCharacterList" resultType="com.Matchurkorea.Match.domain.Character" parameterType="string">

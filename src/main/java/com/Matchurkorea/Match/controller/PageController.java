@@ -41,10 +41,9 @@ public class PageController {
     public String travel(Model model){
         return "travel";
     }
-    @GetMapping(value="/test")
-    public String test(Model model){
-        //TODO 이거 그대로 함?
-        model.addAttribute("selectId",1);
+
+    @GetMapping(value = "/test")
+    public String test(Model model) {
         return "testPage";
     }
 
@@ -53,11 +52,6 @@ public class PageController {
         List<Character> list = userService.getAllCharacterList();
         model.addAttribute("characters",list);
         return "explore";
-    }
-
-    @GetMapping("/swipertest")
-    public String swipertest(Model model){
-        return "characterListex";
     }
 
     @GetMapping("/testVideo")
@@ -74,7 +68,7 @@ public class PageController {
         tourService.saveTour(tour_local,c5,user_id);
         //TODO content id값으로 이미지와 이름 가져오기
         //String select1=tourService.getImg(c1);
-       // model.addAttribute("c1",select1);
+        // model.addAttribute("c1",select1);
         return "testVideo";
     }
 
@@ -83,4 +77,9 @@ public class PageController {
     public String mytravel(Model model) {
         return "mytravel";
     }
+    @GetMapping("/swipertest")
+    public String swipertest(Model model){
+        return "characterListex";
+    }
+
 }

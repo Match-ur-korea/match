@@ -6,11 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface userMapper {
     List<User> getUserList();
-    List<Character> getAllCharacterList();
     List<Character> getCharacterList(String characterId);
     List<Character> getCategoryList(String characterId);
     //로그인 & 회원가입
