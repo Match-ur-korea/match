@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>탐험하기</title>
-    <link rel="stylesheet" type="text/css" href="/css/explore.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/css/explore2.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script th:src="@{js/d3.js}"></script>
     <div th:replace="/fragments/header.html :: fragment-header"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
 </head>
@@ -19,24 +23,24 @@
         <ul style="user-select: auto;">
             <li>
                 <div class="character_img">
-                <img src="img/testResult/유형2.png">
+                    <img src="img/testResult/유형2.png">
                 </div>
                 <div>
-                <h3>자연친화 지식인</h3>
-                <p>자연을 사랑하고 공부하는 당신!<br/>
-                    여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
-                    한국에 당신에게 딱 맞는 여행지가 있습니다.</p>
+                    <h3>자연친화 지식인</h3>
+                    <p>자연을 사랑하고 공부하는 당신!<br/>
+                        여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
+                        한국에 당신에게 딱 맞는 여행지가 있습니다.</p>
                 </div>
             </li>
             <li>
                 <div class="character_img">
-                <img src="img/testResult/유형1.png"></div>
+                    <img src="img/testResult/유형1.png"></div>
                 <div>
-                <h3>용감한 탐험가</h3>
-                여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
-                <p>자연 속 모험을 즐기는 당신은 진정한 탐험가!<br/>
-                    도전적인 당신에게 딱 맞는 여행지가 있습니다.<br/>
-                    여기 한국의 자연에서 모험정신을 제대로 발휘해보세요!</p>
+                    <h3>용감한 탐험가</h3>
+                    여행에서도 자연을 통해 배움을 찾는 타입이시군요,<br/>
+                    <p>자연 속 모험을 즐기는 당신은 진정한 탐험가!<br/>
+                        도전적인 당신에게 딱 맞는 여행지가 있습니다.<br/>
+                        여기 한국의 자연에서 모험정신을 제대로 발휘해보세요!</p>
                 </div>
             </li>
             <div class="character_img">
@@ -84,10 +88,21 @@
         </ul>
     </div>
     <div class="tab_content" id="region_content">
-        <h2>원하는 지역을 선택해주세요!</h2>
 
+        <div id="container" class="container">
+            <h2 align="center">원하는 지역을 선택해주세요!</h2>
+            <a th:href ="@{/explore/area/}"></a>
+            <div id="control" class="ui-widget-header ui-corner-all" style="top:140px;">
+                <button id="zoomin">확대</button>
+                <button id="zoomout">축소</button>
+            </div>
+        </div>
     </div>
 </div>
+</div>
+<script th:src="@{js/script.js}"></script>
 </body>
+
+<!--    <script th:src="@{js/explore.js}"></script>-->
 <div th:replace="/fragments/footer.html :: fragment-footer"></div>
 </html>

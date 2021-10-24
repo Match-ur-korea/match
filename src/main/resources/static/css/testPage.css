@@ -1,18 +1,19 @@
-body{
-    background-image: url("/img/travelPage/여행페이지배경.svg");
-    background-repeat: no-repeat;
-    background-position:center-top;
-}
 .swiper {
    text-align: center;
-   width: 40rem;
-   height: 30rem;
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+    background-size:100wh 30%
 }
 img{
-    margin-top:50px;
+}
+.bar{
+ margin-top:2rem;
+ margin-bottom:2rem;
 }
 .qs{
-    font-size:1rem;
+    font-size:2rem;
+    /*font-weight:bold;*/
+    margin-bottom:2rem;
 }
 .one{
     background-color:#DF6BAB;
@@ -39,26 +40,19 @@ img{
 @media screen and (max-width:1799px) {
  /* 데스트 탑 */
 html{
-    font-size:20px;
+    font-size:15px;
 }
-body{
-     background-size:100% 60%
+.swiper{
+    background-size:100wh 300px;
 }
- .qs{
-    margin-top: 60px;
-    margin-bottom:150px;
-    font-weight:bold;
- }
-
  img{
     max-width:85%;
     height: auto
  }
  .one{
-        margin-bottom: 30px;
+     margin-bottom: 30px;
  }
-.two{
-}
+
 }
 
 @media screen and (max-width:599px) {
@@ -66,17 +60,9 @@ body{
   html{
     font-size:10px;
   }
-  body{
-    background-size:100% 50%;
-  }
   img{
     max-width:70%;
     height: auto
-  }
-  .qs{
-    margin-top: 20px;
-    margin-bottom:30px;
-     font-weight:bold;
   }
   .one{
     margin-bottom:10px;

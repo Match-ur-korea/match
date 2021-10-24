@@ -1,0 +1,140 @@
+html,body{width: 100%; height: 100%;}
+.content{
+	width: 100%; height: 100%;
+	position: relative;
+}
+#section2,#section3{
+    width: 100%; height: 100%;
+}
+#section1{
+    width: 100%;
+    height: 100%;
+    background-image: url("/img/Group 56.png");
+    background-repeat: no-repeat;
+
+    background-size: 100%;
+    text-align:center;
+}
+#logo{
+    width:15rem;
+    height:5rem;
+}
+
+#main_btn{
+    background-color:#DF6BAB;
+    border:0;
+    outline:0;
+    border-radius:15px;
+    /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:21rem;
+    height:3rem;
+    font-size:1.3rem;
+}
+.sub_title1{
+    font-size:1.3rem;
+    margin-top:10rem;
+}
+.sub_title2{
+    font-size:1.3rem;
+}
+#recommend{
+}
+#section2{
+    width:100%;
+    background-image: url("/img/testResult/결과페이지모래배경2.svg");
+    background-size:cover;
+}
+#section3{
+    background-image: url("/img/testResult/결과페이지모래배경.svg");
+    background-size:cover;
+}
+#store{
+    text-align:center;
+    margin-bottom:50px;
+}
+#section2>section{
+    position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+}
+#section3>div{
+    position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%,-50%);
+}
+a{
+    display:block;
+    text-align:center;
+    text-decoration-line: none;
+}
+ a:hover {
+     color: #CC7221;
+     cursor: pointer;
+ }
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 15rem;
+        height: 22rem;
+      }
+
+      .swiper-slide img {
+       width: 15rem;
+       height: 20rem;
+       display: block;
+      }
+
+              section {
+                  display: none;
+                  padding: 20px 0 0;
+                  width:60rem;
+                  height:20rem;
+                  margin: 0 auto;
+                  text-align: center;
+                 }
+
+              input {
+                    display: none;
+                    }
+
+              label {
+                  display: inline-block;
+                  padding: 15px 25px;
+                  font-weight: 600;
+                  color: #bbb;
+                  }
+
+              label:hover {
+                  color: #CC7221;
+                  cursor: pointer;}
+
+              /*input 클릭시, label 스타일*/
+              input:checked + label {
+                    color: #555;
+                    border-top: 3px solid #CC7221;
+                    /*border-bottom: 1px solid #DF6BAB*/;}
+
+              #tab1:checked ~ #content1,
+              #tab2:checked ~ #content2,
+              #tab3:checked ~ #content3,
+              #tab4:checked ~ #content4 {
+                  display: block;}
+.recommend_place{
+
+    width:20rem;
+    height:20rem;
+}
+
+@media screen and (max-width:1799px) {
+ /* 데스트 탑 */
+    html{
+        font-size:15px;
+    }
+}
+@media screen and (max-width:599px) {
+/* 모바일 세로 */
+    html{
+     font-size:10px;
+     }
+}

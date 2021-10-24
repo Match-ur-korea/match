@@ -28,7 +28,6 @@ const swiper = new Swiper('.swiper', {
    })
 
    $("#n7").click(function(){
-        console.log("눌림");
         document.getElementById('select').value = id;
         swiper.slideTo(4,1000);
    })
@@ -42,6 +41,7 @@ const swiper = new Swiper('.swiper', {
    // 원하는 지역이 없다고 선택한 경우
    $("#n8").click(function(){
         //1~18까지의 랜덤값을 생성해서 form 태그 값으로 저장
+         document.getElementById('select').value = id;
         var id_check =Math.floor(Math.random()*18);
         document.getElementById('select_local').value = id_check;
       swiper.slideTo(5,1000);
