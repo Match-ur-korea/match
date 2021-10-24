@@ -63,7 +63,6 @@ public class SpotServiceImpl implements SpotService{
         for (Map.Entry<Integer, JSONArray> elem : temp.entrySet()){
             totalCount += elem.getKey().intValue();
             jsonArray = elem.getValue();
-
         }
         jsonArrays.add(jsonArray);
     }
@@ -130,7 +129,7 @@ public class SpotServiceImpl implements SpotService{
             StringBuilder result = new StringBuilder();
             try {
                 String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" + key
-                        + "&contentTypeId="
+                        + "&contentTypeId=12"
                         + "&areaCode=" + areaCode
                         + "&sigunguCode="
                         + "&cat1=" + cat.substring(0, 3) //카테고리

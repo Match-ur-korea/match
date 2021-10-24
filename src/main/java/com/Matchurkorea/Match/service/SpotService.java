@@ -5,6 +5,7 @@ import com.Matchurkorea.Match.domain.Spot;
 
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
