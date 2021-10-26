@@ -17,8 +17,5 @@ public class TourServiceImpl implements TourService  {
         userMapper.saveTour(tour_id,api_id,user_id);
     }
 
-    @Override
-    public String getImg(String c1) {
-        return null;
-    }
+
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TourAPI테스트</title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="listwrap" style="user-select: auto;">
+    <ul class="spotList" style="user-select: auto";>
+        <li th:each="spot, i:${list}" style="user-select: auto; th:object="${list}">
+        <a th:href="${'/tour/read/'+spot.contentid}">
+            <img th:src="${spot.firstimage}">
+            <span style="user-select: auto;" th:text="${spot.title}"></span>
+        </a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

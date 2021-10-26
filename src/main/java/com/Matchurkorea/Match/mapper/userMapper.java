@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface userMapper {
     List<User> getUserList();
     List<Character> getCharacterList(String characterId);
+    List<Character> getAllCharacterList();
     List<Character> getCategoryList(String characterId);
     //로그인 & 회원가입
     User findByEmail(String email);

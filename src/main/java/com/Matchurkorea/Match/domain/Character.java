@@ -10,6 +10,8 @@ public class Character {
     private String cat1;
     private String cat2;
     private String cat3;
+    private String shortdescription;
+    private String moredescription;
 
     public String getCharacterName() {
         return characterName;
@@ -46,6 +48,27 @@ public class Character {
 
     public String getCat3() {
         return cat3;
+    }
+
+    public String getShortdescription(){return shortdescription;}
+
+    public String getMoredescription(){return moredescription;}
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "characterName='" + characterName + '\'' +
+                ", description='" + description + '\'' +
+                ", shortDescription='" + shortdescription + '\'' +
+                ", moreDescription='" + moredescription + '\'' +
+                ", goodtype='" + goodtype + '\'' +
+                ", badtype='" + badtype + '\'' +
+                ", hotplace='" + hotplace + '\'' +
+                ", characterId='" + characterId + '\'' +
+                ", cat1='" + cat1 + '\'' +
+                ", cat2='" + cat2 + '\'' +
+                ", cat3='" + cat3 + '\'' +
+                '}';
     }
 
 }

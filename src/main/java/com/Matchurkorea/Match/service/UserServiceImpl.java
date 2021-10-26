@@ -19,8 +19,10 @@ public class UserServiceImpl implements UserService{
     public List<User> getUserList() {
         return  userMapper.getUserList();
     }
-
-
+    @Override
+    public List<Character> getAllCharacterList() {
+        return userMapper.getAllCharacterList();
+    }
     @Override
     public List<Character> getCharacterList(String characterId){
         return userMapper.getCharacterList(characterId);

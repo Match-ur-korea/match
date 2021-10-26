@@ -14,19 +14,30 @@
 </head>
 <body>
 <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="top">
 <div class="swiper">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img th:src="${c1}" alt="선택 사진" id="select1"><br>
+     <!-- <img th:src="${c1}" alt="선택 사진" id="select1"><br>-->
+        <img  class="photo" th:src="${image1}" />
     </div>
-    <div class="swiper-slide">그림2</div>
-    <div class="swiper-slide">Slide 3</div>
-    <div class="swiper-slide">Slide 4</div>
-    <div class="swiper-slide">Slide 5</div>
+    <div class="swiper-slide">
+      <img class="photo" th:src="${image2}" />
+    </div>
+    <div class="swiper-slide">
+      <img class="photo" th:src="${image3}" />
+    </div>
+    <div class="swiper-slide">
+      <img class="photo" th:src="${image4}" />
+    </div>
+    <div class="swiper-slide">
+      <img class="photo" th:src="${image5}" />
+    </div>
   </div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
+</div>
 </div>
 <div class="product_menu" >
   <div class="product" id="character_back">
