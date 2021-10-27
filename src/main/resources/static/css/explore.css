@@ -45,7 +45,7 @@ input[name="tab_item"] {
 
 .character_img{
     /*width: 300px;*/
-    min-height:6em;
+    min-height: 6em;
     max-height: 10em;
 }
 .character-item{
@@ -89,17 +89,18 @@ hr{
 }
 .swiper-slide img {
     max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
-    /* 이 예제에서 필요해서 설정했습니다. 상황에따라 다를 수 있습니다. */
 }
-/*@media screen and (max-width:1799px){*/
-/*    .character-item{*/
-/*        flex: 1 1 20%;*/
-/*        width:50%*/
-/*    }*/
-/*}*/
-/*@media (max-width:768px){*/
-/*    .character-item{*/
-/*        flex: 1 1 20%;*/
-/*        width:50%*/
-/*} }*/
-/*@media (max-width:560px){ .list_wrap .gallery li{width:50%;} }*/
+@media screen and (max-width:1799px){
+    .character-item{
+        flex: 1 1 20%;
+        width:50%
+    }
+}
+@media (max-width:768px){
+    .character-item{
+        flex: 1 1 20%;
+        width:50%
+} }
+@media (max-width:560px){
+    .list_wrap .gallery li{width:50%;}
+}

@@ -262,7 +262,7 @@ public class SpotServiceImpl implements SpotService{
             JSONObject jsonObject = (JSONObject)object;
             JSONObject response = (JSONObject) jsonObject.get("response");
             JSONObject body = (JSONObject) response.get("body");
-            Integer totalCount = (Integer) body.get("totalCount");
+            int totalCount = Integer.parseInt(String.valueOf(body.get("totalCount")));
             // 해당 카테고리에 맞는 여행지가 없는 경우 -> <0, null> 반환
             if(totalCount == 1){ // 해당 카테고리에 맞는 여행지가 하나만 있는 경우
                 JSONObject items = (JSONObject) body.get("items");

@@ -38,7 +38,7 @@ public class PageController {
     }
     @RequestMapping("/testResult")
     public String testResult(HttpServletRequest httpServletRequest, Model model) {
-        String s=httpServletRequest.getParameter("selectId");
+        String s = httpServletRequest.getParameter("selectId");
         List<Character> list=userService.getCharacterList(s);
         model.addAttribute("characters",list);
         return "testResult";

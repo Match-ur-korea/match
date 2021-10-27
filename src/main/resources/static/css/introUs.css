@@ -84,6 +84,13 @@ p{
     body{
         background-size:100% 50%;
     }
+    .logo{
+        display: block;
+        margin: 0px auto;
+        width : 20%;
+        height : 10%;
+        padding : 2em;
+    }
     /*img{*/
     /*    max-width:70%;*/
     /*    height: auto*/

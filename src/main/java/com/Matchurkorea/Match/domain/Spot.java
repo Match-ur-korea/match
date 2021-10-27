@@ -60,7 +60,7 @@ public class Spot {
     @JsonProperty("mapx")
     private String mapx;
     @JsonProperty("mapy")
-    private Double mapy;
+    private String mapy;
     @JsonProperty("mlevel")
     private Integer mlevel;
     @JsonProperty("modifiedtime")
@@ -197,12 +197,12 @@ public class Spot {
     }
 
     @JsonProperty("mapy")
-    public Double getMapy() {
+    public String getMapy() {
         return mapy;
     }
 
     @JsonProperty("mapy")
-    public void setMapy(Double mapy) {
+    public void setMapy(String mapy) {
         this.mapy = mapy;
     }
 
