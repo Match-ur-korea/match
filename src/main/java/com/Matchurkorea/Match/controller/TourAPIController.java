@@ -82,21 +82,22 @@ public class TourAPIController<map> {
         response.setContentType("text/html; charset=utf-8");
         return spotService.getSpotOverview(contentid);
     }
-//    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
-//    public String exploreByType(Model model,
-//                                @PathVariable(value = "areaCode") String areaCode,
-//                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
-//        List<Character> character = userService.getCategoryList(characterCode);
-//        List<String> codes = new ArrayList<String>();
-//        codes.add(character.get(0).getCat1());
-//        codes.add(character.get(0).getCat2());
-//        codes.add(character.get(0).getCat3());
-//        codes.removeAll(Arrays.asList("", null));
-//        List<Spot> list = spotService.findSpotByType(codes,areaCode);
-//        model.addAttribute("spotList", list);
-//        return "areaSpot";
-//    }
 
-
+    @GetMapping(value="/testResult")
+    public String testResult(Model model,
+                             @RequestParam(value = "selectId") String selectId,
+                             @RequestParam(value = "local") String local) throws IOException, ParseException {
+        List<Character> character = userService.getCharacterList(selectId);
+        List<String> codes = new ArrayList<String>();
+        codes.add(character.get(0).getCat1());
+        codes.add(character.get(0).getCat2());
+        codes.add(character.get(0).getCat3());
+        codes.removeAll(Arrays.asList("", null));
+        List<Spot> list = spotService.findSpotByType(codes,local);
+        model.addAttribute("local", local);
+        model.addAttribute("characters", character);
+        model.addAttribute("spotList", list);
+        return "testResult";
+    }
 
 }

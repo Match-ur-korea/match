@@ -28,19 +28,21 @@ const swiper = new Swiper('.swiper', {
    })
 
    $("#n7").click(function(){
-        console.log(id);
-        //마지막 페이지에선 자신의 id(=결과)를 따로 저장해준다.
-        // 지금까지 선택한 값을 form 태그 value에 저장
         document.getElementById('select').value = id;
         swiper.slideTo(4,1000);
    })
-     $(".local").click(function(){
-            document.getElementById('select_local').value = id;
-            swiper.slideTo(5,1000);
-      })
+   //원하는 지역이 있다고 선택한 경우
+     $('.local').click(function(){
+        //클릭된 버튼의 id 값을 알아내서 form 태그 값으로 저장
+         var id_check = $(this).attr("id");
+         document.getElementById('select_local').value = id_check;
+         swiper.slideTo(5,1000);
+     });
+   // 원하는 지역이 없다고 선택한 경우
    $("#n8").click(function(){
-        console.log(id);
-        //마지막 페이지에선 자신의 id(=결과)를 따로 저장해준다.
-        document.getElementById('select').value = id;
+        //1~18까지의 랜덤값을 생성해서 form 태그 값으로 저장
+         document.getElementById('select').value = id;
+        var id_check =Math.floor(Math.random()*18);
+        document.getElementById('select_local').value = id_check;
       swiper.slideTo(5,1000);
    })

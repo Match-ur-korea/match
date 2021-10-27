@@ -120,8 +120,8 @@ public class SpotServiceImpl implements SpotService{
                         + "&cat1=" + cat.substring(0, 3) //카테고리
                         + "&cat2=" + cat.substring(0, 5)
                         + "&cat3=" + cat
-                        +"&numOfRows=15"
-                        +"&pageNo="+Integer.toString(pageNum)
+                        + "&numOfRows=15"
+                        + "&pageNo="+Integer.toString(pageNum)
                         + "&listYN=Y" // 목록 출력
                         + "&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
                         + "&arrange=P"; // 대표이미지가 반드시 있으면서 조회순으로 정렬

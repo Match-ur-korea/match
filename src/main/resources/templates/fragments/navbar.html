@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <nav th:fragment="fragment-navbar" class="navbar navbar-expand-lg navbar-light bg-light" style="user-select: auto;">
     <div class="container-fluid" style="user-select: auto;">
         <a class="navbar-brand" href="#" th:href="@{/}" style="user-select: auto;">마치  <small class="text-muted" style="user-select: auto;">Match</small></a>
@@ -24,6 +25,10 @@
                 </li>
                 <li class="nav-item" style="user-select: auto;">
                     <a class="nav-link" href="#" th:href="@{/mytravel}" style="user-select: auto;">나의 여행</a>
+                </li>
+                <li class="nav-item" style="user-select: auto;">
+                    <p sec:authorize="isAnonymous()"><a href="/oauth2/authorization/google">구글 로그인</a></p>
+                    <p sec:authorize="isAuthenticated()"><a href="/logout">로그아웃</a></p>
                 </li>
             </ul>
         </div>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Matchurkorea.Match.mapper.userMapper">
-    <select id="getUserList" resultType="com.Matchurkorea.Match.domain.User">
+    <select id="getUserList" resultType="com.Matchurkorea.Match.domain.User.User">
         SELECT * FROM user.user
     </select>
     <select id="getCharacterList" resultType="com.Matchurkorea.Match.domain.Character" parameterType="string">
@@ -10,9 +10,17 @@
     <select id="getAllCharacterList" resultType="com.Matchurkorea.Match.domain.Character" parameterType="string">
         SELECT * FROM user.character
     </select>
-    <!--TODO 캐릭터 코드들 가져오기-->
     <select id="getCategoryList" resultType="com.Matchurkorea.Match.domain.Character">
         SELECT cat1, cat2, cat3 FROM user.character WHERE characterId = #{characterId}
     </select>
+    <insert id="save"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user.user(name,email,role) VALUES(#{name}, #{email}, #{role})
+    </insert>
+    <select id="findByEmail" resultType="com.Matchurkorea.Match.domain.User.User">
+        SELECT * FROM user.user WHERE email = #{email}
+    </select>
+    <insert id="saveTour" parameterType="map">
+        INSERT INTO user.tour(tour_id,api_id,user_id) VALUES(#{tour_id}, #{api_id}, #{user_id})
+    </insert>
 </mapper>
 

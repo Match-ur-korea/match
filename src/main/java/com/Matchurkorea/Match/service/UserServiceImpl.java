@@ -1,7 +1,7 @@
 package com.Matchurkorea.Match.service;
 
 import com.Matchurkorea.Match.domain.Character;
-import com.Matchurkorea.Match.domain.User;
+import com.Matchurkorea.Match.domain.User.User;
 import com.Matchurkorea.Match.mapper.userMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Character> getCharacterList(String characterId){
+    public List<Character> getCharacterList(String s){
+        String characterId=s;
         return userMapper.getCharacterList(characterId);
     }
 
