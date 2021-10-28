@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="fragment-config">
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <th:block layout:fragment="css"></th:block>
+    <script th:src="@{js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <th:block layout:fragment="script"></th:block>
+</head>
+</html>

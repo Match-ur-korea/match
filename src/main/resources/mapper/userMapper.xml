@@ -4,5 +4,8 @@
     <select id="getUserList" resultType="com.Matchurkorea.Match.domain.User">
         SELECT * FROM user.user
     </select>
+    <select id="getCharacterList" resultType="com.Matchurkorea.Match.domain.Character" parameterType="string">
+        SELECT * FROM user.character WHERE characterId = #{characterId}
+    </select>
 </mapper>
 

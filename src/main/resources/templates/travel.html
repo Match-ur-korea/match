@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>travel</title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/travelPage.css">
+    <script src="/js/travelPage.js" defer></script>
+</head>
+<body>
+    <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+    <div id="wrapper1">
+        <p id="q1">많고 많은 한국의 여행지, 어디갈지 고민한다면?</p>
+        <p id="q2">나의 추천 대한민국 찾기</p>
+        <button class="select_btn" type="button" th:onclick="|location.href='@{/test}'|">테스트 시작</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>지금 찰떡 여행지!</title>
+<!--    <link rel="stylesheet" type="text/css" href="/css/spotCard.css">-->
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+
+    <script th:src="@{/js/characterSpot.js}"></script>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+
+<div class="cards" th:each="spot : ${spotList}">
+
+<div class="card">
+    <div class="card__image-holder">
+        <img class="card__image" th:src="${spot.firstimage2}" alt="wave" />
+    </div>
+    <div class="card-title">
+        <a href="#" class="toggle-info btn">
+            <span class="left"></span>
+            <span class="right"></span>
+        </a>
+        <h2 th:text="${spot.title}">
+<!--TODO 상세 설명 바로 보여줄건지-->
+<!--            <small></small>-->
+        </h2>
+    </div>
+    <div class="card-flap flap1">
+        <div class="card-description">
+<!--            <span th:text="${spot.readcount}></span>-->
+            This grid is an attempt to make something nice that works on touch devices. Ignoring hover states when they're not available etc.
+        </div>
+        <div class="card-flap flap2">
+            <div class="card-actions">
+                <a href="#" class="btn">자세히 보기</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<div th:replace="/fragments/footer.html :: fragment-footer"></div>
+</html>
