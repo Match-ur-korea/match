@@ -2,26 +2,20 @@ package com.Matchurkorea.Match.controller;
 
 import com.Matchurkorea.Match.domain.Area;
 import com.Matchurkorea.Match.domain.Character;
+import com.Matchurkorea.Match.domain.Detail;
 import com.Matchurkorea.Match.domain.Spot;
 import com.Matchurkorea.Match.paging.Pagination;
 import com.Matchurkorea.Match.service.SpotService;
 import com.Matchurkorea.Match.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.*;
 
 @Controller
@@ -95,10 +89,42 @@ public class TourAPIController<map> {
 
     //TODO html 생성
     @GetMapping(value="/explore/details/{contentid}")
-    public String exploreDetailSpot(Model model, @PathVariable(value="contentid") String contentid) throws IOException, ParseException{
-        List<Spot> list = spotService.getSpotDetail(contentid);
-        model.addAttribute("spot", list.get(0));
+    public String exploreDetailSpot(Model model,
+                                    @PathVariable(value="contentid") String contentid) throws IOException, ParseException{
+        Detail detail = spotService.getSpotDetail(contentid);
+        model.addAttribute("detail", detail);
         return "spotDetails";
+    }
+
+    @GetMapping(value = "/testResult")
+    public String testResult(Model model,
+                             @RequestParam(value = "selectId") String selectId,
+                             @RequestParam(value = "local") String local,
+                             @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
+        int totalCount=0;
+        List<Spot> list = new ArrayList<Spot>();
+        List<Character> character = userService.getCharacterList(selectId);
+        List<String> codes = new ArrayList<String>();
+        codes.add(character.get(0).getCat1());
+        codes.add(character.get(0).getCat2());
+        codes.add(character.get(0).getCat3());
+        codes.removeAll(Arrays.asList("", null));
+        Map<Integer, List<Spot>> map = spotService.findSpotByType(codes, local, page);
+        for(Map.Entry<Integer, List<Spot>> elem : map.entrySet()){
+            totalCount = elem.getKey().intValue();
+            list = elem.getValue();
+        }
+        System.out.println("확인");
+        List<String> overview=new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            overview.add(spotService.getSpotContent(list.get(i).getContentid().toString()));
+        }
+        model.addAttribute("local", local);
+        model.addAttribute("characters", character);
+        model.addAttribute("spotList", list);
+        model.addAttribute("contents",overview);
+        return "testResult";
     }
 
     // TODO 호버 시 잘 보이는지 확인
@@ -108,21 +134,5 @@ public class TourAPIController<map> {
         response.setContentType("text/html; charset=utf-8");
         return spotService.getSpotOverview(contentid);
     }
-//    @GetMapping(value="/testResult/{characterCode}/{areaCode}")
-//    public String exploreByType(Model model,
-//                                @PathVariable(value = "areaCode") String areaCode,
-//                                @PathVariable(value = "characterCode") String characterCode) throws IOException, ParseException {
-//        List<Character> character = userService.getCategoryList(characterCode);
-//        List<String> codes = new ArrayList<String>();
-//        codes.add(character.get(0).getCat1());
-//        codes.add(character.get(0).getCat2());
-//        codes.add(character.get(0).getCat3());
-//        codes.removeAll(Arrays.asList("", null));
-//        List<Spot> list = spotService.findSpotByType(codes,areaCode);
-//        model.addAttribute("spotList", list);
-//        return "areaSpot";
-//    }
-
-
 
 }

@@ -1,5 +1,6 @@
 package com.Matchurkorea.Match.service;
 
+import com.Matchurkorea.Match.domain.Detail;
 import com.Matchurkorea.Match.domain.Spot;
 import com.google.gson.Gson;
 import org.json.simple.JSONArray;
@@ -170,12 +171,15 @@ public class SpotServiceImpl implements SpotService{
     }
 
 
-    public List<Spot> getSpotDetail(String contentid) throws IOException, ParseException{
-        List<Spot> list = new ArrayList<Spot>();
+    public Detail getSpotDetail(String contentid) throws IOException, ParseException{
+        Detail detail = new Detail();
+        int totalCount = 0;
+        JSONArray jsonArray = new JSONArray();
+        Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
-                    +"&contentId"+contentid
+                    +"&contentId="+contentid
                     +"&defaultYN=Y"
                     +"&firstImageYN=Y"
                     +"&areacodeYN=Y"
@@ -185,7 +189,6 @@ public class SpotServiceImpl implements SpotService{
                     +"&overviewYN=Y"
                     +"&transGuideYN=Y"
                     +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json";
-
             URL url = new URL(urlstr);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -201,13 +204,20 @@ public class SpotServiceImpl implements SpotService{
             e.printStackTrace();
         }
         try {
-            list = jsonToSpot((JSONArray) parseResponse(result.toString()));
+            temp = parseResponse(result.toString());
+            for (Map.Entry<Integer, JSONArray> elem : temp.entrySet()){
+                totalCount += elem.getKey().intValue();
+                jsonArray = elem.getValue();
+            }
+            detail = jsonToDetail(jsonArray);
+            return detail;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return list;
+        return detail;
     }
 
+    //TODO Ajax 사용안하면 폐기
     @Override
     public String getSpotOverview(String contentid) throws IOException {
 
@@ -215,7 +225,7 @@ public class SpotServiceImpl implements SpotService{
         StringBuilder result = new StringBuilder();
         try{
             String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey="+key
-                    +"&contentId"+contentid
+                    +"&contentId="+contentid
                     +"&defaultYN=Y"
                     +"&firstImageYN=Y"
                     +"&areacodeYN=Y"
@@ -263,7 +273,10 @@ public class SpotServiceImpl implements SpotService{
             JSONObject body = (JSONObject) response.get("body");
             int totalCount = Integer.parseInt(String.valueOf(body.get("totalCount")));
             // 해당 카테고리에 맞는 여행지가 없는 경우 -> <0, null> 반환
-            if(totalCount == 1){ // 해당 카테고리에 맞는 여행지가 하나만 있는 경우
+            if(totalCount == 0){
+                result.put(totalCount, item);
+                return result;
+            }else if(totalCount == 1){ // 해당 카테고리에 맞는 여행지가 하나만 있는 경우
                 JSONObject items = (JSONObject) body.get("items");
                 JSONObject oneitem = (JSONObject) items.get("item");
                 item.add(oneitem);
@@ -288,15 +301,21 @@ public class SpotServiceImpl implements SpotService{
     }
     public List<Spot> jsonToSpot(JSONArray item){
         List<Spot> list = new ArrayList<Spot>();
-            for(Integer i=0; i < item.size(); i++)
-            {
-                JSONObject tourist_json = (JSONObject) item.get(i);
-                Gson gson = new Gson();
-                Spot spot = gson.fromJson(tourist_json.toString(),Spot.class);
-                list.add(spot);
-            }
+        for(Integer i=0; i < item.size(); i++)
+        {
+            JSONObject touristJson = (JSONObject) item.get(i);
+            Gson gson = new Gson();
+            Spot spot = gson.fromJson(touristJson.toString(),Spot.class);
+            list.add(spot);
+        }
         Collections.shuffle(list);
         return list;
+    }
+    public Detail jsonToDetail(JSONArray item){
+        JSONObject detailJson = (JSONObject) item.get(0);
+        Gson gson = new Gson();
+        Detail detail = gson.fromJson(detailJson.toString(), Detail.class);
+        return detail;
     }
     public List<Spot> searchSpot(String keyword, int display, int start){
         List<Spot> list = null;
@@ -333,5 +352,90 @@ public class SpotServiceImpl implements SpotService{
             e.printStackTrace();
         }
         return result.toString();
+    }
+
+    public String getSpotContent(String contentid) throws IOException, ParseException{
+        StringBuilder result = new StringBuilder();
+        try{
+            String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
+                    +"&contentId="+contentid
+                    +"&defaultYN=Y"
+                    +"&firstImageYN=Y"
+                    +"&areacodeYN=Y"
+                    +"&catcodeYN=Y" //카테고리
+                    +"&addrinfoYN=Y"
+                    +"&mapinfoYN=Y"
+                    +"&overviewYN=Y"
+                    +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json";
+
+            URL url = new URL(urlstr);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
+            String returnLine;
+
+            while((returnLine=br.readLine()) != null){
+                result.append(returnLine+"\n\r");
+            }
+            urlConnection.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        JSONParser parser=new JSONParser();
+        Object obj=(JSONObject)parser.parse(result.toString());
+
+
+        JSONObject jsonObject=(JSONObject) obj;
+        JSONObject response = (JSONObject) jsonObject.get("response");
+        JSONObject body = (JSONObject) response.get("body");
+        // System.out.println(body);
+
+        JSONObject items= (JSONObject) body.get("items");
+        JSONObject item= (JSONObject) items.get("item");
+        String content= (String) item.get("overview");
+        return content;
+    }
+
+    public String getSpotImg(String contentid) throws IOException, ParseException{
+
+        StringBuilder result = new StringBuilder();
+        try{
+            String urlstr ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
+                    +"&contentId="+contentid
+                    +"&firstImageYN=Y"
+                    +"&defaultYN=Y"
+                    +"&MobileOS=ETC"
+                    +"&MobileApp=MatchUrKorea&_type=json";
+            URL url = new URL(urlstr);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
+            String returnLine;
+
+            while ((returnLine = br.readLine()) != null) {
+                result.append(returnLine + "\n\r");
+            }
+            urlConnection.disconnect();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        JSONParser parser=new JSONParser();
+        Object obj=(JSONObject)parser.parse(result.toString());
+
+
+        JSONObject jsonObject=(JSONObject) obj;
+        JSONObject response = (JSONObject) jsonObject.get("response");
+        JSONObject body = (JSONObject) response.get("body");
+        // System.out.println(body);
+
+        JSONObject items= (JSONObject) body.get("items");
+        System.out.println(items);
+        JSONObject item= (JSONObject) items.get("item");
+        System.out.println(item);
+        String add= (String) item.get("firstimage");
+        return add;
     }
 }

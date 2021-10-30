@@ -1,0 +1,40 @@
+{
+  "response": {
+    "header": {
+      "resultCode": "0000",
+      "resultMsg": "OK"
+    },
+    "body": {
+      "items": {
+        "item": [
+          {
+            "addr1": "전라남도 신안군 흑산면 가거도길 38-2",
+            "addr2": "(흑산면)",
+            "areacode": 38,
+            "booktour": 0,
+            "cat1": "A01",
+            "cat2": "A0101",
+            "cat3": "A01011300",
+            "contentid": 127480,
+            "contenttypeid": 12,
+            "createdtime": 20030905000000,
+            "firstimage": "http:\/\/tong.visitkorea.or.kr\/cms\/resource\/32\/2026832_image2_1.JPG",
+            "firstimage2": "http:\/\/tong.visitkorea.or.kr\/cms\/resource\/32\/2026832_image2_1.JPG",
+            "homepage": "신안군 문화관광 &lt;a href=&quot;http://tour.shinan.go.kr/home/tour&quot; target=&quot;_blank&quot; title=&quot;새창: 신안 문화관광 홈페이지로 이동&quot;&gt;http://tour.shinan.go.kr/home/tour&lt;/a&gt;",
+            "mapx": "125.1125145360",
+            "mapy": 34.0740166502,
+            "mlevel": 6,
+            "modifiedtime": 20210331143333,
+            "overview": "가거도는 중국의 새벽닭 울음소리가 들릴만큼 중국땅과 가깝다는 우리나라 최서남단의 섬으로, 산세가 높고 절벽으로 형성되어 웅장한 절경을 자랑하는 섬이다. 독실산(639m)의 신비로움을 간직한 곳으로 '가히 살만한 섬'이라는 뜻의 가거도라는 이름이 붙었다고 한다. 가거도는 '가도 가도 뱃길의 끝이 보이지 않는 섬'이라고도 하며, 다시 뭍으로 나오기도 쉽지 않은 탓에 '가거든 오지마라'는 우스갯소리도 가거도의 이름 옆에 따라다닌다.멸치, 조기, 갈치, 다랑어, 돔 등 온갖 고기들이 모여 들기 때문에 연중 많은 낚시객들이 찾는 섬이며, 희귀조류인 바다제비, 슴새, 쇠오리 등 철새들의 낙원이기도 하다.",
+            "sigungucode": 12,
+            "title": "가거도(소흑산도)",
+            "zipcode": 58866
+          }
+        ]
+      },
+      "numOfRows": 10,
+      "pageNo": 1,
+      "totalCount": 1
+    }
+  }
+}

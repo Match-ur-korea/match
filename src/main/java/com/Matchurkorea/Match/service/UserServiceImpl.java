@@ -4,11 +4,9 @@ import com.Matchurkorea.Match.domain.Character;
 import com.Matchurkorea.Match.domain.User.User;
 import com.Matchurkorea.Match.mapper.userMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

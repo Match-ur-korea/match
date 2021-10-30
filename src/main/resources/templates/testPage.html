@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>테스트</title>
-    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <title>home</title>
+    <div th:replace="/fragments/header.html :: fragment-header" style="height:3px;"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,52 +13,65 @@
     <script src="/js/testPage.js" defer></script>
 </head>
 <body>
-    <div id="#navb" th:replace="/fragments/navbar.html :: fragment-navbar"></div>
-    <!-- Slider main container -->
-    <div class="swiper">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide" style="text-align:center;">
-                <img src="img/travelPage/진행상태.svg" alt="테스트순서"><br>
-                <p class="qs">본격 여행 시작 <br>이건 절대 포기 못해</p><br>
-                <button id="n1" class="one" >자연만 가까이 있다면 힐링 100 %</button><br>
-                <button id="n2" class="two" >자연도 좋지만 도심 속 편리함!<br> 포기 못해</button>
-            </div>
-            <div class="swiper-slide" style="text-align:center;">
-                <img src="img/travelPage/진행상태2.svg" alt="테스트순서"><br>
-                <p class="qs">목적지에 도착한 당신,<br>가장 많이하는 행동은 ?</p><br>
-                <button id="n3" class="one" >쉴 틈 따위 없다.<br>누구보다 열심히 움직이기</button><br>
-                <button id="n4" class="two" >여기까지 와서 ?<br> 누구보다 열심히 쉬기</button>
-            </div>
-            <div class="swiper-slide" style="text-align:center;">
-                <img src="img/travelPage/진행상태3.svg" alt="테스트순서"><br>
-                <p class="qs">여행을 마친 당신,<br>가장 가져가고 싶은 것은?</p><br>
-                <button id="n5" class="one" >다시 일상을 살아갈 에너지⚡</button><br>
-                <button id="n6" class="two" >지식과 영감의 샘 📖</button>
-            </div>
-            <div class="swiper-slide" style="text-align:center;">
-                <img src="img/travelPage/진행상태4.svg" alt="테스트순서"><br>
-                <p class="qs">★여행 성향 분석 완료★<br>가고 싶은 특정 지역이 있으신가요?</p><br>
-                <button id="n7" class="one" >네</button><br>
-                <button id="n8" class="two">아니요</button>
-            </div>
-            <div class="swiper-slide" style="text-align:center;">
-                <button class="local">서울</button><br>
-                <button class="local" >경기</button><br>
-                <button class="local" >제주</button><br>
-                <button class="local" >강원</button><br>
-            </div>
+<div id="#navb" th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<!-- Slider main container -->
+<div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide" style="text-align:center;">
+            <img src="img/travelPage/진행상태.svg" alt="테스트순서"><br>
+            <p class="qs">본격 여행 시작 <br>이건 절대 포기 못해</p><br>
+            <button id="n1" class="one" >자연만 가까이 있다면 힐링 100 %</button><br>
+            <button id="n2" class="two" >자연도 좋지만 도심 속 편리함!<br> 포기 못해</button>
+        </div>
+        <div class="swiper-slide" style="text-align:center;">
+            <img src="img/travelPage/진행상태2.svg" alt="테스트순서"><br>
+            <p class="qs">목적지에 도착한 당신,<br>가장 많이하는 행동은 ?</p><br>
+            <button id="n3" class="one" >쉴 틈 따위 없다.<br>누구보다 열심히 움직이기</button><br>
+            <button id="n4" class="two" >여기까지 와서 ?<br> 누구보다 열심히 쉬기</button>
+        </div>
+        <div class="swiper-slide" style="text-align:center;">
+            <img src="img/travelPage/진행상태3.svg" alt="테스트순서"><br>
+            <p class="qs">여행을 마친 당신,<br>가장 가져가고 싶은 것은?</p><br>
+            <button id="n5" class="one" >다시 일상을 살아갈 에너지⚡</button><br>
+            <button id="n6" class="two" >지식과 영감의 샘 📖</button>
+        </div>
+        <div class="swiper-slide" style="text-align:center;">
+            <img src="img/travelPage/진행상태4.svg" alt="테스트순서"><br>
+            <p class="qs">★여행 성향 분석 완료★<br>가고 싶은 특정 지역이 있으신가요?</p><br>
+            <button id="n7" class="one" >네</button><br>
+            <button id="n8" class="two">아니요</button>
+        </div>
+        <div class="swiper-slide" style="text-align:center;">
+            <button class="local" id="1">서울</button><br>
+            <button class="local" id="2">인천</button><br>
+            <button class="local" id="3" >대전</button><br>
+            <button class="local" id="4">대구</button><br>
+            <button class="local" id="5">광주</button><br>
+            <button class="local" id="6">부산</button><br>
+            <button class="local" id="7">울산</button><br>
+            <button class="local" id="8">세종특별자치시</button><br>
+            <button class="local" id="31">경기도</button><br>
+            <button class="local" id="32" >강원도</button><br>
+            <button class="local" id="33">충청북도</button><br>
+            <button class="local" id="34">충청남도</button><br>
+            <button class="local" id="35">경상북도</button><br>
+            <button class="local" id="36">경상남도</button><br>
+            <button class="local" id="37" >전라북도</button><br>
+            <button class="local" id="38" >전라남도</button><br>
+            <button class="local" id="39">제주도</button><br>
+        </div>
 
-            <div class="swiper-slide" style="text-align:center;">
-                <form th:action='@{/testResult}' th:name="character">
-                    <input type="hidden" th:name="selectId" id="select" />
-                    <input type="hidden" th:name="local" id="select_local" />
-                    <input type="submit"/>
-                </form>
-            </div>
+        <div class="swiper-slide" style="text-align:center;">
+            <form th:action='@{/testResult}' th:name="character">
+                <input type="hidden" th:name="selectId" id="select" />
+                <input type="hidden" th:name="local" id="select_local" />
+                <input type="submit"/>
+            </form>
         </div>
     </div>
-    <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</div>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

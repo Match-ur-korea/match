@@ -2,13 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <title th:text="'마치 :: '+${detail.title}"></title>
     <div th:replace="/fragments/header.html :: fragment-header"></div>
     <div th:replace="/fragments/config.html :: fragment-config"></div>
-    <title>Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/spotDetails.css"/>
+    <script src="/js/spotDetails.js"> </script>
 </head>
 <body>
+<div class="image" th:style="'background-image:url('+${detail.firstimage}+');'">사진</div>
+<div class="cont">
+    <strong th:text="${detail.title}"></strong>
+    <p th:text="${detail.overview}"></p>
+    <a href="${detail.homepage}">공식 홈페이지</a>
+<!--    <div class="map_wrap">-->
+<!--        <div id="map" style="width:40rem;height:16rem"></div>-->
+<!--    </div>-->
+
+    <a href="javascript:window.history.back();">뒤로가기</a>
+</div>
 <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+<!--TODO 채원쓰한테 -->
+<!--<script th:inline="javascript">-->
+<!--    let spotList = new Array();-->
+<!--    let spot1 = new Object();-->
+<!--    var positions = [];-->
+<!--    /*[# th:each="spot : ${spotList}"]*/-->
+<!--    /*[# th:each="overview : ${contents}"]*/-->
+<!--    var content={-->
+<!--        title:  /*[[${detail.title}]]*/,-->
+<!--        latlng: new kakao.maps.LatLng( /*[[${detail.mapy}]]*/, /*[[${detail.mapx}]]*/),-->
+<!--        addr : /*[[${detail.addr1}]]*/,-->
+<!--        image : /*[[${detail.firstimage2}]]*/,-->
+<!--        id : /*[[${detail.contentid}]]*/,-->
+<!--    }-->
+<!--    positions.push(content);-->
+<!--    /*[/]*/-->
+<!--    /*[/]*/-->
+<!--</script>-->
 </body>
 </html>

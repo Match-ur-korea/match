@@ -29,8 +29,7 @@
             <div class="cont" id="contentid" th:value="${spot.contentid}">
                 <strong th:text="${spot.title}"></strong>
                 <div class="detail"></div>
-                <!--                        TODO 상세보기 api 요청 링크-->
-                <a th:href="@{explore/details/${spot.contentid}}">보러가기</a>
+                <a th:href="@{../details/{contentid}(contentid=${spot.contentid})}">보러가기</a>
             </div>
         </li>
     </ul>

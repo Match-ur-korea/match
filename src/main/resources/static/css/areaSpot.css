@@ -1,4 +1,14 @@
-html,body {width:100%;margin:0px;padding:0px;overflow-x: hidden;}
+html,body {
+    width:100%;
+    margin:0px;
+    padding:0px;
+    overflow-x: hidden;
+}
+body{
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+    background-size:100% auto;
+}
 .character_intro{
     margin:5% 10% 5% 10%;
     text-align: center;
