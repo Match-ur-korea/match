@@ -12,70 +12,110 @@
     <script src="/js/testResult.js" defer></script>
 </head>
 <body>
-    <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
-    <div th:each="character : ${characters}" class ="container1">
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="container1">
+    <div th:each="character : ${characters}">
         <div class="top1">
-            <p id="type">당신의 여행 타입은</p>
-            <h2 th:text="${character.characterName}"></h2>
-            <img src="img/testResult/유형1.png" alt="테스트순서"><br>
-            <div class="des-size">
-                <p th:text="${character.description}"></p>
+            <div id="border">
+                <p id="type">당신의 여행 타입은</p>
+                <h2 th:text="${character.characterName}" id="characterType"></h2>
+                <img src="img/testResult/유형1.png" id="characterImg" alt="테스트순서"><br>
+                <div class="des-size">
+                    <p th:text="${character.description}"></p>
+                </div>
             </div>
             <p th:text="${character.hotplace}"></p>
         </div>
         <div class="bottom1">
             <div class="left">
                 <h5>여행가기 좋은 타입</h5>
-                <img src="img/testResult/유형2.png" alt="테스트순서"><br>
+                <img src="img/testResult/유형2.png" id="goodTypeImg" alt="테스트순서"><br>
                 <p th:text="${character.goodtype}"></p>
             </div>
             <div class="right">
                 <h5>여행가기 안 좋은 타입</h5>
-                <img src="img/testResult/유형3.png" alt="테스트순서"><br>
+                <img src="img/testResult/유형3.png" id="badTypeImg" alt="테스트순서"><br>
                 <p th:text="${character.badtype}"></p>
             </div>
-        </div
-    ></div>
-
-    <div class="container2">
-        <h3>당신을 위한 추천 여행지</h3>
-        <div class="top2">s
-            <div class="left2">
-                <div class="map_wrap">
-                    <div id="map" style="width:20rem;height:20rem"></div>
-
-                </div>
-            </div>
-            <div class="right2">
-                <div class="course_view">
-                    <div class="map_wrap">
-                        <div id="menu_wrap" class="bg_white">
-                            <div class="option">
-                                <div>
-                                    <form onsubmit="searchPlaces(); return false;">
-                                        키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">
-                                        <button type="submit">검색하기</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <hr>
-                            <ul id="placesList"></ul>
-                            <div id="pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bottom2">
-            <div class="course"></div>
-            <div class="course">코스1</div>
-            <div class="course">코스2</div>
-            <div class="course">코스3</div>
-            <div class="course">코스4</div>
-            <div class="course">코스5</div>
-            <div class="course"></div>
         </div>
     </div>
+</div>
+<div class="container2">
+    <h3>당신을 위한 추천 여행지</h3><h3 id="local" th:value="${local}" th:text="${local}"></h3>
+    <div class="top2">
+        <div class="left2">
+            <div class="map_wrap">
+                <div id="map" style="width:40rem;height:16rem"></div>
+            </div>
+        </div>
+        <div class="right2">
+            <div id="relo" class="back" background-color="white">
+                <img src="" id="back_top" style="display:none">
+                <div id="back_bottom">
+                    <span id="title12"><br>여행 방법<br></span><br><span id="addr"></span>
+                    <p id="des">
+                        1️⃣ 지도의 마커⛳️를 클릭해 <br>원하는 장소를 선택하세요!
+                        <br><br>
+                        2️⃣ 5가지를 선택하고 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br> 여행하기🌎 &nbsp버튼을 눌러주세요
+                    </p>
+                    <p id="content_id" style="display:none">1</p>
+                </div>
+                <button id="course_btn" style="display:none" >선택</button>
+            </div>
+        </div>
+    </div>
+    <div class="bottom2">
+        <div class="course">
+            <img src="img/testResult/캐릭5.png" id="1" class="course_menu"><p id="6">1</p></img>
+            <p id="11" style="display:none">삭제</p>
+        </div>
+        <div id="course2" class="course">
+            <img src="img/testResult/캐릭1.png" id="2" class="course_menu"><p id="7" >1</p></img>
+            <p id="12" style="display:none">삭제</p>
+        </div>
+        <div id="course3" class="course">
+            <img src="img/testResult/캐릭2.png" id="3" class="course_menu"><p id="8" >1</p></img>
+            <p id="13" style="display:none">삭제</p>
+        </div>
+        <div id="course4" class="course">
+            <img src="img/testResult/캐릭3.png" id="4" class="course_menu"><p id="9" >1</p></img>
+            <p id="14" style="display:none">삭제</p>
+        </div>
+        <div id="course5" class="course">
+            <img src="img/testResult/캐릭4.png" id="5" class="course_menu"><p id="10">1</p></img>
+            <p id="15" style="display:none">삭제</p>
+        </div>
+        <div class="course">
+            <form th:action='@{/testVideo}' th:name="select_course">
+                <input type="hidden" th:name="c1" id="c1" />
+                <input type="hidden" th:name="c2" id="c2" />
+                <input type="hidden" th:name="c3" id="c3" />
+                <input type="hidden" th:name="c4" id="c4" />
+                <input type="hidden" th:name="c5" id="c5" />
+                <input type="hidden" th:name="tour_local" id="tour_local" th:value="${local}">
+                <input type="image" src="img/testResult/traveling.png" id="select_btn"/>
+            </form>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    let spotList = new Array();
+    let spot1 = new Object();
+    var positions = [];
+    /*[# th:each="spot : ${spotList}"]*/
+    /*[# th:each="overview : ${contents}"]*/
+    var content={
+        title:  /*[[${spot.title}]]*/,
+        latlng: new kakao.maps.LatLng( /*[[${spot.mapy}]]*/, /*[[${spot.mapx}]]*/),
+        addr : /*[[${spot.addr1}]]*/,
+        image : /*[[${spot.firstimage2}]]*/,
+        id : /*[[${spot.contentid}]]*/,
+        overview: /*[[${overview}]]*/,
+    }
+    positions.push(content);
+    /*[/]*/
+    /*[/]*/
+</script>
 </body>
 <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </html>

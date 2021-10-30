@@ -1,0 +1,38 @@
+.swiper{
+    width:50rem;
+    height:30rem;
+}
+.swiper-wrapper {
+    text-align: center;
+    width: 50rem;
+    height:30rem;
+}
+.top{
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+}
+.photo{
+    margin-top:20px;
+    border-radius:20px;
+    width:50rem;
+    height:25rem;
+}
+.product_menu{
+    background-image: url("/img/testResult/결과부분 모래사장2 3.png");
+    background-size:cover;
+    display:flex;
+    text-align:center;
+    margin-top:10px;
+    height:20rem;
+}
+.product{
+    flex:1;
+
+}
+
+.pro{
+    border:1px solid black;
+    width:6rem;
+    height:6rem;
+    border-radius:50%;
+}
