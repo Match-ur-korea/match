@@ -60,12 +60,14 @@ public class PageController {
                             @RequestParam("c1") String c1,@RequestParam("c2") String c2,
                             @RequestParam("c3") String c3,@RequestParam("c4") String c4,@RequestParam("c5") String c5,@RequestParam("tour_local") String tour_local) throws IOException, ParseException {
         //로그인 한 경우 db에 선택 코스 저장하기
-        String user_id = principal.getName();
-        tourService.saveTour(tour_local,c1,user_id);
-        tourService.saveTour(tour_local,c2,user_id);
-        tourService.saveTour(tour_local,c3,user_id);
-        tourService.saveTour(tour_local,c4,user_id);
-        tourService.saveTour(tour_local,c5,user_id);
+        String user_id="";
+        if(principal!=null) {
+            tourService.saveTour(tour_local, c1, user_id);
+            tourService.saveTour(tour_local, c2, user_id);
+            tourService.saveTour(tour_local, c3, user_id);
+            tourService.saveTour(tour_local, c4, user_id);
+            tourService.saveTour(tour_local, c5, user_id);
+        }
         String image1 = spotService.getSpotImg(c1);
         String image2 = spotService.getSpotImg(c2);
         String image3 = spotService.getSpotImg(c3);

@@ -323,7 +323,8 @@ public class SpotServiceImpl implements SpotService{
     }
 
     public String getSpotImg(String contentid) throws IOException, ParseException{
-        System.out.println(contentid);
+        if(contentid=="")
+            return "";
         StringBuilder result = new StringBuilder();
         try{
             String urlstr ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
