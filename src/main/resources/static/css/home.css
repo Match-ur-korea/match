@@ -1,0 +1,138 @@
+html,body{width: 100%; height: 100%;}
+.content{
+	width: 100%;
+	position: relative;
+	background-image: url("/img/testResult/결과페이지모래배경2.svg");
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+#section1{
+    width: 100%;
+    height:130%;
+    background-image: url("/img/Group 56.png");
+    background-repeat: no-repeat;
+    background-size:100%;
+    text-align:center;
+}
+#logo{
+    width:20rem;
+}
+
+#main_btn{
+    color:white;
+    background-color:#DF6BAB;
+    border:0;
+    outline:0;
+    border-radius:15px;
+    /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:15rem;
+    height:3rem;
+    font-size:1.3rem;
+}
+.sub_title1{
+    font-size:1.3rem;
+}
+.sub_title2{
+    font-size:1.3rem;
+}
+#recommend{}
+#store{
+    text-align:center;
+    margin-top:300px;
+    margin-bottom:80px;
+}
+a{
+    display:block;
+    text-align:center;
+    text-decoration-line: none;
+}
+ a:hover {
+     color: #CC7221;
+     cursor: pointer;
+ }
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 15rem;
+        height: 22rem;
+      }
+
+      .swiper-slide img {
+       width: 15rem;
+       height: 20rem;
+       display: block;
+      }
+
+              section {
+                  display: none;
+                  padding: 20px 0 0;
+                  width:48rem;
+                  height:18rem;
+                  margin: 0 auto;
+                  text-align: center;
+                 }
+
+              input {
+                    display: none;
+                    }
+
+              label {
+                  display: inline-block;
+                  padding: 15px 25px;
+                  font-weight: 600;
+                  color: #bbb;
+                  }
+
+              label:hover {
+                  color: #CC7221;
+                  cursor: pointer;}
+
+              /*input í´ë¦­ì‹œ, label ìŠ¤íƒ€ì¼*/
+              input:checked + label {
+                    color: #555;
+                    border-top: 3px solid #CC7221;
+                    /*border-bottom: 1px solid #DF6BAB*/;}
+
+              #tab1:checked ~ #content1,
+              #tab2:checked ~ #content2,
+              #tab3:checked ~ #content3,
+              #tab4:checked ~ #content4 {
+                  display: block;}
+.recommend_place{
+    width:16rem;
+    height:18rem;
+}
+footer{
+   margin-top:300px;
+
+}
+
+@media screen and (max-width:1799px) {
+ /* ë°ìŠ¤íŠ¸ íƒ‘ */
+    html{
+        font-size:15px;
+    }
+    #recommend{
+    margin-top:160px;
+    }
+    .sub_title1{
+        margin-top:200px;
+     }
+}
+@media screen and (max-width:599px) {
+/* ëª¨ë°”ì¼ ì„¸ë¡œ */
+    html{
+     font-size:10px;
+     }
+
+#section1{
+    background-image: url("/img/모바일홈배경.png");
+}
+.sub_title1{
+    margin-top:130px;
+    }
+     #recommend{
+        margin-top:200px;
+        }
+}

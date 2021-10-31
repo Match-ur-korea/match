@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>testResult</title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/testResult.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2622781fcce1b7f42e208fcc9be1680b&libraries=services"></script>
+    <script src="/js/testResult.js" defer></script>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="container1">
+    <div th:each="character : ${characters}">
+        <div class="top1">
+            <div id="border">
+                <p id="type">당신의 여행 타입은</p>
+                <h2 th:text="${character.characterName}" id="characterType"></h2>
+                <img src="" id="characterImg" alt="테스트순서"><br>
+                <div class="des-size">
+                    <p th:text="${character.description}"></p>
+                </div>
+            </div>
+            <p th:text="${character.hotplace}"></p>
+        </div>
+        <div id="back_color1"><br></div>
+        <div id="back_color2"><br></div>
+        <div class="bottom1">
+            <div class="left">
+                <h5>여행가기 좋은 타입</h5>
+                <img src="" id="goodTypeImg" alt="테스트순서"><br>
+                <p th:text="${character.goodtype}"></p>
+            </div>
+            <div class="right">
+                <h5>여행가기 안 좋은 타입</h5>
+                <img src="" id="badTypeImg" alt="테스트순서"><br>
+                <p th:text="${character.badtype}"></p>
+            </div>
+        </div>
+    </div
+    ></div
+><div class="container2">
+    <h3 id="container2_title">당신을 위한 추천 여행지</h3><h3 id="local" th:value="${local}" th:text="${local}"></h3>
+    <div class="top2">
+        <div class="left2">
+            <div class="map_wrap">
+                <div id="map" style="width:40rem;height:16rem"></div>
+            </div>
+        </div>
+        <div class="right2">
+            <div id="relo" class="back" background-color="white">
+                <img src="" id="back_top" style="display:none">
+                <div id="back_bottom">
+                    <span id="title12"><br>여행 방법<br></span><br><span id="addr"></span>
+                    <p id="des">
+                        1️⃣ 지도의 마커⛳️를 클릭해 <br>원하는 장소를 선택하세요!
+                        <br><br>
+                        2️⃣ 최대 5가지를 선택하고 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<br> 여행하기🌎 &nbsp버튼을 눌러주세요
+                    </p>
+                    <p id="content_id" style="display:none">1</p>
+                </div>
+                <button id="course_btn" style="display:none" >선택</button>
+            </div>
+        </div>
+    </div>
+    <div class="bottom2">
+        <div class="course">
+            <img src="img/testResult/캐릭5.png" id="1" class="course_menu"><p id="6" style="display:none">1</p></img>
+            <p id="11" style="display:none">삭제</p>
+        </div>
+        <div id="course2" class="course">
+            <img src="img/testResult/캐릭1.png" id="2" class="course_menu"><p id="7" style="display:none" >1</p></img>
+            <p id="12" style="display:none">삭제</p>
+        </div>
+        <div id="course3" class="course">
+            <img src="img/testResult/캐릭2.png" id="3" class="course_menu"><p id="8" style="display:none" >1</p></img>
+            <p id="13" style="display:none">삭제</p>
+        </div>
+        <div id="course4" class="course">
+            <img src="img/testResult/캐릭3.png" id="4" class="course_menu"><p id="9" style="display:none" >1</p></img>
+            <p id="14" style="display:none">삭제</p>
+        </div>
+        <div id="course5" class="course">
+            <img src="img/testResult/캐릭4.png" id="5" class="course_menu"><p id="10" style="display:none">1</p></img>
+            <p id="15" style="display:none">삭제</p>
+        </div>
+        <div class="course">
+            <form th:action='@{/testVideo}' th:name="select_course">
+                <input type="hidden" th:name="c1" id="c1" />
+                <input type="hidden" th:name="c2" id="c2" />
+                <input type="hidden" th:name="c3" id="c3" />
+                <input type="hidden" th:name="c4" id="c4" />
+                <input type="hidden" th:name="c5" id="c5" />
+                <input type="hidden" th:name="tour_local" id="tour_local" th:value="${local}">
+                <input type="image" src="img/testResult/선택버튼.png" id="select_btn"/>
+            </form>
+        </div>
+    </div>
+    <div id="back"></div>
+</div>
+<script th:inline="javascript">
+        let spotList = new Array();
+        let spot1 = new Object();
+        var positions = [];
+        /*[# th:each="spot : ${spotList}"]*/
+        var content={
+        title:  /*[[${spot.title}]]*/,
+        latlng: new kakao.maps.LatLng( /*[[${spot.mapy}]]*/, /*[[${spot.mapx}]]*/),
+        addr : /*[[${spot.addr1}]]*/,
+        image : /*[[${spot.firstimage2}]]*/,
+        id : /*[[${spot.contentid}]]*/,
+        }
+        positions.push(content);
+        /*[/]*/
+    </script>
+</body>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</html>

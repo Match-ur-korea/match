@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${character.characterName}+'에게 찰떡인 여행지'"></title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/cardhover.css">
+</head>
+<body>
+<div class="character_intro">
+    <!--       TODO 캐릭터 이미지 url로 교체-->
+    <img src="/img/testResult/유형1.png">
+    <h2 th:text="${character.characterName}"></h2>
+    <span class="description" th:text="${character.description}"></span>
+</div>
+<div class="container">
+    <div class="card" th:each="spot : ${spotList}">
+        <div class="imgbox">
+            <img th:src="${spot.firstimage}">
+        </div>
+        <div class="content">
+            <h2 th:text="${spot.title}"></h2>
+            <p class="description" th:text="${spot.title}"></p>
+            <a th:href="@{explore/details/${spot.contentid}}">보러가기</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

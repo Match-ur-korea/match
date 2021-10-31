@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <script src="/js/home.js" defer></script>
+</head>
+
+<body>
+<div class="section" id="section1">
+        <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+        <p class="sub_title1"><strong>어디가지? 고민될 땐 <br> 성향 분석 여행지 추천 웹</strong></p>
+        <img id="logo" alt="" src="img/MATCH.png"/><br><br>
+        <p class="sub_title2">나에게 꼭 맞는 한국을 찾아보세요</p>
+        <button  type="button" id="main_btn" th:onclick="|location.href='@{/test}'|">테스트 시작</button>
+</div>
+<div class="content" style="text-align:center">
+        <br><br>
+        <h2 style="display:block" id="recommend">마치가 추천하는</h2><h2 id="recommend2" style="color:#CC7221">숨겨진 여행지 TOP3</h2>
+        <br>
+        <input id="tab1" type="radio" name="tabs" checked>
+        <label for="tab1">첫번째 탭</label>
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2">두번째 탭</label>
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3">세번째 탭</label>
+
+        <section id="content1" style="margin-bottom:20px;">
+            <table>
+            <tr>
+            <td><img alt="" src="img/촉석루-100.png" class="recommend_place"/></td><td><img alt="" src="img/보문정-100.png" class="recommend_place"/></td><td><img alt="" src="img/운흥정-100.png" class="recommend_place"/></td>
+            </tr>
+            </table>
+        </section>
+        <section id="content2" style="margin-bottom:20px;">
+            <table>
+                <tr>
+                    <td><img alt="" src="img/브릭캠퍼스-100.png" class="recommend_place"/></td><td><img alt="" src="img/화랑마을-100.png" class="recommend_place"/></td><td><img alt="" src="img/코크브-100.png" class="recommend_place"/></td>
+                </tr>
+            </table>
+        </section>
+        <section id="content3" style="margin-bottom:20px;">
+            <table>
+                <tr>
+                    <td><img alt="" src="img/제주곶자왈-100.png" class="recommend_place"/></td><td><img alt="" src="img/환선굴-100.png" class="recommend_place"/></td><td><img alt="" src="img/관방제림-100.png" class="recommend_place"/></td>
+                </tr>
+            </table>
+        </section>
+
+        <h2 id="store">마치와 여행을 기억하는 방법</h2>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/메인링크1.png" />
+                    <a th:href="@{http://www.mansaok.com/main.php}">소셜 컴바인</a>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/메인링크5.png" />
+                    <a th:href="@{https://smartstore.naver.com/deobulup/category/ALL?cp=1}">울산사회적경제판로지원센터</a>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/메인링크2.png" />
+                    <a th:href="@{http://souvenir.or.kr/}">한국관광명품점</a>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/메인링크4.png" />
+                    <a th:href="@{http://www.mansaok.com/item.php?id=a1b9c78001718#cgmall_item_eachtab1}">소셜 컴바인</a>
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/메인링크3.png" />
+                    <a th:href="@{https://smartstore.naver.com/gntostore/products/5787313287}">경남관광기념품점</a>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div id="vv"><br<</div>
+</div>
+    <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</body>
+</html>

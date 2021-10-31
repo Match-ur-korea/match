@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <nav th:fragment="fragment-navbar" class="navbar navbar-expand-lg navbar-light bg-light" style="user-select: auto;">
     <div class="container-fluid" style="user-select: auto;">
-        <a class="navbar-brand" href="#" th:href="@{/}" style="user-select: auto;">마치  <small class="text-muted" style="user-select: auto;">Match</small></a>
+        <!--        TODO 로고 이미지로 교체-->
+        <a href="/" style="padding-right: 1em;"><img src="/img/logo.png" style="height: 3em;"><small class="text-muted" style="user-select: auto;">마치</small></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="true" aria-label="Toggle navigation" style="user-select: auto;">
             <span class="navbar-toggler-icon" style="user-select: auto;"></span>
         </button>
@@ -10,7 +12,7 @@
         <div class="collapse navbar-collapse" id="navbarColor03" style="user-select: auto;">
             <ul class="navbar-nav me-auto" style="user-select: auto;">
                 <li class="nav-item" style="user-select: auto;">
-                    <a class="nav-link active" href="#" style="user-select: auto;">마치 소개</a>
+                    <a class="nav-link" th:href="@{/introUs}" style="user-select: auto;">마치 소개</a>
                 </li>
                 <li class="nav-item" style="user-select: auto;">
                     <a class="nav-link" href="#" th:href="@{/travel}"style="user-select: auto;">여행하기</a>
@@ -18,14 +20,23 @@
                 <li class="nav-item dropdown" style="user-select: auto;">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" th:href="@{/explore}" role="button" aria-haspopup="true" aria-expanded="true" style="user-select: auto;">여행코스</a>
                     <div class="dropdown-menu" style="user-select: auto;">
-                        <a class="dropdown-item" href="#" th:href="@{/explore}" style="user-select: auto;">캐릭터별</a>
-                        <a class="dropdown-item" href="#" th:href="@{/explore}" style="user-select: auto;">지역별</a>
+                        <a class="dropdown-item" href="#" th:href="@{/explore#tab_character}" style="user-select: auto;">캐릭터별</a>
+                        <a class="dropdown-item" href="#" th:href="@{/explore#tab_area}" style="user-select: auto;">지역별</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" style="user-select: auto;">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true" style="user-select: auto;">나의 여행</a>
+                    <div class="dropdown-menu" style="user-select: auto;">
+                        <a class="dropdown-item" href="#" th:href="@{/myTravel}" style="user-select: auto;">나의 여행보기</a>
+                        <a class="dropdown-item" href="#" th:href="@{/doMyTravel}" style="user-select: auto;">나의 여행하기</a>
                     </div>
                 </li>
                 <li class="nav-item" style="user-select: auto;">
-                    <a class="nav-link" href="#" th:href="@{/mytravel}" style="user-select: auto;">나의 여행</a>
+                    <span sec:authorize="isAnonymous()"><a href="/oauth2/authorization/google">구글 로그인</a></span>
+                    <span sec:authorize="isAuthenticated()"><a href="/logout">로그아웃</a></span>
                 </li>
             </ul>
+            <!--            TODO 로그인 이모티콘 따로 빼기-->
         </div>
     </div>
 </nav>

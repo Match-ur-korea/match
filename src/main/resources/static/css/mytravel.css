@@ -1,0 +1,31 @@
+html,body {
+    width:100%;
+    margin:0px;
+    padding:0px;
+    overflow-x: hidden;
+}
+body{
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+    background-size:100% auto;
+}
+/*!* 지역 영역 *!*/
+/*.map{*/
+/*    width: 100%;*/
+/*}*/
+/*캐릭터 정보*/
+.my-character-info{
+    margin:5% 10% 5% 10%;
+    text-align: center;
+    font-size: 1em;
+    word-break: break-word;
+    padding:3em;
+    border:dashed;
+    border-radius:20px;
+}
+.character_intro img{
+    width:10em;
+}
+h2 h3 h4 h5{
+    text-align: center;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>travelVideo</title>
+  <div th:replace="/fragments/header.html :: fragment-header"></div>
+  <div th:replace="/fragments/config.html :: fragment-config"></div>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/testVideo.css"/>
+  <script src="/js/testVideo.js" defer></script>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="top">
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <!-- <img th:src="${c1}" alt="선택 사진" id="select1"><br>-->
+        <img  class="photo" th:src="${image1}"onerror="this.parentNode.style.display='none'" />
+      </div>
+      <div class="swiper-slide">
+        <img class="photo" th:src="${image2}" onerror="this.parentNode.style.display='none'"/>
+      </div>
+      <div class="swiper-slide">
+        <img class="photo" th:src="${image3}" onerror="this.parentNode.style.display='none'" />
+      </div>
+      <div class="swiper-slide">
+        <img class="photo" th:src="${image4}" onerror="this.parentNode.style.display='none'" />
+      </div>
+      <div class="swiper-slide">
+        <img class="photo" th:src="${image5}" onerror="this.parentNode.style.display='none'" />
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</div>
+<div class="product_menu" >
+  <div class="product">
+    <p>훈제굴 세트</p>
+    <img src="img/testVideo/image 65.png" class="pro"/>
+  </div>
+  <div class="product">
+    <p>선셋유자</p>
+    <img src="img/testVideo/image 66.png" class="pro"/>
+  </div>
+  <div class="product">
+    <p>거제 4계 비누</p>
+    <img src="img/testVideo/image 67.png" class="pro"/>
+  </div>
+  <div class="product">
+    <p>동백&유자 오일</p>
+    <img src="img/testVideo/image 68.png" class="pro"/>
+  </div>
+  <div class="product">
+    <p>김해 다기 세트</p>
+    <img src="img/testVideo/image 69.png" class="pro"/>
+  </div>
+  <div class="product" id="character_back">
+    <p></p>
+    <button  type="button" id="back_btn" th:onclick="|location.href='@{/selectLocal}'|">다시 여행하기</button>
+  </div>
+</div>
+</body>
+</html>

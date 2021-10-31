@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>마치 :: 나의 여행보기</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script th:src="@{/js/imageMapResizer.min.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/css/myTravel.css">
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<!--TODO 유저 정보, 캐릭터 정보 넘겨받아야함-->
+<div class="my-character-info">
+    <img class="character-img" th:src="@{/img/characterBg/245.png}">
+    <h3 th:text="마치"></h3><h4 style="">님의 여행 유형은,</h4>
+    <h2 class="character-name" th:text="나른한 도시여행자"></h2>
+    <span class="description" th:text="이건 어쩌구 저쩌구 조쪼구"></span>
+    <!--    <img class="character-img" th:src="|/img/characterBg/${character.characterId}.png|">-->
+    <!--    <h3 th:text="${user.name}"></h3><h4 style="">님의 여행 유형은,</h4> -->
+    <!--    <h2 class="character-name" th:text="${character.characterName}"></h2>-->
+    <!--    <span class="description" th:text="${character.moredescription}"></span>-->
+</div>
+<h2>나의 여행보기</h2>
+<div th:each="area : ${areaList}">
+    <p th:text="${area.name()}"></p>
+</div>
+<img src="/img/myTravel/colormap.png" class="map" usemap="#image-map" width="95%">
+
+<map name="image-map">
+    <area target="" alt="서울" title="서울" th:href="@{/myTravel/1}" coords="1186,1217,108" shape="circle">
+    <area target="" alt="인천" title="인천" th:href="@{/myTravel/2}" coords="562,1117,116" shape="circle">
+    <area target="" alt="대전" title="대전" th:href="@{/myTravel/3}" coords="1511,2765,95" shape="circle">
+    <area target="" alt="대구" title="대구" th:href="@{/myTravel/4}" coords="2675,3543,150" shape="circle">
+    <area target="" alt="광주" title="광주" th:href="@{/myTravel/5}" coords="908,4390,119" shape="circle">
+    <area target="" alt="부산" title="부산" th:href="@{/myTravel/6}" coords="3229,4279,111" shape="circle">
+    <area target="" alt="울산" title="울산" th:href="@{/myTravel/7}" coords="3385,3863,154" shape="circle">
+    <area target="" alt="세종" title="세종" th:href="@{/myTravel/8}" coords="1383,2455,59" shape="circle">
+    <area target="" alt="경기" title="경기" th:href="@{/myTravel/31}" coords="1502,1081,139" shape="circle">
+    <area target="" alt="강원" title="강원" th:href="@{/myTravel/32}" coords="2358,981,537" shape="circle">
+    <area target="" alt="충청북도" title="충청북도" th:href="@{/myTravel/33}" coords="1777,2385,244" shape="circle">
+    <area target="" alt="충청남도" title="충청남도" th:href="@{/myTravel/34}" coords="991,2582,276" shape="circle">
+    <area target="" alt="전라북도" title="전라북도" th:href="@{/myTravel/37}" coords="1220,3613,368" shape="circle">
+    <area target="" alt="전라남도" title="전라남도" th:href="@{/myTravel/38}" coords="1346,4641,288" shape="circle">
+    <area target="" alt="경상북도" title="경상북도" th:href="@{/myTravel/35}" coords="2869,2608,576" shape="circle">
+    <area target="" alt="경상남도" title="경상남도" th:href="@{/myTravel/36}" coords="2308,4189,397" shape="circle">
+</map>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+<script> $('map').imageMapResize();</script>
+</body>
+</html>

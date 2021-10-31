@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마치란</title>
+    <link rel="stylesheet" type="text/css" href="/css/introUs.css">
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<img src="img/introUs/intro.jpg" class="intro">
+<div class="content">
+    <img src="img/logo.png" class="logo">
+<h1>여행을 즐기는 새로운 방식</h1>
+<p>
+    당신의 선택에 따라
+    대한 민국의 아름다운 관광지를
+    당신의 취향에 맞게 추천하고
+    마치 그곳을 여행하는 듯한 경험을 제공하는 공간입니다.
+
+    미처 몰랐던 한국의 다양한 관광지를 “마치”를 통해 찾게 하고
+    실제 당신의 목적지가 될 수 있기를 바랍니다.
+</p>
+<h2>우리가 몰랐던, 다양한 대한민국에 집중한 이유</h2>
+<div class="with_img">
+    <img src="img/introUs/bigdata.png" class="left">
+    <div class="description" style="text-align: left">
+        <h3>한국여행 = 서울?</h3>
+        <p>한국을 방문한 외국인 중 약 77%는 서울을 여행합니다.
+            비교적 잘 알려진 부산과 제주 역시 10% - 14% 정도로 서울에 비하면 아주 적은 비율의 외국인이 방문합니다.<br>
+            그만큼 한국의 관광은 서울에 집중되어 있음을 보여줍니다.
+            마치는 이러한 <strong>지역관광 불균형 현상</strong>에 집중하였고 보다 한국의 다양한 여행지를 보여주는 서비스를 제안하고자 합니다.<br>
+            마치가 지역관광의 길잡이가 되어 한국의 다양한 매력을 가진 곳을 소개해 드리겠습니다.
+        </p>
+    </div>
+</div>
+<h2>우리가 성향분석으로 보여주는 이유</h2>
+<div class="with_img">
+    <div class="description" style="text-align: right">
+        <p>여행을 준비할때 제일 먼저 해야하는 것은
+            목적지를 정하는 것입니다.
+            보통의 사람들은 지인의 추천이나 SNS를 통해 의사결정을 하게됩니다.
+            하지만 다양한 성향의 사람들을 만족시키기에는 부족합니다.
+            광고와 실제 후기를 구별하기도 힘들죠.
+            그래서 저희는 믿을 수 있는
+            <strong>관광데이터를 활용</strong>하여
+            누구에게나 꼭 맞는 여행지를 추천하고자 합니다.
+            여행의 시작이 부담이 되지 않게,
+            마치에서 시작을 함게해보세요. </p>
+    </div>
+    <img src="img/introUs/characters.png" class="right">
+</div>
+</div>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</body>
+</html>
