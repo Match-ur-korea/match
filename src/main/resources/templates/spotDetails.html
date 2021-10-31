@@ -13,30 +13,11 @@
 <body>
 <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
 <div class="cont">
-    <h3 th:text="${detail.title}"></h3>
-    <img th:src="${detail.firstimage}"/>
+    <h1 th:text="${detail.title}"></h1>
+    <img class="spot-img" th:src="${detail.firstimage}"/>
     <p th:text="${detail.overview}"></p>
-    <a th:href="|${detail.homepage}|">공식 홈페이지</a>
-    <button type="button" onclick="location.href='javascript:window.history.back();'" class="to-list float-end">목록으로</button>
+    <button class="back" type="button" onclick="location.href='javascript:window.history.back();'">목록으로</button>
 </div>
-<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
-<!--TODO 채원쓰한테 -->
-<!--<script th:inline="javascript">-->
-<!--    let spotList = new Array();-->
-<!--    let spot1 = new Object();-->
-<!--    var positions = [];-->
-<!--    /*[# th:each="spot : ${spotList}"]*/-->
-<!--    /*[# th:each="overview : ${contents}"]*/-->
-<!--    var content={-->
-<!--        title:  /*[[${detail.title}]]*/,-->
-<!--        latlng: new kakao.maps.LatLng( /*[[${detail.mapy}]]*/, /*[[${detail.mapx}]]*/),-->
-<!--        addr : /*[[${detail.addr1}]]*/,-->
-<!--        image : /*[[${detail.firstimage2}]]*/,-->
-<!--        id : /*[[${detail.contentid}]]*/,-->
-<!--    }-->
-<!--    positions.push(content);-->
-<!--    /*[/]*/-->
-<!--    /*[/]*/-->
-<!--</script>-->
 </body>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </html>

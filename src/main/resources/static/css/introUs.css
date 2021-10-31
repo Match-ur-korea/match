@@ -23,7 +23,7 @@
 .match{
     display: block;
     margin: 0px auto;
-    height : 20%;
+    height : 23vh;
     padding : 2em;
 }
 .with_img img{
@@ -82,7 +82,7 @@ p{
     body{
         background-size:100% 50%;
     }
-    .logo{
+    .match{
         display: block;
         margin: 0px auto;
         width : 20%;
