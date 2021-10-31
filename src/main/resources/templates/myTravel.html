@@ -20,7 +20,7 @@
 </div>
 <h2>나의 여행보기</h2>
 <div th:each="areaCode : ${areaList}">
-    <a class="local" th:href="@{/myTravel/{areaCode}(areaCode=${areaCode})}" th:text="${T(com.Matchurkorea.Match.domain.Area).of(areaCode).name()}"></a>
+    <button class="local" type="button" th:onclick="|location.href='@{/myTravel/{areaCode}(areaCode=${areaCode})}'|" th:text="${T(com.Matchurkorea.Match.domain.Area).of(areaCode).name()}"></button>
 </div>
 <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </body>
