@@ -17,9 +17,8 @@ public class TourServiceImpl implements TourService  {
 
     @Override
     public void saveTour(String tour_id, String api_id, String user_id) {
-        //TODO 중복 검사 & NULL 검사해서 통과하면 DB저장
-        System.out.println("Before Save id : "+user_id);
-        userMapper.saveTour(tour_id,api_id,user_id);
+        if(api_id!=""&&api_id!="")
+            userMapper.saveTour(tour_id,api_id,user_id);
     }
 
     @Override

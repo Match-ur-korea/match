@@ -19,7 +19,6 @@ import java.util.*;
 
 @Service
 public class SpotServiceImpl implements SpotService{
-    private static String clientID ="";
     @Value("${tourapi.key}")
     private String key;
 
@@ -217,48 +216,6 @@ public class SpotServiceImpl implements SpotService{
         return detail;
     }
 
-    //TODO Ajax 사용안하면 폐기
-    @Override
-    public String getSpotOverview(String contentid) throws IOException {
-
-
-        StringBuilder result = new StringBuilder();
-        try{
-            String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey="+key
-                    +"&contentId="+contentid
-                    +"&defaultYN=Y"
-                    +"&firstImageYN=Y"
-                    +"&areacodeYN=Y"
-                    +"&catcodeYN=Y" //카테고리
-                    +"&addrinfoYN=Y"
-                    +"&mapinfoYN=Y"
-                    +"&overviewYN=Y"
-                    +"&transGuideYN=Y"
-                    +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json";
-
-            URL url = new URL(urlstr);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
-            String returnLine;
-
-            while((returnLine=br.readLine()) != null){
-                result.append(returnLine+"\n\r");
-            }
-            urlConnection.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        // TODO return string
-        return result.toString();
-//        result.toString();
-//        System.out.println("detail"+result);
-//        JSONObject json = new JSONObject();
-//        json.put("data", result);
-//        return json;
-    }
-
     @Override
     public Map<Integer, JSONArray> parseResponse(String json) throws ParseException {
         Map<Integer, JSONArray> result = new HashMap<Integer, JSONArray>();
@@ -320,42 +277,6 @@ public class SpotServiceImpl implements SpotService{
         Gson gson = new Gson();
         Detail detail = gson.fromJson(detailJson.toString(), Detail.class);
         return detail;
-    }
-    public List<Spot> searchSpot(String keyword, int display, int start){
-        List<Spot> list = null;
-        return list;
-    }
-
-    public String callTourApi(String characterCode, String areaCode) throws IOException {
-        StringBuilder result = new StringBuilder();
-        // Encoding된 키
-        try{
-            String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+key
-                    +"&contentTypeId="
-                    +"&areaCode="+areaCode
-                    +"&cat1=A01" //카테고리
-                    +"&cat2=A0101"
-                    +"&cat3=A01010700"
-                    +"&listYN=Y" // 목록 출력
-                    +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json"
-                    +"&arrange=P" // 대표이미지가 반드시 있으면서 조회순으로 정렬
-                    +"&numOfRows=12"
-                    +"&pageNo=1";
-            URL url = new URL(urlstr);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
-            String returnLine;
-
-            while((returnLine=br.readLine()) != null){
-                result.append(returnLine+"\n\r");
-            }
-            urlConnection.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result.toString();
     }
 
     public String getSpotContent(String contentid) throws IOException, ParseException{
@@ -441,4 +362,5 @@ public class SpotServiceImpl implements SpotService{
         return add;
 
     }
+
 }

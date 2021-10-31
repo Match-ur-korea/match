@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 @Getter
 @NoArgsConstructor
 public class User{
-    private long id;
     private String name;
     private String email;
     private Role role;
@@ -24,10 +23,14 @@ public class User{
         this.name = name;
         return this;
     }
-
+    public String getName() {
+        return this.name;
+    }
+    public String getEmail() {
+        return this.email;
+    }
     public String getRoleKey() {
         return this.role.getKey();
     }
 
 }
-

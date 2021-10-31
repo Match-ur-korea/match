@@ -14,7 +14,6 @@
 <body>
 <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
 <div class="container1">
-    <div th:each="character : ${characters}">
         <div class="top1">
             <div id="border">
                 <p id="type">당신의 여행 타입은</p>
@@ -37,10 +36,9 @@
                 <img src="img/testResult/유형3.png" id="badTypeImg" alt="테스트순서"><br>
                 <p th:text="${character.badtype}"></p>
             </div>
-        </div>
-    </div
-    ></div
-><div class="container2">
+    </div>
+</div>
+<div class="container2">
     <h3>당신을 위한 추천 여행지</h3><h3 id="local" th:value="${local}" th:text="${local}"></h3>
     <div class="top2">
         <div class="left2">

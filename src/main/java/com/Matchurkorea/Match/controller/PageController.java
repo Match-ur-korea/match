@@ -36,7 +36,6 @@ public class PageController {
     public String home(Model model){
         return "home";
     }
-
     @GetMapping(value="/introUs")
     public String introduce(Model model){
         return "introUs";
@@ -49,20 +48,11 @@ public class PageController {
     public String test(Model model){
         return "testPage";
     }
-    @GetMapping(value="/doMyTravel")
-    public String testAgain(Model model){
-        return "testPage";
-    }
     @GetMapping("/explore")
     public String explore(Model model){
         List<Character> list = userService.getAllCharacterList();
         model.addAttribute("characters",list);
         return "explore";
-    }
-
-    @GetMapping("/swipertest")
-    public String swipertest(Model model){
-        return "characterListex";
     }
 
     @GetMapping("/testVideo")
@@ -93,7 +83,6 @@ public class PageController {
     @GetMapping(value="/myTravel")
     public String myTravel(Model model, Principal principal) throws IOException, ParseException {
         String user_id = principal.getName();
-//        TODO 사용자 이름 필요
         String characterId = userService.getUserCharacter(user_id);
         Character character = userService.getCharacterList(characterId);
 

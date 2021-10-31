@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -29,14 +30,12 @@ public class TourAPIController<map> {
         this.userService = userService;
         this.spotService = spotService;
     }
-    private String exploreView = "redirect:/explore/";
 
     @GetMapping(value= "/explore/character/{characterCode}")
     public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode,
                                      @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
         Character character = userService.getCharacterList(characterCode);
         List<String> codes = new ArrayList<String>();
-        // TODO error catch
         codes.add(character.getCat1());
         codes.add(character.getCat2());
         codes.add(character.getCat3());
@@ -96,10 +95,15 @@ public class TourAPIController<map> {
     }
 
     @GetMapping(value = "/testResult")
-    public String testResult(Model model,
+    public String testResult(Model model, Principal principal,
                              @RequestParam(value = "selectId") String selectId,
                              @RequestParam(value = "local") String local,
                              @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
+        String user_id="";
+        if(principal!=null) {
+            user_id = principal.getName();
+            userService.saveCharacter(user_id,selectId);
+        }
         int totalCount=0;
         List<Spot> list = new ArrayList<Spot>();
         Character character = userService.getCharacterList(selectId);
@@ -108,29 +112,55 @@ public class TourAPIController<map> {
         codes.add(character.getCat2());
         codes.add(character.getCat3());
         codes.removeAll(Arrays.asList("", null));
+
         Map<Integer, List<Spot>> map = spotService.findSpotByType(codes, local, page);
         for(Map.Entry<Integer, List<Spot>> elem : map.entrySet()){
             totalCount = elem.getKey().intValue();
             list = elem.getValue();
         }
-        System.out.println("확인");
-        List<String> overview=new ArrayList<>();
+        List<String> overview = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++) {
             overview.add(spotService.getSpotContent(list.get(i).getContentid().toString()));
         }
         model.addAttribute("local", local);
-        model.addAttribute("characters", character);
+        model.addAttribute("character", character);
         model.addAttribute("spotList", list);
         model.addAttribute("contents",overview);
         return "testResult";
     }
 
-    // TODO 호버 시 잘 보이는지 확인
-    @GetMapping(value="callDetail")
-    public String callDetail(HttpServletRequest request, HttpServletResponse response, @RequestParam String contentid) throws IOException{
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html; charset=utf-8");
-        return spotService.getSpotOverview(contentid);
+    @GetMapping("/selectLocal")
+    public String selectLocal(Model model) {
+        return "selectLocal";
     }
+
+    @GetMapping("/myTestResult")
+    public String myTestResult(Model model, Principal principal, @RequestParam("local") String local,
+                               @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
+        String user_id = principal.getName();
+        //user_id로 select_id 찾아오기
+        String selectId = userService.getUserCharacter(user_id);
+        Character character = userService.getCharacterList(selectId);
+        List<String> codes = new ArrayList<String>();
+        codes.add(character.getCat1());
+        codes.add(character.getCat2());
+        codes.add(character.getCat3());
+        codes.removeAll(Arrays.asList("", null));
+
+        int totalCount =0;
+        List<Spot> list = new ArrayList<Spot>();
+        Map<Integer, List<Spot>> map = spotService.findSpotByType(codes, local, page);
+        for(Map.Entry<Integer, List<Spot>> elem : map.entrySet()){
+            totalCount = elem.getKey().intValue();
+            list = elem.getValue();
+        }
+
+        model.addAttribute("local", local);
+        model.addAttribute("character", character);
+        model.addAttribute("spotList", list);
+        return "myTestResult";
+    }
+
+
 }

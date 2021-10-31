@@ -20,11 +20,10 @@ public interface userMapper {
     void save(User user);
     void saveTour(@Param("tour_id") String tour_id,@Param("api_id") String api_id,@Param("user_id") String user_id);
 
-
-    void saveCharacter(String user_id, String selectId);
-    void updateCharacter(String user_id, String selectId);
-    String getUserCharacter(String user_id);
-    int checkName(String user_id);
+    void saveCharacter(@Param("user_id") String user_id, @Param("selectId") String selectId);
+    String getUserCharacter(@Param("user_id") String user_id);
+    int checkName(@Param("user_id") String user_id);
+    void updateCharacter(@Param("user_id") String user_id, @Param("selectId") String selectId);
 
     // 나의 여행보기
     // 사용자별 여행지역 목록

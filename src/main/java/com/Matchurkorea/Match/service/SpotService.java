@@ -12,13 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface SpotService {
-   String callTourApi(String characterCode, String areaCode) throws IOException;
-   List<Spot> searchSpot(String keyword, int display, int start);
    Map<Integer, List<Spot>> findSpotByCharacter(List<String> categories, int pageNo) throws IOException, ParseException;
    Map<Integer, List<Spot>> findSpotByArea(String areaCode, int pageNo) throws IOException, ParseException;
    Map<Integer, List<Spot>> findSpotByType(List<String> categories, String areaCode, int pageNo) throws IOException, ParseException;
-//   JSONObject getSpotOverview(String contentid) throws IOException;
-   String getSpotOverview(String contentid) throws IOException;
    Detail getSpotDetail(String contentid) throws IOException, ParseException;
 
    Map<Integer, JSONArray> parseResponse(String json) throws ParseException;
@@ -27,4 +23,5 @@ public interface SpotService {
    Detail jsonToDetail(JSONArray item);
    String getSpotImg(String contentid) throws IOException, ParseException;
    String getSpotContent(String contentid)throws IOException, ParseException;
+
 }

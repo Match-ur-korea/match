@@ -16,8 +16,4 @@ public class UserController {
     public UserController(UserService userService){
         this.userService = userService;
     }
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public List<User> getUser() {
-        return userService.getUserList();
-    }
 }
