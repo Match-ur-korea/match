@@ -10,11 +10,11 @@ body{
     background-repeat: no-repeat;
     background-size:100% auto;
 }
-/* 지역 영역 */
+/* ì§€ì—­ ì˜ì—­ */
 .map{
     width: 100%;
 }
-/*캐릭터 정보*/
+/*ìºë¦­í„° ì •ë³´*/
 .my-character-info{
     margin:5% 10% 5% 10%;
     text-align: center;
@@ -26,12 +26,12 @@ body{
     text-align: center;
 }
 .character-img{
-    width:70%;
+    width:50%;
     display:block;
     margin: 0px auto;
     padding: 3%;
 }
-/*여행*/
+/*ì—¬í–‰*/
 .local{
     color:black;
     border:0;
@@ -43,4 +43,18 @@ body{
     font-size:1.2rem;
     border-radius:1rem;
     margin:3%;
+}
+@media screen and (max-width:1799px) {
+ /* ë°ìŠ¤íŠ¸ íƒ‘ */
+    html{
+        font-size:20px;
+    }
+}
+
+@media screen and (max-width:599px) {
+/* ëª¨ë°”ì¼ ì„¸ë¡œ */
+    html{
+        font-size:10px;
+    }
+
 }

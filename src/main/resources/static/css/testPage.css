@@ -41,7 +41,7 @@ body,html{
  .swiper-slide{}
  .qs{
       color:black;
-     font-size:2rem;
+     font-size:1.2rem;
      /*font-weight:bold;*/
      margin-bottom:5rem;
  }
@@ -53,8 +53,8 @@ body,html{
      /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
      box-shadow: 0 1px 2px rgba(0,0,0,.2);
      width:20rem;
-     height:3.5rem;
-     font-size:1.2rem;
+     height:3rem;
+     font-size:1rem;
      border-radius:3rem;
  }
  .two{
@@ -65,14 +65,14 @@ body,html{
       /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
       box-shadow: 0 1px 2px rgba(0,0,0,.2);
       width:20rem;
-      height:3.5rem;
-      font-size:1.2rem;
+      height:3rem;
+      font-size:1rem;
       border-radius:3rem;
       margin-top:1rem;
       margin-bottom:50rem;
  }
   @media screen and (max-width:4000px) {
-   /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+   /* ÃƒÂ«Ã‚ÂÃ‚Â°ÃƒÂ¬Ã…Â Ã‚Â¤ÃƒÂ­Ã…Â Ã‚Â¸ ÃƒÂ­Ã†â€™Ã¢â‚¬Ëœ */
   html{
       font-size:30px;
   }
@@ -94,9 +94,9 @@ body,html{
 
   }
  @media screen and (max-width:1799px) {
-  /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+  /* ÃƒÂ«Ã‚ÂÃ‚Â°ÃƒÂ¬Ã…Â Ã‚Â¤ÃƒÂ­Ã…Â Ã‚Â¸ ÃƒÂ­Ã†â€™Ã¢â‚¬Ëœ */
  html{
-     font-size:15px;
+     font-size:20px;
  }
  .swiper{
      background-size:100wh 300px;
@@ -117,7 +117,7 @@ body,html{
  }
 
  @media screen and (max-width:599px) {
- /* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
+ /* ÃƒÂ«Ã‚ÂªÃ‚Â¨ÃƒÂ«Ã‚Â°Ã¢â‚¬ÂÃƒÂ¬Ã‚ÂÃ‚Â¼ ÃƒÂ¬Ã¢â‚¬Å¾Ã‚Â¸ÃƒÂ«Ã‚Â¡Ã…â€œ */
    html{
      font-size:10px;
    }

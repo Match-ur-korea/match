@@ -94,7 +94,7 @@ public class TourAPIController<map> {
         return "spotDetails";
     }
 
-    @GetMapping(value = "/testResult")
+    @GetMapping(value = "testResult")
     public String testResult(Model model, Principal principal,
                              @RequestParam(value = "selectId") String selectId,
                              @RequestParam(value = "local") String local,

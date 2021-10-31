@@ -18,8 +18,10 @@ body{
 }
 h2{
     text-align: center;
-    padding:1%;
+    padding-top:80px;
+    padding-bottom:20px;
 }
+
 div#toggle{
     width:75%;
     cursor:pointer;

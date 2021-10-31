@@ -62,6 +62,7 @@ public class PageController {
         //로그인 한 경우 db에 선택 코스 저장하기
         String user_id="";
         if(principal!=null) {
+             user_id = principal.getName();
             tourService.saveTour(tour_local, c1, user_id);
             tourService.saveTour(tour_local, c2, user_id);
             tourService.saveTour(tour_local, c3, user_id);

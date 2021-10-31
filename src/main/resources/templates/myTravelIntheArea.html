@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>마치 :: 당신이 떠난 여행</title>
@@ -17,11 +17,12 @@
   <h2 style="text-align: center;">다시 여행 떠나기</h2>
   <div class="swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" th:each="image :${imageList}">
-        <img class="photo" th:src="${image}"/>
-      </div>
+      <th:each="image :${imageList}">
+        <div class="swiper-slide" th:each="image :${imageList}">
+          <img class="photo" th:src="${image}"/>
+        </div>
+      </each>
     </div>
-    <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>

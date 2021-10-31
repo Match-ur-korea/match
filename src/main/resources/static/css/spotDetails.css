@@ -14,8 +14,8 @@ h1 {
     padding: 2%;
 }
 .spot-img{
-    width: 70%;
-    height: 30%;
+    width: 50%;
+    height: 20rem;
     margin: 0 auto;
     display: block;
     border-radius: 25px;
@@ -36,3 +36,20 @@ p{
     border-radius:1rem;
     margin:3%;
 }
+
+@media screen and (max-width:1799px) {
+  /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+     html{
+         font-size:20px;
+     }
+
+
+ }
+
+ @media screen and (max-width:599px) {
+ /* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
+     html{
+         font-size:10px;
+     }
+
+ }

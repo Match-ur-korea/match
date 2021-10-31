@@ -43,6 +43,7 @@
 <div class="container2">
     <h3 id="container2_title">당신을 위한 추천 여행지</h3><h3 id="local" th:value="${local}" th:text="${local}"></h3>
     <p>(마커가 하나도 없는 경우 준비중인 지역입니다. 밑에 다시 여행하기버튼을 눌러주세요.)</p>
+    <button  type="button" id="back_btn" th:onclick="|location.href='@{/selectLocal}'|">다시 여행하기</button>
     <div class="top2">
         <div class="left2">
             <div class="map_wrap">
@@ -94,7 +95,6 @@
                 <input type="hidden" th:name="c4" id="c4" />
                 <input type="hidden" th:name="c5" id="c5" />
                 <input type="hidden" th:name="tour_local" id="tour_local" th:value="${local}">
-                <button  type="button" id="back_btn" th:onclick="|location.href='@{/selectLocal}'|">다시 여행하기</button>
                 <input type="image" src="img/testResult/선택버튼.png" id="select_btn"/>
             </form>
         </div>

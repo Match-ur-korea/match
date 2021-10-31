@@ -120,7 +120,6 @@ public class SpotServiceImpl implements SpotService{
         Map<Integer, List<Spot>> map = new HashMap<Integer, List<Spot>>();
         int totalCount = 0;
         List<Spot> list = new ArrayList<Spot>();
-        System.out.println(categories);
         List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
         for(String cat : categories) {
             Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();

@@ -21,10 +21,9 @@
     margin-bottom: auto;
 }
 .match{
-    display: block;
+    padding-top:30px;
+    width:15rem;
     margin: 0px auto;
-    height : 23vh;
-    padding : 2em;
 }
 .with_img img{
     width: 35%;
@@ -56,6 +55,7 @@ h2{
     margin-bottom: 2em;
 }
 p{
+    font-size:1rem;
     word-break: keep-all;
 
 }
@@ -70,7 +70,6 @@ p{
     }
     p{
         flex-direction: column;
-        font-size: 16px;
     }
 }
 
@@ -81,13 +80,6 @@ p{
     }
     body{
         background-size:100% 50%;
-    }
-    .match{
-        display: block;
-        margin: 0px auto;
-        width : 20%;
-        height : 10%;
-        padding : 2em;
     }
     /*img{*/
     /*    max-width:70%;*/

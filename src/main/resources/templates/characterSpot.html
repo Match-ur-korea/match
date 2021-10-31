@@ -20,7 +20,7 @@
         <div class="select-box">
             <ul id="slideToggleBox">
                 <li th:each="charac : ${characterList}">
-                    <a th:href="@{/explore/character/{id}(id=${charac?.characterId})}"><span th:text="${charac?.characterName}"></span></a>
+                    <a th:href="@{/explore/character/{id}(id=${charac.characterId})}"><span th:text="${charac.characterName}"></span></a>
                 </li>
             </ul>
         </div>

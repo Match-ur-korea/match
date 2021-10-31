@@ -111,7 +111,7 @@ footer{
 @media screen and (max-width:1799px) {
  /* ë°ìŠ¤íŠ¸ íƒ‘ */
     html{
-        font-size:15px;
+        font-size:20px;
     }
     #recommend{
     margin-top:160px;
@@ -121,7 +121,7 @@ footer{
      }
 }
 @media screen and (max-width:599px) {
-/* ëª¨ë°”ì¼ ì„¸ë¡œ */
+/* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
     html{
      font-size:10px;
      }
@@ -135,4 +135,12 @@ footer{
      #recommend{
         margin-top:200px;
         }
+        .recommend_place{
+    width:12rem;
+    padding:0px;
+    height:16rem;
+}
+ section {
+                  width:36em;
+                  height:16rem;
 }
