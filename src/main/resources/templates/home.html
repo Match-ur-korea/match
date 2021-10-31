@@ -13,20 +13,16 @@
 </head>
 
 <body>
-<div class="content">
-
-    <div class="section" id="section1">
-            <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
-            <p class="sub_title1"><strong>어디가지? 고민될 땐 <br> 성향 분석 여행지 추천 웹</strong></p>
-            <img id="logo" alt="" src="img/MATCH.png"/><br><br>
-            <p class="sub_title2">나에게 꼭 맞는 한국을 찾아보세요</p>
-            <button  type="button" id="main_btn" th:onclick="|location.href='@{/travel}'|">테스트 시작</button>
-    </div>
+<div class="section" id="section1">
+        <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+        <p class="sub_title1"><strong>어디가지? 고민될 땐 <br> 성향 분석 여행지 추천 웹</strong></p>
+        <img id="logo" alt="" src="img/MATCH.png"/><br><br>
+        <p class="sub_title2">나에게 꼭 맞는 한국을 찾아보세요</p>
+        <button  type="button" id="main_btn" th:onclick="|location.href='@{/test}'|">테스트 시작</button>
 </div>
-<div class="content">
-    <div class="section" id="section2" style="text-align:center">
+<div class="content" style="text-align:center">
         <br><br>
-        <h2 style="display:block" id="recommend">마치가 추천하는</h2><h2 style="color:#CC7221">숨겨진 여행지 TOP3</h2>
+        <h2 style="display:block" id="recommend">마치가 추천하는</h2><h2 id="recommend2" style="color:#CC7221">숨겨진 여행지 TOP3</h2>
         <br>
         <input id="tab1" type="radio" name="tabs" checked>
         <label for="tab1">첫번째 탭</label>
@@ -38,22 +34,25 @@
         <section id="content1" style="margin-bottom:20px;">
             <table>
             <tr>
-            <td><img alt="" src="img/testVideo/image 68.png" class="recommend_place"/></td><td><img alt="" src="img/testVideo/image 68.png" class="recommend_place"/></td><td><img alt="" src="img/testVideo/image 68.png" class="recommend_place"/></td>
+            <td><img alt="" src="img/촉석루-100.png" class="recommend_place"/></td><td><img alt="" src="img/보문정-100.png" class="recommend_place"/></td><td><img alt="" src="img/운흥정-100.png" class="recommend_place"/></td>
             </tr>
             </table>
         </section>
-
         <section id="content2" style="margin-bottom:20px;">
-            tab menu2의 내용
+            <table>
+                <tr>
+                    <td><img alt="" src="img/브릭캠퍼스-100.png" class="recommend_place"/></td><td><img alt="" src="img/화랑마을-100.png" class="recommend_place"/></td><td><img alt="" src="img/코크브-100.png" class="recommend_place"/></td>
+                </tr>
+            </table>
         </section>
         <section id="content3" style="margin-bottom:20px;">
-            tab menu1의 내용
+            <table>
+                <tr>
+                    <td><img alt="" src="img/제주곶자왈-100.png" class="recommend_place"/></td><td><img alt="" src="img/환선굴-100.png" class="recommend_place"/></td><td><img alt="" src="img/관방제림-100.png" class="recommend_place"/></td>
+                </tr>
+            </table>
         </section>
-    </div>
-</div>
-<div class="content">
-    <div class="section" id="section3">
-        <br><br><br>
+
         <h2 id="store">마치와 여행을 기억하는 방법</h2>
         <!-- Swiper -->
         <div class="swiper mySwiper">
@@ -81,9 +80,8 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
-    </div>
-    <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+        <div id="vv"><br<</div>
 </div>
+    <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </body>
-
 </html>

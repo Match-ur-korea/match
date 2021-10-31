@@ -31,11 +31,37 @@
     <insert id="saveTour" parameterType="map">
         INSERT INTO user.tour(tour_id,api_id,user_id) VALUES(#{tour_id}, #{api_id}, #{user_id})
     </insert>
-<!--    TODO 사용자별 여행지 목록 가져오기-->
     <select id="getTourList" resultType="String" parameterType="String">
         SELECT DISTINCT tour_id FROM user.tour WHERE user_id = #{user_id}
     </select>
     <select id="getTourContentId" resultType="String" parameterType="map">
         SELECT api_id FROM user.tour WHERE user_id = #{user_id} AND tour_id = #{tour_id}
     </select>
+    <select id="getAllCharacterList" resultType="com.Matchurkorea.Match.domain.Character" parameterType="String">
+        SELECT * FROM user.character
+    </select>
+    <select id="getCategoryList" resultType="com.Matchurkorea.Match.domain.Character">
+        SELECT cat1, cat2, cat3 FROM user.character WHERE characterId = #{characterId}
+    </select>
+    <insert id="save"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user.user(name,email,role) VALUES(#{name}, #{email}, #{role})
+    </insert>
+    <select id="findByEmail" resultType="com.Matchurkorea.Match.domain.User.User">
+        SELECT * FROM user.user WHERE email = #{email}
+    </select>
+    <insert id="saveTour" parameterType="map">
+        INSERT INTO user.tour(tour_id,api_id,user_id) VALUES(#{tour_id}, #{api_id}, #{user_id})
+    </insert>
+    <insert id="saveCharacter">
+        INSERT INTO user.userDetail(uid,user_character) VALUES(#{user_id}, #{selectId})
+    </insert>
+    <select id="getUserCharacter" resultType="String">
+        SELECT  user_character FROM user.userDetail WHERE uid = #{user_id}
+    </select>
+    <select id="checkName" parameterType="String" resultType="int">
+        SELECT EXISTS (SELECT uid FROM user.userDetail WHERE uid = #{user_id})
+    </select>
+    <update id="updateCharacter">
+        UPDATE user.userDetail SET user_character = #{selectId} WHERE uid = #{user_id}
+    </update>
 </mapper>

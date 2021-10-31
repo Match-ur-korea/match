@@ -1,13 +1,3 @@
-/*!*캐릭터 이름*!*/
-/*@font-face {*/
-/*    font-family: 'EliceDigitalBaeum_Bold';*/
-/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-/*}*/
-/*h2 .character-name{*/
-/*    font-family: 'EliceDigitalBaeum_Bold';*/
-/*}*/
 @font-face {
     font-family: 'OTWelcomeBA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');

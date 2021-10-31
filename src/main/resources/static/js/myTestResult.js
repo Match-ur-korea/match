@@ -97,7 +97,7 @@ for (var i = 0; i < positions.length; i ++) {
     })
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
-        content : positions[i].title+'^'+positions[i].addr+'^'+positions[i].image+'^'+positions[i].id
+        content : positions[i].title+'^'+positions[i].addr+'^'+positions[i].image+'^'+positions[i].id+'^'+positions[i].overview
     });
 
     // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
@@ -142,9 +142,7 @@ function makeTitle(map, marker,infowindow){
 
      //TODO 상세설명 추가하기
        const des = document.getElementById("des");
-       document.getElementById("des").style.fontSize = '0.6rem';
-
-     des.innerText = "자세한 내용은 [나의 여행코스]에서 확인하세요!"
+     des.innerText = "상세설명";
      // $("#relo").load(location.href+" #relo>*");
     };
 }

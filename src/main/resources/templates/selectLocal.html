@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>mytravel</title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/selectLocal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/js/selectLocal.js" defer></script>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div>
+    <table>
+        <tr>
+            <td> <button onclick="button1_click(this.id);" class="local" id="1">서울</button></td> <td> <button onclick="button1_click(this.id);"class="local" id="2">인천</button><br></td> <td><button onclick="button1_click(this.id);" class="local" id="3" >대전</button></td> <td> <button onclick="button1_click(this.id);"class="local" id="4">대구</button><br>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td> <button onclick="button1_click(this.id);"class="local" id="5">광주</button><br></td><td><button onclick="button1_click(this.id);"class="local" id="6" >부산</button><br></td><td> <button onclick="button1_click(this.id);"class="local" id="7">울산</button><br></td><td> <button onclick="button1_click(this.id);"class="local" id="8">세종</button><br></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><button onclick="button1_click(this.id);"class="local" id="31" >경기도</button><br></td><td> <button onclick="button1_click(this.id);"class="local" id="32">강원도</button><br></td><td> <button onclick="button1_click(this.id);"class="local" id=33>충청북도</button><br></td><td><button onclick="button1_click(this.id);"class="local" id="34" >충청남도 </button><br></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+
+            <td> <button onclick="button1_click(this.id);"class="local" id="35">경상북도</button><br></td><td> <button onclick="button1_click(this.id);"class="local" id=36>경상남도</button><br></td><td><button onclick="button1_click(this.id);"class="local" id="37" >전라북도</button><br></td> <td> <button onclick="button1_click(this.id);"class="local" id="38">전라남도</button><br><td></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+           <td> <button onclick="button1_click(this.id);"class="local" id=39>제주도</button><br></td>
+        </tr>
+    </table>
+
+    <form th:action='@{/myTestResult}' th:name="character">
+        <input type="hidden" th:name="local" id="select_local" />
+        <input type="submit"  id="submit" style="display:none"/>
+    </form>
+</div>
+</body>
+</html>

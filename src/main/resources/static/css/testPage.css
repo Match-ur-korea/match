@@ -1,76 +1,136 @@
-.swiper {
-   text-align: center;
-    background-image: url("/img/travelPage/여행페이지배경.svg");
-    background-repeat: no-repeat;
-    background-size:100wh 30%;
-}
-img{
-}
-.bar{
- margin-top:2rem;
- margin-bottom:2rem;
-}
-.qs{
-    font-size:2rem;
-    /*font-weight:bold;*/
-    margin-bottom:2rem;
-}
-.one{
-    background-color:#DF6BAB;
-    border:0;
-    outline:0;
-    /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
-    box-shadow: 0 1px 2px rgba(0,0,0,.2);
-    width:16rem;
-    height:3rem;
-    font-size:1rem;
-    border-radius:1rem;
-}
-.two{
-    background-color:#F5A5D1;
+body,html{
+     width:100%;
+     height:100%;
+
+ }
+ table{
+  margin:0 auto;
+  margin-top:50px;
+  margin-bottom:30px;
+ }
+ .local{
+      color:black;
      border:0;
      outline:0;
      /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
      box-shadow: 0 1px 2px rgba(0,0,0,.2);
-     width:16rem;
-     height:3rem;
-     font-size:1rem;
+     width:7rem;
+     height:3.5rem;
+     font-size:1.2rem;
      border-radius:1rem;
+ }
+#submit_btn{
+    color:black;
+    text-align:center;
+    margin-top:40vh;
+    border:0;
+    outline:0;
+    /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    width:7rem;
+    height:3.5rem;
+    font-size:1.2rem;
+    border-radius:1rem;
 }
-@media screen and (max-width:1799px) {
- /* 데스트 탑 */
-html{
-    font-size:15px;
-}
-.swiper{
-    background-size:100wh 300px;
-}
- img{
-    max-width:85%;
-    height: auto
+ .swiper {
+     text-align: center;
+     background-image: url("/img/travelPage/여행페이지배경.svg");
+     background-repeat: no-repeat;
+     background-size:100%
+ }
+ .swiper-slide{}
+ .qs{
+      color:black;
+     font-size:2rem;
+     /*font-weight:bold;*/
+     margin-bottom:5rem;
  }
  .one{
-     margin-bottom: 30px;
+      color:black;
+     background-color:#DF6BAB;
+     border:0;
+     outline:0;
+     /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+     box-shadow: 0 1px 2px rgba(0,0,0,.2);
+     width:20rem;
+     height:3.5rem;
+     font-size:1.2rem;
+     border-radius:3rem;
+ }
+ .two{
+      color:black;
+     background-color:#F5A5D1;
+      border:0;
+      outline:0;
+      /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+      box-shadow: 0 1px 2px rgba(0,0,0,.2);
+      width:20rem;
+      height:3.5rem;
+      font-size:1.2rem;
+      border-radius:3rem;
+      margin-top:1rem;
+      margin-bottom:50rem;
+ }
+  @media screen and (max-width:4000px) {
+   /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+  html{
+      font-size:30px;
+  }
+  .swiper{
+      background-size:100wh 600px;
+  }
+   img{
+      max-width:85%;
+      height: auto
+   }
+   .one{
+       margin-bottom:60px;
+   }
+
+ .bar{
+  padding-top:6rem;
+  margin-bottom:2rem;
  }
 
-}
-
-@media screen and (max-width:599px) {
-/* 모바일 세로 */
-  html{
-    font-size:10px;
   }
+ @media screen and (max-width:1799px) {
+  /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+ html{
+     font-size:15px;
+ }
+ .swiper{
+     background-size:100wh 300px;
+ }
   img{
-    max-width:70%;
-    height: auto
+     max-width:85%;
+     height: auto
   }
   .one{
-    margin-bottom:10px;
+      margin-bottom: 30px;
   }
- .two{
 
  }
-}
 
+ .bar{
+  padding-top:6rem;
+  margin-bottom:2rem;
+ }
 
+ @media screen and (max-width:599px) {
+ /* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
+   html{
+     font-size:10px;
+   }
+   img{
+     max-width:70%;
+     height: auto
+   }
+   .one{
+     margin-bottom:10px;
+   }
 
+ .bar{
+  padding-top:6rem;
+  margin-bottom:2rem;
+ }
+ }

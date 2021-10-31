@@ -35,7 +35,7 @@ public enum Area {
         this.areaname = areaname;
     }
 
-    private static final Map<String, String> AreaMap = Collections.unmodifiableMap(Stream.of(values()).collect(Collectors.toMap(Area::getAreacode, Area::name)));
+    private static final Map<String, String> AreaMap = Collections.unmodifiableMap( Stream.of(values()).collect(Collectors.toMap(Area::getAreacode, Area::name)));
 
     public static Area of(final String code){
         return Area.valueOf(AreaMap.get(code));

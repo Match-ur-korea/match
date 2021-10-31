@@ -20,19 +20,19 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <!-- <img th:src="${c1}" alt="선택 사진" id="select1"><br>-->
-        <img  class="photo" th:src="${image1}" />
+        <img  class="photo" th:src="${image1}"onerror="this.parentNode.style.display='none'" />
       </div>
       <div class="swiper-slide">
-        <img class="photo" th:src="${image2}" />
+        <img class="photo" th:src="${image2}" onerror="this.parentNode.style.display='none'"/>
       </div>
       <div class="swiper-slide">
-        <img class="photo" th:src="${image3}" />
+        <img class="photo" th:src="${image3}" onerror="this.parentNode.style.display='none'" />
       </div>
       <div class="swiper-slide">
-        <img class="photo" th:src="${image4}" />
+        <img class="photo" th:src="${image4}" onerror="this.parentNode.style.display='none'" />
       </div>
       <div class="swiper-slide">
-        <img class="photo" th:src="${image5}" />
+        <img class="photo" th:src="${image5}" onerror="this.parentNode.style.display='none'" />
       </div>
     </div>
     <div class="swiper-button-next"></div>
@@ -40,10 +40,6 @@
   </div>
 </div>
 <div class="product_menu" >
-  <div class="product" id="character_back">
-    <p></p>
-    <button  type="button" id="back_btn" th:onclick="|location.href='@{/testResult}'|">다시 여행하기</button>
-  </div>
   <div class="product">
     <p>훈제굴 세트</p>
     <img src="img/testVideo/image 65.png" class="pro"/>
@@ -64,8 +60,9 @@
     <p>김해 다기 세트</p>
     <img src="img/testVideo/image 69.png" class="pro"/>
   </div>
-  <div class="product" id="character_back2">
-    <button  type="button" id="next_btn" th:onclick="|location.href='@{/travel}'|">기념 하기</button>
+  <div class="product" id="character_back">
+    <p></p>
+    <button  type="button" id="back_btn" th:onclick="|location.href='@{/selectLocal}'|">다시 여행하기</button>
   </div>
 </div>
 </body>
