@@ -1,34 +1,21 @@
 package com.Matchurkorea.Match.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Tour {
-    private int userId;
-    private int tourId;
-    private int contentId;
+    private String userId;
+    private String tourId;
+    private String contentId;
 
-    public int getUserId() {
-        return userId;
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "userId='" + userId + '\'' +
+                ", tourId='" + tourId + '\'' +
+                ", contentId='" + contentId + '\'' +
+                '}';
     }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getTourId() {
-        return tourId;
-    }
-
-    public void setTourId(int tourId) {
-        this.tourId = tourId;
-    }
-
-    public int getContentId() {
-        return contentId;
-    }
-
-    public void setContentId(int contentId) {
-        this.contentId = contentId;
-    }
-
-
-
 }

@@ -1,7 +1,11 @@
 package com.Matchurkorea.Match.service;
 
-public interface TourService {
-    void saveTour(String tour_id,String api_id,String user_id);
+import com.Matchurkorea.Match.domain.Tour;
 
-    String getImg(String c1);
+import java.util.List;
+
+public interface TourService {
+    void saveTour(String tour_id,String api_id, String user_id);
+    List<String> getTourList(String user_id);
+    List<String> getTourContentId(String user_id, String tour_id);
 }

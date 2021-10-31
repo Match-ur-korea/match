@@ -11,7 +11,7 @@
 </head>
 <body>
     <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
-    <div class="character_intro" style="border:dashed; border-radius:20px">
+    <div class="character_intro" style="border:dashed; border-radius:20px;">
         <img class="character_img" th:src="|/img/characterBg/${character.characterId}.png|">
         <h2 class="character-name" th:text="${character.characterName}"></h2>
         <span class="description" th:text="${character.moredescription}"></span>
@@ -38,7 +38,7 @@
         </ul>
     </div>
 <!--페이징-->
-    <nav aria-label="Page navigation example " th:with="base=@{/explore/character/{id}(id=${charac.characterId})}">
+    <nav aria-label="Page navigation" th:with="base=@{/explore/character/{id}(id=${charac.characterId})}">
         <ul class="pagination">
             <li class="page-item">
                 <a class="page-link" th:href="@{/?page=1}" aria-label="Previous">
@@ -69,6 +69,6 @@
             </li>
         </ul>
     </nav>
-<div th:replace="/fragments/footer.html :: fragment-footer"></div>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

@@ -34,14 +34,14 @@ public class TourAPIController<map> {
     @GetMapping(value= "/explore/character/{characterCode}")
     public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode,
                                      @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
-        List<Character> character = userService.getCharacterList(characterCode);
+        Character character = userService.getCharacterList(characterCode);
         List<String> codes = new ArrayList<String>();
         // TODO error catch
-        codes.add(character.get(0).getCat1());
-        codes.add(character.get(0).getCat2());
-        codes.add(character.get(0).getCat3());
+        codes.add(character.getCat1());
+        codes.add(character.getCat2());
+        codes.add(character.getCat3());
         codes.removeAll(Arrays.asList("", null));
-        model.addAttribute("character", character.get(0));
+        model.addAttribute("character", character);
 
         List<Character> characterList = userService.getAllCharacterList();
         model.addAttribute("characterList", characterList);
@@ -87,7 +87,6 @@ public class TourAPIController<map> {
         return "areaSpot";
     }
 
-    //TODO html 생성
     @GetMapping(value="/explore/details/{contentid}")
     public String exploreDetailSpot(Model model,
                                     @PathVariable(value="contentid") String contentid) throws IOException, ParseException{
@@ -103,11 +102,11 @@ public class TourAPIController<map> {
                              @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
         int totalCount=0;
         List<Spot> list = new ArrayList<Spot>();
-        List<Character> character = userService.getCharacterList(selectId);
+        Character character = userService.getCharacterList(selectId);
         List<String> codes = new ArrayList<String>();
-        codes.add(character.get(0).getCat1());
-        codes.add(character.get(0).getCat2());
-        codes.add(character.get(0).getCat3());
+        codes.add(character.getCat1());
+        codes.add(character.getCat2());
+        codes.add(character.getCat3());
         codes.removeAll(Arrays.asList("", null));
         Map<Integer, List<Spot>> map = spotService.findSpotByType(codes, local, page);
         for(Map.Entry<Integer, List<Spot>> elem : map.entrySet()){
@@ -134,5 +133,4 @@ public class TourAPIController<map> {
         response.setContentType("text/html; charset=utf-8");
         return spotService.getSpotOverview(contentid);
     }
-
 }

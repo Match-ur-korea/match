@@ -41,7 +41,7 @@ input[name="tab_item"] {
 .tabs input:checked + .tab_item .half_hl {
     background: linear-gradient(to top, #00CCC1 50%, transparent 50%);
 }
-
+/* 캐릭터 목록 */
 .character_img{
     /*width: 300px;*/
     min-height: 6em;
@@ -79,7 +79,11 @@ hr{
     flex-wrap: wrap;
 }
 .swiper-slide img {
-    max-width:100%; /* 이미지 최대너비를 제한, 슬라이드에 이미지가 여러개가 보여질때 필요 */
+    max-width:100%;
+}
+/* 지역 영역 */
+img.map{
+    width: 100%;
 }
 @media screen and (max-width:1799px){
     .character-item{
@@ -95,4 +99,14 @@ hr{
 }
 @media (max-width:560px){
     .list_wrap .gallery li{width:50%;}
+    .character-item {
+        flex: 1 1 25%;
+        width: 50%
+    }
+}
+@media (max-width: 480px){
+    .character-item {
+        flex: 1 1 25%;
+        width: 50%
+    }
 }

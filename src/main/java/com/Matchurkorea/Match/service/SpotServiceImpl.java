@@ -306,7 +306,11 @@ public class SpotServiceImpl implements SpotService{
             JSONObject touristJson = (JSONObject) item.get(i);
             Gson gson = new Gson();
             Spot spot = gson.fromJson(touristJson.toString(),Spot.class);
+            if (spot.getFirstimage()==null) {
+                continue;
+            }else{
             list.add(spot);
+            }
         }
         Collections.shuffle(list);
         return list;
@@ -398,7 +402,7 @@ public class SpotServiceImpl implements SpotService{
     }
 
     public String getSpotImg(String contentid) throws IOException, ParseException{
-
+        System.out.println(contentid);
         StringBuilder result = new StringBuilder();
         try{
             String urlstr ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
@@ -421,15 +425,13 @@ public class SpotServiceImpl implements SpotService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        System.out.println(result.toString());
         JSONParser parser=new JSONParser();
         Object obj=(JSONObject)parser.parse(result.toString());
-
-
         JSONObject jsonObject=(JSONObject) obj;
         JSONObject response = (JSONObject) jsonObject.get("response");
         JSONObject body = (JSONObject) response.get("body");
-        // System.out.println(body);
+//         System.out.println(body);
 
         JSONObject items= (JSONObject) body.get("items");
         System.out.println(items);
@@ -437,5 +439,6 @@ public class SpotServiceImpl implements SpotService{
         System.out.println(item);
         String add= (String) item.get("firstimage");
         return add;
+
     }
 }

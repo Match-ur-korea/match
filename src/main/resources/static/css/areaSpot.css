@@ -25,13 +25,19 @@ div#toggle{
     cursor:pointer;
     margin:0 auto;
     text-align: center;
+    color : #FFFFFF;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    background-color: #DF6BAB;
+    border-radius: 20px;
 }
 .select-box{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #5DAFB2;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 ul#slideToggleBox{
     width:100%;
@@ -78,7 +84,8 @@ a {
     box-sizing:border-box;
     margin:2% 2% 1% 0;
     display: inline-block;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);}
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
 .gallery li img{width:100%;height:auto;}
 .list_wrap .item .image {
     width: 100%;
@@ -172,5 +179,10 @@ a {
         background: #eee;
         font-size: 10px;
         letter-spacing: -1px;
+    }
+    #toggle #slideToggleBox > li {
+        float: left;
+        width: 100%;
+        margin: 8px 0;
     }
 }

@@ -64,7 +64,7 @@ public class Detail {
     @JsonProperty("homepage")
     private String homepage;
     @JsonProperty("mapx")
-    private String mapx;
+    private Double mapx;
     @JsonProperty("mapy")
     private Double mapy;
     @JsonProperty("mlevel")
@@ -78,7 +78,7 @@ public class Detail {
     @JsonProperty("title")
     private String title;
     @JsonProperty("zipcode")
-    private Integer zipcode;
+    private String zipcode;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -213,12 +213,12 @@ public class Detail {
     }
 
     @JsonProperty("mapx")
-    public String getMapx() {
+    public Double getMapx() {
         return mapx;
     }
 
     @JsonProperty("mapx")
-    public void setMapx(String mapx) {
+    public void setMapx(Double mapx) {
         this.mapx = mapx;
     }
 
@@ -283,12 +283,12 @@ public class Detail {
     }
 
     @JsonProperty("zipcode")
-    public Integer getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
     @JsonProperty("zipcode")
-    public void setZipcode(Integer zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 

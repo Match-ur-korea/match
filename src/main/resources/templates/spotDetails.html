@@ -11,16 +11,13 @@
     <script src="/js/spotDetails.js"> </script>
 </head>
 <body>
-<div class="image" th:style="'background-image:url('+${detail.firstimage}+');'">사진</div>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
 <div class="cont">
-    <strong th:text="${detail.title}"></strong>
+    <h3 th:text="${detail.title}"></h3>
+    <img th:src="${detail.firstimage}"/>
     <p th:text="${detail.overview}"></p>
-    <a href="${detail.homepage}">공식 홈페이지</a>
-<!--    <div class="map_wrap">-->
-<!--        <div id="map" style="width:40rem;height:16rem"></div>-->
-<!--    </div>-->
-
-    <a href="javascript:window.history.back();">뒤로가기</a>
+    <a th:href="|${detail.homepage}|">공식 홈페이지</a>
+    <button type="button" onclick="location.href='javascript:window.history.back();'" class="to-list float-end">목록으로</button>
 </div>
 <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
 <!--TODO 채원쓰한테 -->

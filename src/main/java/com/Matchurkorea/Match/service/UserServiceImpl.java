@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Character> getCharacterList(String characterId){
+    public Character getCharacterList(String characterId){
         return userMapper.getCharacterList(characterId);
     }
 
@@ -34,4 +34,16 @@ public class UserServiceImpl implements UserService{
         return userMapper.getCategoryList(characterId);
     }
 
+    @Override
+    public void saveCharacter(String user_id,String selectId) {
+        if(userMapper.checkName(user_id)!=1)
+            userMapper.saveCharacter(user_id,selectId);
+        else
+            userMapper.updateCharacter(user_id,selectId);
+    }
+
+    @Override
+    public String getUserCharacter(String user_id) {
+        return userMapper.getUserCharacter(user_id);
+    }
 }
