@@ -5,8 +5,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 application.yml
-navex.html
-tabex.html
+application-oauth.yml
+*ex.html
 
 ### STS ###
 .apt_generated

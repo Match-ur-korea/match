@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>마치 :: 나의 여행보기</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script th:src="@{/js/imageMapResizer.min.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/css/myTravel.css">
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="my-character-info">
+    <h3>당신의 여행 유형은,</h3>
+    <h2 class="character-name" th:text="${character.characterName}"></h2>
+    <img class="character-img" th:src="|/img/characterBg/${character.characterId}.png|">
+    <span class="description" th:text="${character.moredescription}"></span>
+</div>
+<h2>나의 여행보기</h2>
+<div th:each="areaCode : ${areaList}">
+    <button class="local" type="button" th:onclick="|location.href='@{/myTravel/{areaCode}(areaCode=${areaCode})}'|" th:text="${T(com.Matchurkorea.Match.domain.Area).of(areaCode).name()}"></button>
+</div>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</body>
+</html>

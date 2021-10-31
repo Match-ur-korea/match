@@ -1,0 +1,106 @@
+.swiper{
+    height:20rem;
+}
+.swiper-wrapper {
+   text-align: center;
+   height:20rem;
+}
+.top{
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+}
+.photo{
+    margin-top:35px;
+    border-radius:20px;
+    height:20rem;
+}
+.product_menu{
+    background-image: url("/img/testResult/결과부분 모래사장2 3.png");
+    background-size:cover;
+    display:flex;
+    text-align:center;
+    margin-top:10px;
+    height:20rem;
+}
+#back_btn{
+   margin-top:40%;
+     border:0;
+     outline:0;
+     /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+     box-shadow: 0 1px 2px rgba(0,0,0,.2);
+     width:10rem;
+     height:1.3em;
+     font-size:1rem;
+     border-radius:1rem;
+}
+.product{
+    flex:1;
+
+}
+#back_color1{
+    background-image: url("/img/testResult/결과부분 모래사장2 3.png");
+    background-size:cover;
+    opacity:0.5
+}
+
+#back_color2{
+    background-image: url("/img/testResult/결과부분 모래사장2 3.png");
+    background-size:cover;
+    opacity:0.8;
+}
+.pro{
+    border:1px solid black;
+    width:6rem;
+    height:6rem;
+    border-radius:50%;
+}
+@media screen and (max-width:1799px) {
+  /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+     html{
+         font-size:20px;
+     }
+     .left{
+        padding-right:300px;
+     }
+     img{
+         /*Ã¬ÂÂ´ÃªÂ±Â¸ Ã¬â€œÂ°Ã«Â©Â´ Ã¬Â§â‚¬Ã«Ââ€žÃªÂ°â‚¬ grid Ã«ÂªÂ¨Ã¬â€“â€˜Ã¬Å“Â¼Ã«Â¡Å“ Ã«â€šËœÃ¬ËœÂ¨Ã«â€¹Â¤.*/
+         /*padding:10px;*/
+     }
+     .swiper{
+    width:35rem;
+    }
+    .swiper-wrapper {
+    text-align: center;
+    width: 35rem;
+    }
+    .photo{
+    width: 35rem;
+    height:15rem;
+}
+
+ }
+
+ @media screen and (max-width:599px) {
+ /* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
+     html{
+         font-size:10px;
+     }
+     .left{
+        padding-right:80px;
+     }
+     .swiper{
+    width:30rem;
+}
+    .swiper-wrapper {
+   width: 30rem;
+    }
+
+.photo{
+    width:30rem;
+}
+.product_menu{
+    margin-top:60px;
+  height:60rem;
+    }
+ }
+ }

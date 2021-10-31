@@ -1,0 +1,21 @@
+body{
+    background-image: url("img/explore/sandybeach.png");
+    background-repeat: no-repeat;
+    background-position:center-bottom;
+}
+
+@media screen and (max-width:1799px) {
+    /* 데스트 탑 */
+    html{
+        font-size:20px;
+    }
+
+}
+
+@media screen and (max-width:599px) {
+    /* 모바일 세로 */
+    html{
+        font-size:10px;
+    }
+
+}

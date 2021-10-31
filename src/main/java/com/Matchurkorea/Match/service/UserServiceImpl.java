@@ -1,10 +1,9 @@
 package com.Matchurkorea.Match.service;
 
 import com.Matchurkorea.Match.domain.Character;
-import com.Matchurkorea.Match.domain.User;
+import com.Matchurkorea.Match.domain.User.User;
 import com.Matchurkorea.Match.mapper.userMapper;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +20,30 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Character> getCharacterList(String s){
-        String characterId=s;
+    public Character getCharacterList(String characterId){
         return userMapper.getCharacterList(characterId);
+    }
+
+    @Override
+    public List<Character> getAllCharacterList() {
+        return userMapper.getAllCharacterList();
+    }
+
+    @Override
+    public List<Character> getCategoryList(String characterId) {
+        return userMapper.getCategoryList(characterId);
+    }
+
+    @Override
+    public void saveCharacter(String user_id,String selectId) {
+        if(userMapper.checkName(user_id)!=1)
+            userMapper.saveCharacter(user_id,selectId);
+        else
+            userMapper.updateCharacter(user_id,selectId);
+    }
+
+    @Override
+    public String getUserCharacter(String user_id) {
+        return userMapper.getUserCharacter(user_id);
     }
 }

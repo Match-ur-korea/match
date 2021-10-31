@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'마치 :: '+${detail.title}"></title>
+    <div th:replace="/fragments/header.html :: fragment-header"></div>
+    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/spotDetails.css"/>
+    <script src="/js/spotDetails.js"> </script>
+</head>
+<body>
+<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div class="cont">
+    <h1 th:text="${detail.title}"></h1>
+    <img class="spot-img" th:src="${detail.firstimage}"/>
+    <p th:text="${detail.overview}"></p>
+    <button class="back" type="button" onclick="location.href='javascript:window.history.back();'">목록으로</button>
+</div>
+</body>
+<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+</html>

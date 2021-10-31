@@ -1,0 +1,28 @@
+h2{
+    padding:2%;
+}
+.swiper{
+    width:50rem;
+    height:30rem;
+}
+.swiper-wrapper {
+    text-align: center;
+    width: 50rem;
+    height:30rem;
+}
+.top{
+    background-image: url("/img/travelPage/여행페이지배경.svg");
+    background-repeat: no-repeat;
+}
+.photo{
+    margin-top:20px;
+    border-radius:20px;
+    width:50rem;
+    height:25rem;
+}
+.pro{
+    border:1px solid black;
+    width:6rem;
+    height:6rem;
+    border-radius:50%;
+}

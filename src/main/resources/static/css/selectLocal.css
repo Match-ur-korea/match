@@ -1,0 +1,40 @@
+body,html{
+     width:100%;
+     height:100%;
+           background-image: url("/img/travelPage/여행페이지배경.svg");
+           background-repeat: no-repeat;
+           background-size:100%
+ }
+ table{
+  margin:0 auto;
+  margin-top:50px;
+  margin-bottom:30px;
+ }
+ .local{
+      color:black;
+     border:0;
+     outline:0;
+     /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+     box-shadow: 0 1px 2px rgba(0,0,0,.2);
+     width:7rem;
+     height:3.5rem;
+     font-size:1.2rem;
+     border-radius:1rem;
+ }
+
+
+
+ @media screen and (max-width:1799px) {
+  /* Ã«ÂÂ°Ã¬Å Â¤Ã­Å Â¸ Ã­Æ’â€˜ */
+ html{
+     font-size:15px;
+ }
+ }
+
+ @media screen and (max-width:599px) {
+ /* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
+   html{
+     font-size:10px;
+   }
+
+ }
