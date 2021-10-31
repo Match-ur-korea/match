@@ -31,7 +31,7 @@ public class TourAPIController<map> {
         this.spotService = spotService;
     }
 
-    @GetMapping(value= "/explore/character/{characterCode}")
+    @GetMapping(value= "explore/character/{characterCode}")
     public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode,
                                      @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
         Character character = userService.getCharacterList(characterCode);
@@ -61,7 +61,7 @@ public class TourAPIController<map> {
         return "characterSpot";
     }
 
-    @GetMapping(value="/explore/area/{areaCode}")
+    @GetMapping(value="explore/area/{areaCode}")
     public String exploreByArea(Model model, @PathVariable(value = "areaCode") String areaCode,
                                 @RequestParam(defaultValue = "1") int page) throws IOException,ParseException {
 
@@ -86,7 +86,7 @@ public class TourAPIController<map> {
         return "areaSpot";
     }
 
-    @GetMapping(value="/explore/details/{contentid}")
+    @GetMapping(value="explore/details/{contentid}")
     public String exploreDetailSpot(Model model,
                                     @PathVariable(value="contentid") String contentid) throws IOException, ParseException{
         Detail detail = spotService.getSpotDetail(contentid);
@@ -130,12 +130,12 @@ public class TourAPIController<map> {
         return "testResult";
     }
 
-    @GetMapping("/selectLocal")
+    @GetMapping("selectLocal")
     public String selectLocal(Model model) {
         return "selectLocal";
     }
 
-    @GetMapping("/myTestResult")
+    @GetMapping("myTestResult")
     public String myTestResult(Model model, Principal principal, @RequestParam("local") String local,
                                @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
         String user_id = principal.getName();

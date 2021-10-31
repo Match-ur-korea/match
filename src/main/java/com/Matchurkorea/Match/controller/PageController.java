@@ -32,30 +32,30 @@ public class PageController {
         this.tourService = tourService;
     }
 
-    @GetMapping(value="/")
+    @GetMapping(value="home")
     public String home(Model model){
         return "home";
     }
-    @GetMapping(value="/introUs")
+    @GetMapping(value="introUs")
     public String introduce(Model model){
         return "introUs";
     }
-    @GetMapping(value="/travel")
+    @GetMapping(value="travel")
     public String travel(Model model){
         return "travel";
     }
-    @GetMapping(value="/test")
+    @GetMapping(value="test")
     public String test(Model model){
         return "testPage";
     }
-    @GetMapping("/explore")
+    @GetMapping("explore")
     public String explore(Model model){
         List<Character> list = userService.getAllCharacterList();
         model.addAttribute("characters",list);
         return "explore";
     }
 
-    @GetMapping("/testVideo")
+    @GetMapping("testVideo")
     public String testVideo(Model model, Principal principal,
                             @RequestParam("c1") String c1,@RequestParam("c2") String c2,
                             @RequestParam("c3") String c3,@RequestParam("c4") String c4,@RequestParam("c5") String c5,@RequestParam("tour_local") String tour_local) throws IOException, ParseException {
@@ -83,7 +83,7 @@ public class PageController {
         return "testVideo";
     }
 
-    @GetMapping(value="/myTravel")
+    @GetMapping(value="myTravel")
     public String myTravel(Model model, Principal principal) throws IOException, ParseException {
         String user_id = principal.getName();
         String characterId = userService.getUserCharacter(user_id);
@@ -98,7 +98,7 @@ public class PageController {
 
         return "myTravel";
     }
-    @GetMapping(value="/myTravel/{areaCode}")
+    @GetMapping(value="myTravel/{areaCode}")
     public String myTravelInTheArea(Model model, Principal principal,
                                     @PathVariable(value="areaCode") String tour_id) throws IOException, ParseException{
         String user_id = principal.getName();
