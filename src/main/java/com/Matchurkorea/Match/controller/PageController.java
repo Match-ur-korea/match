@@ -32,7 +32,7 @@ public class PageController {
         this.tourService = tourService;
     }
 
-    @GetMapping(value="home")
+    @GetMapping(value="/")
     public String home(Model model){
         return "home";
     }

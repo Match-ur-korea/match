@@ -14,16 +14,16 @@
         SELECT * FROM user.character
     </select>
     <select id="getUserCharacter" resultType="String">
-        SELECT user_character FROM user.userdetail WHERE uid = #{user_id}
+        SELECT user_character FROM user.userDetail WHERE uid = #{user_id}
     </select>
     <select id="checkName" parameterType="String" resultType="int">
-        SELECT EXISTS (SELECT uid FROM user.userdetail WHERE uid = #{user_id})
+        SELECT EXISTS (SELECT uid FROM user.userDetail WHERE uid = #{user_id})
     </select>
     <insert id="saveCharacter">
         INSERT INTO user.userDetail(uid,user_character) VALUES(#{user_id}, #{selectId})
     </insert>
     <update id="updateCharacter">
-        UPDATE user.userdetail SET user_character = #{selectId} WHERE uid = #{user_id}
+        UPDATE user.userDetail SET user_character = #{selectId} WHERE uid = #{user_id}
     </update>
     <insert id="save"  useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user.user(name,email,role) VALUES(#{name}, #{email}, #{role})

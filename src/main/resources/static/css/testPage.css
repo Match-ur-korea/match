@@ -71,8 +71,8 @@ body,html{
       margin-top:1rem;
       margin-bottom:50rem;
  }
-  @media screen and (max-width:4000px) {
-   /* ÃƒÂ«Ã‚ÂÃ‚Â°ÃƒÂ¬Ã…Â Ã‚Â¤ÃƒÂ­Ã…Â Ã‚Â¸ ÃƒÂ­Ã†â€™Ã¢â‚¬Ëœ */
+ /* @media screen and (max-width:4000px) {
+
   html{
       font-size:30px;
   }
@@ -92,7 +92,7 @@ body,html{
   margin-bottom:2rem;
  }
 
-  }
+  }*/
  @media screen and (max-width:1799px) {
   /* ÃƒÂ«Ã‚ÂÃ‚Â°ÃƒÂ¬Ã…Â Ã‚Â¤ÃƒÂ­Ã…Â Ã‚Â¸ ÃƒÂ­Ã†â€™Ã¢â‚¬Ëœ */
  html{
