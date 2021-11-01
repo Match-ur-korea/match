@@ -15,7 +15,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SecurityConfig(CustomOAuth2UserService customOAuth2UserService) {
         this.customOAuth2UserService = customOAuth2UserService;
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -50,4 +49,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
     }
+
 }
