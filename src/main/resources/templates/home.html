@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="/fragments/header.html :: fragment-header"></div>
-    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+    <div th:replace="fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/home.css">
-    <script src="/js/home.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    <script src="js/home.js" defer></script>
 </head>
 
 <body>
 <div class="section" id="section1">
-        <div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+        <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
         <p class="sub_title1"><strong>어디가지? 고민될 땐 <br> 성향 분석 여행지 추천 웹</strong></p>
         <img id="logo" alt="" src="img/MATCH.png"/><br><br>
         <p class="sub_title2">나에게 꼭 맞는 한국을 찾아보세요</p>
@@ -80,8 +80,8 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
-        <div id="vv"><br<</div>
+        <div id="vv"><br</div>
 </div>
-    <footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+    <footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

@@ -2,18 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>travelVideo</title>
-  <div th:replace="/fragments/header.html :: fragment-header"></div>
-  <div th:replace="/fragments/config.html :: fragment-config"></div>
+  <div th:replace="fragments/header.html :: fragment-header"></div>
+  <div th:replace="fragments/config.html :: fragment-config"></div>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/testVideo.css"/>
-  <script src="/js/testVideo.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="css/testVideo.css"/>
+  <script src="js/testVideo.js" defer></script>
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <div class="top">
   <div class="swiper">
     <!-- Additional required wrapper -->
@@ -72,7 +72,7 @@
   </div>
   <div class="product" id="character_back">
     <p></p>
-    <button  type="button" id="back_btn" th:onclick="|location.href='@{/selectLocal}'|">다시 여행하기</button>
+    <button  type="button" id="back_btn" th:onclick="|location.href='@{selectLocal}'|">다시 여행하기</button>
   </div>
 </div>
 </body>

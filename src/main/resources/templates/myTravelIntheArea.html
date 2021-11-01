@@ -6,27 +6,25 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-  <div th:replace="/fragments/header.html :: fragment-header"></div>
-  <div th:replace="/fragments/config.html :: fragment-config"></div>
+  <div th:replace="fragments/header.html :: fragment-header"></div>
+  <div th:replace="fragments/config.html :: fragment-config"></div>
   <link rel="stylesheet" type="text/css" href="/css/myTravelInTheArea.css"/>
-  <script src="/js/myTravelInTheArea.js"></script>
+  <script src="js/myTravelInTheArea.js"></script>
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <div class="top">
   <h2 style="text-align: center;">다시 여행 떠나기</h2>
   <div class="swiper">
     <div class="swiper-wrapper">
-      <th:each="image :${imageList}">
         <div class="swiper-slide" th:each="image :${imageList}">
           <img class="photo" th:src="${image}"/>
         </div>
-      </each>
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
 </div>
-<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+<footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

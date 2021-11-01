@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>마치란</title>
-    <link rel="stylesheet" type="text/css" href="/css/introUs.css">
-    <div th:replace="/fragments/header.html :: fragment-header"></div>
-    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <link rel="stylesheet" type="text/css" href="css/introUs.css">
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+    <div th:replace="fragments/config.html :: fragment-config"></div>
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <img src="img/introUs/intro.jpg" class="intro">
 <div class="content">
     <img src="img/logo.png" class="match">
@@ -53,6 +53,6 @@
     <img src="img/introUs/characters.png" class="right">
 </div>
 </div>
-<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+<footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

@@ -2,22 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="'지금 '+${areaName}+'에서 당신을 기다리는 여행지'"></title>
-    <div th:replace="/fragments/header.html :: fragment-header"></div>
-    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+    <div th:replace="fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/css/areaSpot.css">
-    <script src="/js/areaSpot.js"></script>
+    <link rel="stylesheet" href="css/areaSpot.css">
+    <script src="js/areaSpot.js"></script>
 
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <h2 th:text="|${areaName}에서 당신을 기다리는 여행지|"></h2>
 <div id="toggle">다른 지역 보기
     <div class="select-box">
         <ul id="slideToggleBox">
             <li th:each="area : ${T(com.Matchurkorea.Match.domain.Area).values()}">
-                <a th:href="@{/explore/area/{code}(code=${area.getAreacode()})}"><span th:text="${area.name()}"></span></a>
+                <a th:href="@{explore/area/{code}(code=${area.getAreacode()})}"><span th:text="${area.name()}"></span></a>
             </li>
         </ul>
     </div>
@@ -35,6 +35,6 @@
     </ul>
 </div>
 
-<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+<footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

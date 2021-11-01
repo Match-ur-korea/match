@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>testResult</title>
-    <div th:replace="/fragments/header.html :: fragment-header"></div>
-    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+    <div th:replace="fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/testResult.css">
+    <link rel="stylesheet" type="text/css" href="css/testResult.css">
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2622781fcce1b7f42e208fcc9be1680b&libraries=services"></script>
-    <script src="/js/testResult.js" defer></script>
+    <script src="js/testResult.js" defer></script>
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <div class="container1">
         <div class="top1">
             <div id="border">
@@ -43,7 +43,7 @@
 <div class="container2">
     <h3 id="container2_title">당신을 위한 추천 여행지</h3><h3 id="local" th:value="${local}" th:text="${local}"></h3>
     <p>(마커가 하나도 없는 경우 준비중인 지역입니다. 밑에 다시 여행하기버튼을 눌러주세요.)</p>
-    <button  type="button" id="back_btn" th:onclick="|location.href='@{/selectLocal}'|">다시 여행하기</button>
+    <button  type="button" id="back_btn" th:onclick="|location.href='@{selectLocal}'|">다시 여행하기</button>
     <div class="top2">
         <div class="left2">
             <div class="map_wrap">
@@ -88,7 +88,7 @@
             <p id="15" style="display:none">삭제</p>
         </div>
         <div class="course">
-            <form th:action='@{/testVideo}' th:name="select_course">
+            <form th:action='@{testVideo}' th:name="select_course">
                 <input type="hidden" th:name="c1" id="c1" />
                 <input type="hidden" th:name="c2" id="c2" />
                 <input type="hidden" th:name="c3" id="c3" />
@@ -117,5 +117,5 @@
         /*[/]*/
     </script>
 </body>
-<footer th:replace="/fragments/footer.html :: fragment-footer"></footer>
+<footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </html>

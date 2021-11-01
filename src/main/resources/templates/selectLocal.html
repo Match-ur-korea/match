@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>mytravel</title>
-    <div th:replace="/fragments/header.html :: fragment-header"></div>
-    <div th:replace="/fragments/config.html :: fragment-config"></div>
+    <div th:replace="fragments/header.html :: fragment-header"></div>
+    <div th:replace="fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="/css/selectLocal.css">
+    <link rel="stylesheet" type="text/css" href="css/selectLocal.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/js/selectLocal.js" defer></script>
+    <script src="js/selectLocal.js" defer></script>
 </head>
 <body>
-<div th:replace="/fragments/navbar.html :: fragment-navbar"></div>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <div>
     <table>
         <tr>
@@ -39,7 +39,7 @@
         </tr>
     </table>
 
-    <form th:action='@{/myTestResult}' th:name="character">
+    <form th:action='@{myTestResult}' th:name="character">
         <input type="hidden" th:name="local" id="select_local" />
         <input type="submit"  id="submit" style="display:none"/>
     </form>
