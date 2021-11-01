@@ -40,7 +40,7 @@ public class TourAPIController<map> {
         codes.add(character.getCat2());
         codes.add(character.getCat3());
         codes.removeAll(Arrays.asList("", null));
-        model.addAttribute("character", character);
+        model.addAttribute("mycharacter", character);
 
         List<Character> characterList = userService.getAllCharacterList();
         model.addAttribute("characterList", characterList);
@@ -53,10 +53,6 @@ public class TourAPIController<map> {
             list = elem.getValue();
         }
         model.addAttribute("spotList",list);
-
-        // 페이징
-        Pagination pagination = new Pagination(totalCount, page);
-        model.addAttribute("pagination", pagination);
 
         return "characterSpot";
     }

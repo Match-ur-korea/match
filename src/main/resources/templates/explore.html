@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <title>마치 :: 탐험하기</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/explore.css">
     <div th:replace="fragments/header.html :: fragment-header"></div>
     <div th:replace="fragments/config.html :: fragment-config"></div>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="/js/imageMapResizer.min.js"></script>
+<!--    <script src="/js/imageMapResizer.min.js"></script>-->
 </head>
 <body>
 <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
@@ -21,7 +22,6 @@
     <label class="tab_item" for="region"><span class="half_hl">지역별</span></label>
     <div class="tab_content" id="character_content">
         <a name="tab_character"></a>
-<!--        TODO 캐릭터 디자인 변경-->
         <div class="swiper character-swiper swiper-h">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -39,7 +39,7 @@
     </div>
     <div class="tab_content" id="region_content">
         <h2 align="center">원하는 지역을 선택해주세요!</h2>
-        <p style="text-align:center">(클릭이 안될 경우 창을 줄여주세요!)</p>
+        <p style="text-align:center">(클릭이 안 될 경우 창을 줄여주세요!)</p>
         <img class="map" src="img/map.png" usemap="#image-map"/>
 
         <map name="image-map" id="image-map">
@@ -63,8 +63,27 @@
         </map>
     </div>
 </div>
-<!--TODO 기본 사이즈일 때 imageMap 안먹음-->
-<script> $('map').imageMapResize();</script>
+<style type="text/css">
+    img[usemap]{
+        border:none;
+        max-height: 100%;
+        height: auto;
+        width: auto
+    }
+</style>
+<script>
+
+    $(function(){
+
+        $('img[usemap]').rwdImageMaps();
+        $("#img").width("100%");
+
+    });
+
+</script>
+
+<!--&lt;!&ndash;TODO 기본 사이즈일 때 imageMap 안먹음&ndash;&gt;-->
+<!--<script> $('map').imageMapResize();</script>-->
 <footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

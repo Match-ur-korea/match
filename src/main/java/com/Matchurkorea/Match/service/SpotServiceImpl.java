@@ -27,7 +27,6 @@ public class SpotServiceImpl implements SpotService{
     int totalCount = 0;
     List<Spot> list = new ArrayList<Spot>();
     List<JSONArray> jsonArrays = new ArrayList<JSONArray>();
-    System.out.println(categories);
     for(String cat : categories){
         Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();
         JSONArray jsonArray = new JSONArray();
@@ -124,7 +123,7 @@ public class SpotServiceImpl implements SpotService{
         for(String cat : categories) {
             Map<Integer, JSONArray> temp = new HashMap<Integer, JSONArray>();
             JSONArray jsonArray = new JSONArray();
-            System.out.println(cat);
+
             StringBuilder result = new StringBuilder();
             try {
                 String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" + key
@@ -221,7 +220,6 @@ public class SpotServiceImpl implements SpotService{
         JSONArray item = new JSONArray();
         JSONParser parser = new JSONParser();
         Object object = (JSONObject) parser.parse(json);
-        System.out.println(object);
         if (object instanceof JSONObject)
         {
             JSONObject jsonObject = (JSONObject)object;
@@ -313,7 +311,6 @@ public class SpotServiceImpl implements SpotService{
         JSONObject jsonObject=(JSONObject) obj;
         JSONObject response = (JSONObject) jsonObject.get("response");
         JSONObject body = (JSONObject) response.get("body");
-        // System.out.println(body);
 
         JSONObject items= (JSONObject) body.get("items");
         JSONObject item= (JSONObject) items.get("item");
@@ -346,19 +343,15 @@ public class SpotServiceImpl implements SpotService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(result.toString());
         JSONParser parser=new JSONParser();
         Object obj=(JSONObject)parser.parse(result.toString());
         JSONObject jsonObject=(JSONObject) obj;
         JSONObject response = (JSONObject) jsonObject.get("response");
         JSONObject body = (JSONObject) response.get("body");
-//         System.out.println(body);
 
         JSONObject items= (JSONObject) body.get("items");
-        System.out.println(items);
         JSONObject item= (JSONObject) items.get("item");
-        System.out.println(item);
-        String add= (String) item.get("firstimage");
+        String add = (String) item.get("firstimage");
         return add;
 
     }

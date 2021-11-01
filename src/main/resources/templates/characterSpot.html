@@ -10,65 +10,33 @@
     <script src="/js/characterSpot.js"></script>
 </head>
 <body>
-    <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
-    <div class="character_intro" style="border:dashed; border-radius:20px;">
-        <img class="character_img" th:src="|/img/characterBg/${character.characterId}.png|">
-        <h2 class="character-name" th:text="${character.characterName}"></h2>
-        <span class="description" th:text="${character.moredescription}"></span>
+<div th:replace="fragments/navbar.html :: fragment-navbar"></div>
+<div class="character_intro" style="border:dashed; border-radius:20px;">
+    <img class="character_img" th:src="|/img/characterBg/${character.characterId}.png|">
+    <h2 class="character-name" th:text="${character.characterName}"></h2>
+    <span class="description" th:text="${character.moredescription}"></span>
+</div>
+<div id="toggle">다른 캐릭터 보기
+    <div class="select-box">
+        <ul id="slideToggleBox">
+            <li th:each="charac : ${characterList}">
+                <a th:href="@{explore/character/{id}(id=${charac.characterId})}"><span th:text="${charac.characterName}"></span></a>
+            </li>
+        </ul>
     </div>
-    <div id="toggle">다른 캐릭터 보기
-        <div class="select-box">
-            <ul id="slideToggleBox">
-                <li th:each="charac : ${characterList}">
-                    <a th:href="@{explore/character/{id}(id=${charac.characterId})}"><span th:text="${charac.characterName}"></span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
+</div>
 
-    <div class="list_wrap">
-        <ul class="gallery">
-            <li class="item" th:each="spot : ${spotList}">
-                <div class="image" th:style="'background-image:url('+${spot.firstimage}+');'">사진</div>
-                <div class="cont">
-                    <strong th:text="${spot.title}"></strong>
-                    <a th:href="@{../details/{contentid}(contentid=${spot.contentid})}">보러가기</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-<!--페이징-->
-    <nav aria-label="Page navigation" th:with="base=@{explore/character/{id}(id=${charac.characterId})}">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" th:href="@{?page=1}" aria-label="Previous">
-                    <span aria-hidden="true">처음</span>
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" th:href="@{${base}(page={page}(page = ${pagination.prevBlock}))}" aria-label="Previous">
-                    <span aria-hidden="true">이전</span>
-                </a>
-            </li>
-            <th:block  th:with="start = ${pagination.startPage}, end = ${pagination.endPage}">
-                <li class="page-item"
-                    th:with="start = ${pagination.startPage}, end = ${pagination.endPage}"
-                    th:each="pageButton : ${#numbers.sequence(start, end)}">
-                    <a class="page-link" th:href="@{${base}(page={page}(page = ${pageButton}))}" th:text=${pageButton}></a>
-                </li>
-            </th:block>
-            <li class="page-item">
-                <a class="page-link" th:href="@{${base}(page={page}(page = ${pagination.nextBlock}))}" aria-label="Next">
-                    <span aria-hidden="true">다음</span>
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" th:href="@{${base}(page={page}(page = ${pagination.totalPageCnt}))}" aria-label="Previous">
-                    <span aria-hidden="true">끝</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<div class="list_wrap">
+    <ul class="gallery">
+        <li class="item" th:each="spot : ${spotList}">
+            <div class="image" th:style="'background-image:url('+${spot.firstimage}+');'">사진</div>
+            <div class="cont">
+                <strong th:text="${spot.title}"></strong>
+                <a th:href="@{../details/{contentid}(contentid=${spot.contentid})}">보러가기</a>
+            </div>
+        </li>
+    </ul>
+</div>
 <footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

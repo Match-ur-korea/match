@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="'지금 '+${areaName}+'에서 당신을 기다리는 여행지'"></title>
+    <title th:text="'마치 : 지금 '+${areaName}+'에서 당신을 기다리는 여행지'"></title>
     <div th:replace="fragments/header.html :: fragment-header"></div>
     <div th:replace="fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -13,7 +13,8 @@
 <body>
 <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <h2 th:text="|${areaName}에서 당신을 기다리는 여행지|"></h2>
-<div id="toggle">다른 지역 보기
+<div id="toggle">
+    다른 지역 보기
     <div class="select-box">
         <ul id="slideToggleBox">
             <li th:each="area : ${T(com.Matchurkorea.Match.domain.Area).values()}">
@@ -28,13 +29,11 @@
             <div class="image" th:style="'background-image:url('+${spot.firstimage}+');'">사진</div>
             <div class="cont" id="contentid" th:value="${spot.contentid}">
                 <strong th:text="${spot.title}"></strong>
-                <div class="detail"></div>
                 <a th:href="@{../details/{contentid}(contentid=${spot.contentid})}">보러가기</a>
             </div>
         </li>
     </ul>
 </div>
-
 <footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>
