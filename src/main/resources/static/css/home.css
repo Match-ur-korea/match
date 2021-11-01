@@ -107,7 +107,9 @@ footer{
    margin-top:300px;
 
 }
-
+ .sub_title1{
+        margin-top:200px;
+     }
 @media screen and (max-width:1799px) {
  /* ë°ìŠ¤íŠ¸ íƒ‘ */
     html{
@@ -116,9 +118,6 @@ footer{
     #recommend{
     margin-top:160px;
     }
-    .sub_title1{
-        margin-top:200px;
-     }
 }
 @media screen and (max-width:599px) {
 /* Ã«ÂªÂ¨Ã«Â°â€Ã¬ÂÂ¼ Ã¬â€žÂ¸Ã«Â¡Å“ */
@@ -143,4 +142,5 @@ footer{
  section {
                   width:36em;
                   height:16rem;
+}
 }
