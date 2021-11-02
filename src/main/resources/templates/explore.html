@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <title>마치 :: 탐험하기</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
+<!--    <script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>-->
     <link rel="stylesheet" type="text/css" href="/css/explore.css">
     <div th:replace="fragments/header.html :: fragment-header"></div>
     <div th:replace="fragments/config.html :: fragment-config"></div>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-<!--    <script src="/js/imageMapResizer.min.js"></script>-->
+    <script src="/js/imageMapResizer.min.js"></script>
 </head>
 <body>
 <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
@@ -63,27 +63,23 @@
         </map>
     </div>
 </div>
-<style type="text/css">
-    img[usemap]{
-        border:none;
-        max-height: 100%;
-        height: auto;
-        width: auto
-    }
-</style>
-<script>
+<!--<style type="text/css">-->
+<!--    img[usemap]{-->
+<!--        border:none;-->
+<!--        max-height: 100%;-->
+<!--        height: auto;-->
+<!--        width: auto-->
+<!--    }-->
+<!--</style>-->
+<!--<script>-->
+<!--    $(function(){-->
+<!--        $('img[usemap]').rwdImageMaps();-->
+<!--        $("#img").width("100%");-->
+<!--    });-->
+<!--</script>-->
 
-    $(function(){
-
-        $('img[usemap]').rwdImageMaps();
-        $("#img").width("100%");
-
-    });
-
-</script>
-
-<!--&lt;!&ndash;TODO 기본 사이즈일 때 imageMap 안먹음&ndash;&gt;-->
-<!--<script> $('map').imageMapResize();</script>-->
+<!--TODO 기본 사이즈일 때 imageMap 안먹음-->
+<script> $('map').imageMapResize();</script>
 <footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

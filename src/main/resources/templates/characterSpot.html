@@ -12,15 +12,15 @@
 <body>
 <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <div class="character_intro" style="border:dashed; border-radius:20px;">
-    <img class="character_img" th:src="|/img/characterBg/${character.characterId}.png|">
-    <h2 class="character-name" th:text="${character.characterName}"></h2>
-    <span class="description" th:text="${character.moredescription}"></span>
+    <img class="character_img" th:src="|/img/characterBg/${cmyharacter.characterId}.png|">
+    <h2 class="character-name" th:text="${mycharacter.characterName}"></h2>
+    <span class="description" th:text="${mycharacter.moredescription}"></span>
 </div>
 <div id="toggle">다른 캐릭터 보기
     <div class="select-box">
         <ul id="slideToggleBox">
-            <li th:each="charac : ${characterList}">
-                <a th:href="@{explore/character/{id}(id=${charac.characterId})}"><span th:text="${charac.characterName}"></span></a>
+            <li th:each="character : ${characterList}">
+                <a th:href="@{explore/character/{id}(id=${character.characterId})}"><span th:text="${character.characterName}"></span></a>
             </li>
         </ul>
     </div>
