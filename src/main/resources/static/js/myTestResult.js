@@ -5,7 +5,7 @@ if(localStorage.getItem('character'))
 //테스트 이미지 변경하기
 var select_character=document.getElementById('characterType').innerText
 var characterImg_arr=["img/testResult/캐릭2.png","img/testResult/캐릭6.png","img/testResult/캐릭4.png","img/testResult/캐릭7.png","img/testResult/캐릭1.png","img/testResult/캐릭5.png","img/testResult/캐릭8.png","img/testResult/캐릭3.png"];
-var characterType_arr=["나른한 도시 여행자","물아일체 자연인","실속형 관광객","용감한 탐험가","유유자적 선비","자연친화 지식인","지치지 않는 에너자이저","체험학습형 플레이어"]
+var characterType_arr=["나른한 도시여행자","물아일체 자연인","실속형 관광객","용감한 탐험가","유유자적 선비","자연친화 지식인","지치지 않는 에너자이저","체험학습형 플레이어"]
 var goodType_arr=["img/testResult/캐릭4-4.png","img/testResult/캐릭2-2.png","img/testResult/캐릭2-2.png","img/testResult/캐릭3-3.png","img/testResult/캐릭3-3.png","img/testResult/캐릭1-1.png","img/testResult/캐릭4-4.png","img/testResult/캐릭1-1.png"]
 var badType_arr=["img/testResult/캐릭7-7.png","img/testResult/캐릭3-3.png","img/testResult/캐릭5-5.png","img/testResult/캐릭2-2.png","img/testResult/캐릭8-8.png","img/testResult/캐릭4-4.png","img/testResult/캐릭1-1.png","img/testResult/캐릭6-6.png"]
 
@@ -97,7 +97,7 @@ for (var i = 0; i < positions.length; i ++) {
     })
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
-        content : positions[i].title+'^'+positions[i].addr+'^'+positions[i].image+'^'+positions[i].id+'^'+positions[i].overview
+        content : positions[i].title+'^'+positions[i].addr+'^'+positions[i].image+'^'+positions[i].id
     });
 
     // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
@@ -142,7 +142,9 @@ function makeTitle(map, marker,infowindow){
 
      //TODO 상세설명 추가하기
        const des = document.getElementById("des");
-     des.innerText = "상세설명";
+       document.getElementById("des").style.fontSize = '0.6rem';
+
+     des.innerText = "자세한 내용은 [나의 여행코스]에서 확인하세요!"
      // $("#relo").load(location.href+" #relo>*");
     };
 }
