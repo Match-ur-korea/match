@@ -5,7 +5,7 @@ if(localStorage.getItem('character'))
 //테스트 이미지 변경하기
 var select_character=document.getElementById('characterType').innerText
 var characterImg_arr=["img/testResult/캐릭2.png","img/testResult/캐릭6.png","img/testResult/캐릭4.png","img/testResult/캐릭7.png","img/testResult/캐릭1.png","img/testResult/캐릭5.png","img/testResult/캐릭8.png","img/testResult/캐릭3.png"];
-var characterType_arr=["나른한 도시 여행자","물아일체 자연인","실속형 관광객","용감한 탐험가","유유자적 선비","자연친화 지식인","지치지 않는 에너자이저","체험학습형 플레이어"]
+var characterType_arr=["나른한 도시여행자","물아일체 자연인","실속형 관광객","용감한 탐험가","유유자적 선비","자연친화 지식인","지치지 않는 에너자이저","체험학습형 플레이어"]
 var goodType_arr=["img/testResult/캐릭4-4.png","img/testResult/캐릭2-2.png","img/testResult/캐릭2-2.png","img/testResult/캐릭3-3.png","img/testResult/캐릭3-3.png","img/testResult/캐릭1-1.png","img/testResult/캐릭4-4.png","img/testResult/캐릭1-1.png"]
 var badType_arr=["img/testResult/캐릭7-7.png","img/testResult/캐릭3-3.png","img/testResult/캐릭5-5.png","img/testResult/캐릭2-2.png","img/testResult/캐릭8-8.png","img/testResult/캐릭4-4.png","img/testResult/캐릭1-1.png","img/testResult/캐릭6-6.png"]
 
