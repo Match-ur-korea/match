@@ -24,51 +24,51 @@ characterImg.src
 var local_name=document.getElementById('local').innerText;
 
 if(local_name==1)
-    document.getElementById('local').innerText="서울";
+document.getElementById('local').innerText="서울";
 else if(local_name==2)
-    document.getElementById('local').innerText="인천";
+document.getElementById('local').innerText="인천";
 else if(local_name==3)
-    document.getElementById('local').innerText="대전";
+document.getElementById('local').innerText="대전";
 else if(local_name==4)
-    document.getElementById('local').innerText="대구";
+document.getElementById('local').innerText="대구";
 else if(local_name==5)
-    document.getElementById('local').innerText="광주";
+document.getElementById('local').innerText="광주";
 else if(local_name==6)
-    document.getElementById('local').innerText="부산";
+document.getElementById('local').innerText="부산";
 else if(local_name==7)
-    document.getElementById('local').innerText="울산";
+document.getElementById('local').innerText="울산";
 else if(local_name==8)
-    document.getElementById('local').innerText="세종특별시";
+document.getElementById('local').innerText="세종특별시";
 else if(local_name==31)
-    document.getElementById('local').innerText="경기도";
+document.getElementById('local').innerText="경기도";
 else if(local_name==32)
-    document.getElementById('local').innerText="강원도";
+document.getElementById('local').innerText="강원도";
 else if(local_name==33)
-    document.getElementById('local').innerText="충청북도";
+document.getElementById('local').innerText="충청북도";
 else if(local_name==34)
-    document.getElementById('local').innerText="충청남도";
+document.getElementById('local').innerText="충청남도";
 else if(local_name==35)
-    document.getElementById('local').innerText="경상북도";
+document.getElementById('local').innerText="경상북도";
 else if(local_name==36)
-    document.getElementById('local').innerText="경상남도";
+document.getElementById('local').innerText="경상남도";
 else if(local_name==37)
-    document.getElementById('local').innerText="전라북도";
+document.getElementById('local').innerText="전라북도";
 else if(local_name==38)
-    document.getElementById('local').innerText="전라남도";
+document.getElementById('local').innerText="전라남도";
 else
-    document.getElementById('local').innerText="제주도";
+document.getElementById('local').innerText="제주도";
 
 
 
 
-var x = [0,126.9751811398,126.6832460000,127.3686912472,128.6205183884,126.9160879510,129.0798725132,129.0561398456,127.2858062335]
-var y=[0,37.6122099878,37.4373973287,36.3674994928,35.9841102996,35.1618648223,35.1851949389,35.6367354352,36.4981108410]
-x[31]=127.1549676193;x[32]=128.6003708453;x[33]=127.4358669978;x[34]=127.1216721795;x[35]=128.4866884526;x[36]=128.5064669527;x[37]=127.1532917977;x[38]=126.4090769892;x[39]=126.5039945305;
-y[31]=37.9941326372;y[32]=38.2133149015;y[33]=36.6278652990;y[34]=36.4529297875;y[35]=36.0863823335;y[36]=34.7671312725;y[37]=35.8170640681;y[38]=35.3997293920;y[39]=33.4889034625;
+  var x = [0,126.9751811398,126.6832460000,127.3686912472,128.6205183884,126.9160879510,129.0798725132,129.0561398456,127.2858062335]
+  var y=[0,37.6122099878,37.4373973287,36.3674994928,35.9841102996,35.1618648223,35.1851949389,35.6367354352,36.4981108410]
+   x[31]=127.1549676193;x[32]=128.6003708453;x[33]=127.4358669978;x[34]=127.1216721795;x[35]=128.4866884526;x[36]=128.5064669527;x[37]=127.1532917977;x[38]=126.4090769892;x[39]=126.5039945305;
+   y[31]=37.9941326372;y[32]=38.2133149015;y[33]=36.6278652990;y[34]=36.4529297875;y[35]=36.0863823335;y[36]=34.7671312725;y[37]=35.8170640681;y[38]=35.3997293920;y[39]=33.4889034625;
 
-var lng=local_name;
-console.log(y[lng]);
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    var lng=local_name;
+    console.log(y[lng]);
+   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(y[lng],x[lng]), // 지도의 중심좌표
         level: 10 // 지도의 확대 레벨
@@ -111,41 +111,41 @@ for (var i = 0; i < positions.length; i ++) {
 var arr= new Array();
 
 function makeTitle(map, marker,infowindow){
-    return function() {
-        document.getElementById("back_top").style="block";
-        document.getElementById("course_btn").style="block";
-        arr[0]="";
-        arr[1]="";
-        arr[2]="";
-        arr[3]="";
-        //TODO 클릭된 마커 색깔 변경
-        //infowindow.open(map,marker);
-        var contents=infowindow.getContent();
-        var cnt=0;
-        for(var j=0;j<contents.length;j++){
-            if(contents[j]=='^'){
-                cnt++;
-                continue;
-            }
-            arr[cnt]+=contents[j];
+  return function() {
+      document.getElementById("back_top").style="block";
+      document.getElementById("course_btn").style="block";
+      arr[0]="";
+      arr[1]="";
+      arr[2]="";
+      arr[3]="";
+       //TODO 클릭된 마커 색깔 변경
+      //infowindow.open(map,marker);
+      var contents=infowindow.getContent();
+      var cnt=0;
+      for(var j=0;j<contents.length;j++){
+         if(contents[j]=='^'){
+           cnt++;
+           continue;
+          }
+         arr[cnt]+=contents[j];
         }
 
 
-        const title = document.getElementById("title12");
-        title.innerText =arr[0];
-        const addr = document.getElementById("addr");
-        addr.innerText =arr[1];
-        const img = document.getElementById("back_top");
-        img.src = arr[2];
-        const contenId = document.getElementById("content_id");
-        contenId.value=arr[3];
+      const title = document.getElementById("title12");
+      title.innerText =arr[0];
+      const addr = document.getElementById("addr");
+      addr.innerText =arr[1];
+      const img = document.getElementById("back_top");
+      img.src = arr[2];
+      const contenId = document.getElementById("content_id");
+      contenId.value=arr[3];
 
-        //TODO 상세설명 추가하기
-        const des = document.getElementById("des");
-        document.getElementById("des").style.fontSize = '0.6rem';
+     //TODO 상세설명 추가하기
+       const des = document.getElementById("des");
+       document.getElementById("des").style.fontSize = '0.6rem';
 
-        des.innerText = "자세한 내용은 [나의 여행코스]에서 확인하세요!"
-        // $("#relo").load(location.href+" #relo>*");
+     des.innerText = "자세한 내용은 [나의 여행코스]에서 확인하세요!"
+     // $("#relo").load(location.href+" #relo>*");
     };
 }
 
@@ -153,36 +153,37 @@ function makeTitle(map, marker,infowindow){
 var src_arr=[]
 var contenId_arr=["","","","","",""]
 $("#course_btn").click(function(){
-    var isCheck=0;
-    for(var i=1;i<6;i++){
-        var cur=i.toString();
-        const s = document.getElementById(cur);
-        var ix=i+5;
-        ix.toString();
-        var sel =document.getElementById(ix).innerText
-        //TODO 나중에 링크 이름 바꿔야 함
-        if(sel=="1"){
-            for(var j=1;j<6;j++){
-                if(src_arr[j]==arr[2]){
-                    isCheck=1;
+       var isCheck=0;
+       for(var i=1;i<6;i++){
+            var cur=i.toString();
+            const s = document.getElementById(cur);
+            var ix=i+5;
+            ix.toString();
+            var sel =document.getElementById(ix).innerText
+            //TODO 나중에 링크 이름 바꿔야 함
+            if(sel=="1"){
+                for(var j=1;j<6;j++){
+                     if(src_arr[j]==arr[2]){
+                          isCheck=1;
+                          break;
+                     }
+                }
+                if(isCheck){
+                alert("이미 선택한 장소입니다.");
                     break;
                 }
+                 document.getElementById(ix).innerText="0";
+                 s.src=arr[2];
+                 src_arr[i]=arr[2];
+                 contenId_arr[i]=arr[3];
+                 //삭제 버튼
+                 var delete_btn=i+10;
+                 document.getElementById(delete_btn).style="block";
+                 break;
             }
-            if(isCheck){
-                alert("이미 선택한 장소입니다.");
-                break;
-            }
-            document.getElementById(ix).innerText="0";
-            s.src=arr[2];
-            src_arr[i]=arr[2];
-            contenId_arr[i]=arr[3];
-            //삭제 버튼
-            var delete_btn=i+10;
-            document.getElementById(delete_btn).style="block";
-            break;
         }
-    }
 })
+//TODO 5개 선택 안 하면 여행 못하게 하기
 $("#select_btn").click(function(){
     document.getElementById('c1').value = contenId_arr[1]
     document.getElementById('c2').value = contenId_arr[2]
@@ -215,20 +216,21 @@ $("#15").click(function(){
 
 })
 function delete_btn(btn,num) {
-    var select_characterImg_arr=["0","img/testResult/캐릭5.png","img/testResult/캐릭1.png","img/testResult/캐릭2.png","img/testResult/캐릭3.png","img/testResult/캐릭4.png"];
+var select_characterImg_arr=["0","img/testResult/캐릭5.png","img/testResult/캐릭1.png","img/testResult/캐릭2.png","img/testResult/캐릭3.png","img/testResult/캐릭4.png"];
     var s = document.getElementById(btn);
-    var cnt=0;
-    for(var i=1;i<=5;i++){
+     //TODO 나중에 링크 이름 바꿔야 함
+     var cnt=0;
+     for(var i=1;i<=5;i++){
         var cur=i+5;
         if(document.getElementById(cur).innerText=="0")
             cnt++;
-    }
+     }
     console.log(cnt);
     for(var i=num+1;i<=5;i++){
         var cur=i.toString();
         var s2=document.getElementById(cur);
-        s.src=s2.src
-        s=s2;
+         s.src=s2.src
+         s=s2;
     }
     for(var i=1;i<=cnt;i++){
         var id=i+5;
@@ -247,5 +249,8 @@ function delete_btn(btn,num) {
     }
 }
 //제출 버튼 클릭시
+
+//TODO 삭제 버튼 만들기
+
 // 제출 버튼 클릭시 CONTENT내용 넘어가도록 하기
 //세부 내용 추가하기
