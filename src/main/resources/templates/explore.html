@@ -40,7 +40,7 @@
     <div class="tab_content" id="region_content">
         <h2 align="center">원하는 지역을 선택해주세요!</h2>
         <p style="text-align:center">(클릭이 안 될 경우 창을 줄여주세요!)</p>
-        <img class="map" src="img/map.png" usemap="#image-map"/>
+        <img class="map" src="img/map.png" usemap="#image-map" width="80%"/>
 
         <map name="image-map" id="image-map">
             <area target="" alt="서울" title="서울" th:href="@{explore/area/1}" coords="1684,1096,1459,1156,1474,1247,1549,1292,1639,1307,1729,1277" shape="poly">
@@ -63,23 +63,9 @@
         </map>
     </div>
 </div>
-<!--<style type="text/css">-->
-<!--    img[usemap]{-->
-<!--        border:none;-->
-<!--        max-height: 100%;-->
-<!--        height: auto;-->
-<!--        width: auto-->
-<!--    }-->
-<!--</style>-->
-<!--<script>-->
-<!--    $(function(){-->
-<!--        $('img[usemap]').rwdImageMaps();-->
-<!--        $("#img").width("100%");-->
-<!--    });-->
-<!--</script>-->
-
 <!--TODO 기본 사이즈일 때 imageMap 안먹음-->
-<script> $('map').imageMapResize();</script>
+<script> $('map').imageMapResize();
+</script>
 <footer th:replace="fragments/footer.html :: fragment-footer"></footer>
 </body>
 </html>

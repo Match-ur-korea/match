@@ -101,6 +101,10 @@ public class PageController {
     @GetMapping(value="myTravel/{areaCode}")
     public String myTravelInTheArea(Model model, Principal principal,
                                     @PathVariable(value="areaCode") String tour_id) throws IOException, ParseException{
+        Area area = Area.of(tour_id);
+        String areaName = area.name();
+        model.addAttribute("areaName", areaName);
+
         String user_id = principal.getName();
         List<String> list = tourService.getTourContentId(user_id, tour_id);
         List<String> imageList = new ArrayList<String>();

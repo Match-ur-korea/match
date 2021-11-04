@@ -40,9 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/explore/**",
                         "/testResult/**",
                         "/travel/**",
-                        "/testVideo/**",
-                        "/explore/**").permitAll()
-                .antMatchers("/mytravel/**").hasRole(Role.GUEST.name())
+                        "/testVideo/**").permitAll()
+                .antMatchers("/myTravel/**").hasRole(Role.GUEST.name())
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutSuccessUrl("/")

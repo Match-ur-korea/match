@@ -22,6 +22,5 @@ public interface SpotService {
    List<Spot> jsonToSpot(JSONArray item);
    Detail jsonToDetail(JSONArray item);
    String getSpotImg(String contentid) throws IOException, ParseException;
-   String getSpotContent(String contentid)throws IOException, ParseException;
 
 }

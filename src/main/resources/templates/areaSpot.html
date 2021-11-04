@@ -18,7 +18,7 @@
     <div class="select-box">
         <ul id="slideToggleBox">
             <li th:each="area : ${T(com.Matchurkorea.Match.domain.Area).values()}">
-                <a th:href="@{explore/area/{code}(code=${area.getAreacode()})}"><span th:text="${area.name()}"></span></a>
+                <a th:href="@{./{code}(code=${area.getAreacode()})}"><span th:text="${area.name()}"></span></a>
             </li>
         </ul>
     </div>

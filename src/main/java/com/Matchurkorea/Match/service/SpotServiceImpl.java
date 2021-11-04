@@ -276,47 +276,6 @@ public class SpotServiceImpl implements SpotService{
         return detail;
     }
 
-    public String getSpotContent(String contentid) throws IOException, ParseException{
-        StringBuilder result = new StringBuilder();
-        try{
-            String urlstr = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+key
-                    +"&contentId="+contentid
-                    +"&defaultYN=Y"
-                    +"&firstImageYN=Y"
-                    +"&areacodeYN=Y"
-                    +"&catcodeYN=Y" //카테고리
-                    +"&addrinfoYN=Y"
-                    +"&mapinfoYN=Y"
-                    +"&overviewYN=Y"
-                    +"&MobileOS=ETC&MobileApp=MatchUrKorea&_type=json";
-
-            URL url = new URL(urlstr);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
-            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"UTF-8"));
-            String returnLine;
-
-            while((returnLine=br.readLine()) != null){
-                result.append(returnLine+"\n\r");
-            }
-            urlConnection.disconnect();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        JSONParser parser=new JSONParser();
-        Object obj=(JSONObject)parser.parse(result.toString());
-
-
-        JSONObject jsonObject=(JSONObject) obj;
-        JSONObject response = (JSONObject) jsonObject.get("response");
-        JSONObject body = (JSONObject) response.get("body");
-
-        JSONObject items= (JSONObject) body.get("items");
-        JSONObject item= (JSONObject) items.get("item");
-        String content= (String) item.get("overview");
-        return content;
-    }
 
     public String getSpotImg(String contentid) throws IOException, ParseException{
         if(contentid=="")
@@ -344,6 +303,9 @@ public class SpotServiceImpl implements SpotService{
             e.printStackTrace();
         }
         JSONParser parser=new JSONParser();
+//        TODO null 처리
+//        if (result.toString() == null)
+//            return
         Object obj=(JSONObject)parser.parse(result.toString());
         JSONObject jsonObject=(JSONObject) obj;
         JSONObject response = (JSONObject) jsonObject.get("response");

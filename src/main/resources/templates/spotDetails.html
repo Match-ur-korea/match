@@ -15,7 +15,7 @@
 <div class="cont">
     <h1 th:text="${detail.title}"></h1>
     <img class="spot-img" th:src="${detail.firstimage}"/>
-    <p th:text="${detail.overview}"></p>
+    <p>[(${detail.overview})]</p>
     <button class="back" type="button" onclick="location.href='javascript:window.history.back();'">목록으로</button>
 </div>
 </body>

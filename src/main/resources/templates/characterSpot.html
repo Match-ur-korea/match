@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${character.characterName}+'에게 찰떡인 여행지'"></title>
+    <title th:text="${myCharacter.characterName}+'에게 찰떡인 여행지'"></title>
     <div th:replace="fragments/header.html :: fragment-header"></div>
     <div th:replace="fragments/config.html :: fragment-config"></div>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -12,15 +12,15 @@
 <body>
 <div th:replace="fragments/navbar.html :: fragment-navbar"></div>
 <div class="character_intro" style="border:dashed; border-radius:20px;">
-    <img class="character_img" th:src="|/img/characterBg/${cmyharacter.characterId}.png|">
-    <h2 class="character-name" th:text="${mycharacter.characterName}"></h2>
-    <span class="description" th:text="${mycharacter.moredescription}"></span>
+    <img class="character_img" th:src="|/img/characterBg/${myCharacter.characterId}.png|">
+    <h2 class="character-name" th:text="${myCharacter.characterName}"></h2>
+    <span class="description" th:text="${myCharacter.moredescription}"></span>
 </div>
 <div id="toggle">다른 캐릭터 보기
     <div class="select-box">
         <ul id="slideToggleBox">
             <li th:each="character : ${characterList}">
-                <a th:href="@{explore/character/{id}(id=${character.characterId})}"><span th:text="${character.characterName}"></span></a>
+                <a th:href="@{./{id}(id=${character.characterId})}"><span th:text="${character.characterName}"></span></a>
             </li>
         </ul>
     </div>

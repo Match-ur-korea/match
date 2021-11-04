@@ -81,10 +81,10 @@ hr{
 .swiper-slide img {
     max-width:100%;
 }
-/* 지역 영역 */
-img.map{
-    width: 100%;
-}
+/*!* 지역 영역 *!*/
+/*.map{*/
+/*    width: 100%;*/
+/*}*/
 @media screen and (max-width:1799px){
     html{
         font-size:20px;

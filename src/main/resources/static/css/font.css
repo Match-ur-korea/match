@@ -1,20 +1,9 @@
 @font-face {
-    font-family: 'OTWelcomeBA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeBA.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-h1, h2, h3, h4, h5, h6, label, div{
-    font-family:'OTWelcomBA';
-}
-
-@font-face {
     font-family: 'OTWelcomeRA';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
-
-p, span, strong, small{
+*{
     font-family: 'OTWelcomeRA', sans-serif;
 }

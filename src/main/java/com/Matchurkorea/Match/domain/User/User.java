@@ -3,9 +3,10 @@ package com.Matchurkorea.Match.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Repository;
 
-@Getter
+@Setter
 @NoArgsConstructor
 public class User{
     private String name;

@@ -34,13 +34,13 @@ public class TourAPIController<map> {
     @GetMapping(value= "explore/character/{characterCode}")
     public String exploreByCharacter(Model model, @PathVariable(value = "characterCode") String characterCode,
                                      @RequestParam(defaultValue = "1") int page) throws IOException, ParseException {
-        Character character = userService.getCharacterList(characterCode);
+        Character myCharacter = userService.getCharacterList(characterCode);
         List<String> codes = new ArrayList<String>();
-        codes.add(character.getCat1());
-        codes.add(character.getCat2());
-        codes.add(character.getCat3());
+        codes.add(myCharacter.getCat1());
+        codes.add(myCharacter.getCat2());
+        codes.add(myCharacter.getCat3());
         codes.removeAll(Arrays.asList("", null));
-        model.addAttribute("mycharacter", character);
+        model.addAttribute("myCharacter", myCharacter);
 
         List<Character> characterList = userService.getAllCharacterList();
         model.addAttribute("characterList", characterList);
@@ -114,15 +114,9 @@ public class TourAPIController<map> {
             totalCount = elem.getKey().intValue();
             list = elem.getValue();
         }
-        List<String> overview = new ArrayList<>();
-
-        for (int i = 0; i < list.size(); i++) {
-            overview.add(spotService.getSpotContent(list.get(i).getContentid().toString()));
-        }
         model.addAttribute("local", local);
         model.addAttribute("character", character);
         model.addAttribute("spotList", list);
-        model.addAttribute("contents",overview);
         return "testResult";
     }
 
