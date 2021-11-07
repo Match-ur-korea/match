@@ -13,7 +13,7 @@
 <img width="600" alt="KakaoTalk_Photo_2021-11-07-15-12-05 001" src="https://user-images.githubusercontent.com/80243543/140634598-87137c9d-df98-4a7a-9ca8-29e2d5f5bfa0.png">
 
 ### 여행 테스트 결과 페이지 
-각자의 테스트 결과에 맞는 캐릭터가 표시되고 안 맞는 캐릭터 / 잘 맞는 캐릭터가 표시된다. 아래에는 결과를 바탕으로 한국관광공사 데이터에 따른 맞춤형 관광지가 지도의 마커에 표시됩니다.
+각자의 테스트 결과에 맞는 캐릭터가 표시됩니다. 사용자에게 잘 맞는 캐릭터 / 잘 안 맞는 캐릭터가 함께 표시됩니다. 아래에는 결과를 바탕으로 한국관광공사 데이터에 따른 맞춤형 관광지가 지도의 마커에 표시됩니다.
 
 <img width="600" alt="KakaoTalk_Photo_2021-11-07-15-12-06 007" src="https://user-images.githubusercontent.com/80243543/140634678-cf7b8583-693b-40a3-8d40-4be99819deec.png">
 <img width="600" alt="스크린샷 2021-11-07 오후 3 30 10" src="https://user-images.githubusercontent.com/80243543/140634910-2ea28c14-bbc2-4a40-aadc-db313ae365c4.png">
